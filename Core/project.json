@@ -1,0 +1,32 @@
+{
+	"name": "Core",
+	"options": {
+		"bundleIdPrefix": "pl.msut",
+		"createIntermediateGroups": true,
+		"generateEmptyDirectories": true
+	},
+	"targets": {
+		"Service": {
+			"platform": [
+				"iOS"
+			],
+			"type": "framework",
+			"sources": [
+				{
+					"path": "Service/Sources"
+				}
+			]
+		},
+		"ServiceTests": {
+			"platform": [
+				"iOS"
+			],
+			"type": "bundle.unit-test",
+			"sources": [
+				{
+					"path": "Service/Tests"
+				}
+			]
+		}
+	}
+}
