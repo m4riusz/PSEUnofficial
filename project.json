@@ -1,0 +1,39 @@
+{
+	"name": "PSEUnofficial",
+	"options": {
+		"bundleIdPrefix": "pl.msut",
+		"createIntermediateGroups": true,
+		"generateEmptyDirectories": true
+	},
+	"projectReferences": {
+        "iOS": {
+            "path": "iOS/iOS.xcodeproj"
+        },
+        "Core": {
+            "path": "Core/Core.xcodeproj"
+        }
+    },
+    "schemes": {
+		"iOS": {
+			"build": {
+				"targets": {
+					"iOS/iOS": "all"
+				}
+			},
+            "run": {
+                "executable": "dupaaa"
+            },
+			"test": {
+				"gatherCoverageData": true,
+				"language": "pl",
+				"region": "PL",
+				"coverageTargets": [
+					"iOS/iOS"
+				],
+				"targets": [
+					"iOS/iOSTests"
+				]
+			}
+		}
+	}
+}
