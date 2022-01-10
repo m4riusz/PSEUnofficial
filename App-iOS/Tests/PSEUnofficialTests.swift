@@ -6,7 +6,7 @@
 //
 
 import XCTest
-@testable import PSEUnofficial
+@testable import App_iOS
 
 class PSEUnofficialTests: XCTestCase {
 
