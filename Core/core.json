@@ -1,0 +1,30 @@
+{
+    "targets": {
+        "Core": {
+            "platform": "iOS",
+            "type": "framework",
+            "info": {
+                "path": "Info.plist"
+            },
+            "sources": [
+                {
+                    "path": "Sources"
+                }
+            ]
+        },
+        "CoreTests": {
+            "platform": "iOS",
+            "type": "bundle.unit-test",
+            "sources": [
+                {
+                    "path": "Tests"
+                }
+            ],
+            "dependencies": [
+                {
+                    "target": "Core"
+                }
+            ]
+        }
+    }
+}

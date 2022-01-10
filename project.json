@@ -5,85 +5,10 @@
 		"createIntermediateGroups": true,
 		"generateEmptyDirectories": true
 	},
-	"targets": {
-		"Core": {
-			"platform": "iOS",
-			"type": "framework",
-			"info": {
-				"path": "Core/Info.plist"
-			},
-			"sources": [
-				{
-					"path": "Core/Sources"
-				}
-			]
-		},
-		"CoreTests": {
-			"platform": "iOS",
-			"type": "bundle.unit-test",
-			"sources": [
-				{
-					"path": "Core/Tests"
-				}
-			],
-            "dependencies": [
-				{
-					"target": "Core"
-				}
-			]
-		},
-		"App-iOS": {
-			"platform": "iOS",
-			"type": "application",
-			"sources": [
-				{
-					"path": "App-iOS/Sources"
-				},
-                {
-                    "path": "App-iOS/Info.plist"
-                }
-			],
-			"dependencies": [
-				{
-					"target": "Core"
-				}
-			]
-		},
-		"App-iOSTests": {
-			"platform": "iOS",
-			"type": "bundle.unit-test",
-            "settings": {
-				"TEST_HOST": "$(BUILT_PRODUCTS_DIR)/App-iOS.app/App-iOS"
-			},
-			"sources": [
-				{
-					"path": "App-iOS/Tests"
-				}
-			],
-            "dependencies": [
-				{
-					"target": "App-iOS"
-				}
-			]
-		},
-        "App-iOSUITests": {
-			"platform": "iOS",
-			"type": "bundle.ui-testing",
-            "settings": {
-				"TEST_TARGET_NAME": "App-iOS"
-			},
-			"sources": [
-				{
-					"path": "App-iOS/UITests"
-				}
-			],
-            "dependencies": [
-				{
-					"target": "App-iOS"
-				}
-			]
-		}
-	},
+	"include": [
+		"Core/core.json",
+		"App-iOS/app-ios.json"
+	],
 	"schemes": {
 		"App-iOS": {
 			"build": {
