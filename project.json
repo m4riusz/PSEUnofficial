@@ -5,33 +5,118 @@
 		"createIntermediateGroups": true,
 		"generateEmptyDirectories": true
 	},
-	"projectReferences": {
-        "iOS": {
-            "path": "iOS/iOS.xcodeproj"
-        },
-        "Core": {
-            "path": "Core/Core.xcodeproj"
-        }
-    },
-    "schemes": {
-		"iOS": {
+	"targets": {
+		"Core": {
+			"platform": "iOS",
+			"type": "framework",
+			"info": {
+				"path": "Core/Info.plist"
+			},
+			"sources": [
+				{
+					"path": "Core/Sources"
+				}
+			]
+		},
+		"CoreTests": {
+			"platform": "iOS",
+			"type": "bundle.unit-test",
+			"sources": [
+				{
+					"path": "Core/Tests"
+				}
+			],
+            "dependencies": [
+				{
+					"target": "Core"
+				}
+			]
+		},
+		"App-iOS": {
+			"platform": "iOS",
+			"type": "application",
+			"sources": [
+				{
+					"path": "App-iOS/Sources"
+				},
+                {
+                    "path": "App-iOS/Info.plist"
+                }
+			],
+			"dependencies": [
+				{
+					"target": "Core"
+				}
+			]
+		},
+		"App-iOSTests": {
+			"platform": "iOS",
+			"type": "bundle.unit-test",
+            "settings": {
+				"TEST_HOST": "$(BUILT_PRODUCTS_DIR)/App-iOS.app/App-iOS"
+			},
+			"sources": [
+				{
+					"path": "App-iOS/Tests"
+				}
+			],
+            "dependencies": [
+				{
+					"target": "App-iOS"
+				}
+			]
+		},
+        "App-iOSUITests": {
+			"platform": "iOS",
+			"type": "bundle.ui-testing",
+            "settings": {
+				"TEST_TARGET_NAME": "App-iOS"
+			},
+			"sources": [
+				{
+					"path": "App-iOS/UITests"
+				}
+			],
+            "dependencies": [
+				{
+					"target": "App-iOS"
+				}
+			]
+		}
+	},
+	"schemes": {
+		"App-iOS": {
 			"build": {
 				"targets": {
-					"iOS/iOS": "all"
+					"App-iOS": "all"
 				}
 			},
-            "run": {
-                "executable": "dupaaa"
-            },
 			"test": {
 				"gatherCoverageData": true,
 				"language": "pl",
 				"region": "PL",
 				"coverageTargets": [
-					"iOS/iOS"
+					"Core",
+					"App-iOS"
 				],
 				"targets": [
-					"iOS/iOSTests"
+					"CoreTests",
+					"App-iOSTests"
+				]
+			}
+		},
+		"App-iOSUITests": {
+			"build": {
+				"targets": {
+					"App-iOSUITests": [
+						"run",
+						"test"
+					]
+				}
+			},
+			"test": {
+				"targets": [
+					"App-iOSUITests"
 				]
 			}
 		}
