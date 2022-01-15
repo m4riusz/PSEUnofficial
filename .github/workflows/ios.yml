@@ -28,8 +28,6 @@ jobs:
         run: ./Scripts/Generate.sh
       - name: Run unit tests
         run: ./Scripts/RunUnitTests.sh
-      - name: Gather code coverage
-        run: ./Scripts/RunCodecov.sh
   ui-tests:
     runs-on: macos-11
     name: Runs UI tests
