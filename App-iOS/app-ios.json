@@ -15,7 +15,13 @@
                 {
                     "target": "Core"
                 }
-            ]
+            ],
+	    "preBuildScripts": [
+		{
+			"name": "Swiftlint",
+			"path": "../Scripts/Swiftlint.sh"
+		}
+	    ]
         },
         "App-iOSTests": {
             "platform": "iOS",
