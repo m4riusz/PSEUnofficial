@@ -9,7 +9,7 @@ import SwiftUI
 
 @main
 struct PSEUnofficialApp: App {
-    
+
     var body: some Scene {
         WindowGroup {
             ContentView()
