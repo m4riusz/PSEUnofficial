@@ -5,15 +5,18 @@
 //  Created by Mariusz Sut on 15/01/2022.
 //
 
+import Combine
 import Foundation
 
 public class PSERepository: PSERepositoryProtocol {
+    private let service: PSERequestServiceProtocol
 
-    public init() { /*Nop*/ }
-    
-    public func getStatus() async throws -> PSEStatus {
-        let url = URL(string: "https://www.pse.pl/transmissionMapService")!
-        let rawData = try await URLSession.shared.data(from: url).0
-        return try JSONDecoder().decode(PSEStatus.self, from: rawData)
+    public init(service: PSERequestServiceProtocol) {
+        self.service = service
+    }
+
+    public func getStatus() -> AnyPublisher<PSEStatus, PSEError> {
+        service.request(request: PSERequestStatus())
+            .eraseToAnyPublisher()
     }
 }

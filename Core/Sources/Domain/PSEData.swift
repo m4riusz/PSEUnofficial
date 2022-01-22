@@ -8,8 +8,8 @@
 import Foundation
 
 public struct PSEData {
-    let flows: [PSEFlow]
-    let summary: PSESummary
+    public let flows: [PSEFlow]
+    public let summary: PSESummary
 }
 
 // MARK: - Codable

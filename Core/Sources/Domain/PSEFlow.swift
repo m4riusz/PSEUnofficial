@@ -8,10 +8,10 @@
 import Foundation
 
 public struct PSEFlow {
-    let direction: PSEDirection
-    let value: Double
-    let parallel: Bool
-    let planned: Double
+    public let direction: PSEDirection
+    public let value: Double
+    public let parallel: Bool
+    public let planned: Double
 }
 
 // MARK: - Codable

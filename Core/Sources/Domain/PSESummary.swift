@@ -7,15 +7,15 @@
 
 import Foundation
 
-struct PSESummary {
-    let water: Double
-    let wind: Double
-    let solar: Double
-    let thermal: Double
-    let other: Double
-    let frequency: Double
-    let load: Double
-    let generation: Double
+public struct PSESummary {
+    public let water: Double
+    public let wind: Double
+    public let solar: Double
+    public let thermal: Double
+    public let other: Double
+    public let frequency: Double
+    public let load: Double
+    public let generation: Double
 }
 
 // MARK: - Codable

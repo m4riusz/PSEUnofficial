@@ -8,9 +8,9 @@
 import Foundation
 
 public struct PSEStatus {
-    let status: String
-    let date: Date
-    let data: PSEData
+    public let status: String
+    public let date: Date
+    public let data: PSEData
 }
 
 // MARK: Codable
