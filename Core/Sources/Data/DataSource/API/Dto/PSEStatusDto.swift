@@ -1,20 +1,20 @@
 //
-//  PSEStatus.swift
+//  PSEStatusDto.swift
 //  Core
 //
-//  Created by Mariusz Sut on 15/01/2022.
+//  Created by Mariusz Sut on 29/01/2022.
 //
 
 import Foundation
 
-public struct PSEStatus {
+public struct PSEStatusDto {
     public let status: String
     public let date: Date
-    public let data: PSEData
+    public let data: PSEDataDto
 }
 
 // MARK: Codable
-extension PSEStatus: Codable {
+extension PSEStatusDto: Codable {
     enum CodingKeys: String, CodingKey {
         case status = "status"
         case date = "timestamp"

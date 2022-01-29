@@ -8,7 +8,7 @@
 import Foundation
 
 struct PSERequestStatus: PSEAbstractRequest {
-    typealias Response = PSEStatus
+    typealias Response = PSEStatusDto
     let serviceName = "PSERequestStatus"
     let path = "transmissionMapService"
     let method = HTTPMethod.get

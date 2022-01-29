@@ -7,7 +7,7 @@
 
 import Foundation
 
-public enum HTTPMethod: String {
+enum HTTPMethod: String {
     case get = "GET"
     case post = "POST"
     case put = "PUT"
@@ -15,7 +15,7 @@ public enum HTTPMethod: String {
     case delete = "DELETE"
 }
 
-public protocol PSEAbstractRequest {
+protocol PSEAbstractRequest {
     associatedtype Response
 
     var serviceName: String { get }
@@ -27,13 +27,13 @@ public protocol PSEAbstractRequest {
     func decode(decoder: JSONDecoder, data: Data) throws -> Response
 }
 
-public extension PSEAbstractRequest {
+extension PSEAbstractRequest {
     var headers: [String: String] { [:] }
     var queryItems: [String: String] { [:] }
 }
 
 // MARK: - Decodable
-public extension PSEAbstractRequest where Response: Decodable {
+extension PSEAbstractRequest where Response: Decodable {
     func decode(decoder: JSONDecoder, data: Data) throws -> Response {
         try decoder.decode(Response.self, from: data)
     }

@@ -9,5 +9,5 @@ import Foundation
 import Combine
 
 public protocol PSERepositoryProtocol {
-    func getStatus() -> AnyPublisher<PSEStatus, PSEError>
+    func getStatus() async throws -> PSEStatus
 }

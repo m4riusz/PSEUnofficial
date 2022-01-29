@@ -11,11 +11,3 @@ public struct PSEData {
     public let flows: [PSEFlow]
     public let summary: PSESummary
 }
-
-// MARK: - Codable
-extension PSEData: Codable {
-    enum CodingKeys: String, CodingKey {
-        case flows = "przesyly"
-        case summary = "podsumowanie"
-    }
-}

@@ -1,13 +1,13 @@
 //
-//  PSESummary.swift
+//  PSESummaryDto.swift
 //  Core
 //
-//  Created by Mariusz Sut on 15/01/2022.
+//  Created by Mariusz Sut on 29/01/2022.
 //
 
 import Foundation
 
-public struct PSESummary {
+public struct PSESummaryDto {
     public let water: Double
     public let wind: Double
     public let solar: Double
@@ -19,7 +19,7 @@ public struct PSESummary {
 }
 
 // MARK: - Codable
-extension PSESummary: Codable {
+extension PSESummaryDto: Codable {
     enum CodingKeys: String, CodingKey {
         case water = "wodne"
         case wind = "wiatrowe"
