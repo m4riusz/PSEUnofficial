@@ -1,13 +1,13 @@
 //
-//  PSEDirection.swift
+//  PSEDirectionDto.swift
 //  Core
 //
-//  Created by Mariusz Sut on 15/01/2022.
+//  Created by Mariusz Sut on 29/01/2022.
 //
 
 import Foundation
 
-public enum PSEDirection: String {
+public enum PSEDirectionDto: String {
     case sweden = "SE"
     case germany = "DE"
     case czech = "CZ"
@@ -17,4 +17,4 @@ public enum PSEDirection: String {
 }
 
 // MARK: - Codable
-extension PSEDirection: Codable { /*Nop*/ }
+extension PSEDirectionDto: Codable { /*Nop*/ }

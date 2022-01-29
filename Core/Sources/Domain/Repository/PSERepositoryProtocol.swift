@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Combine
 
 public protocol PSERepositoryProtocol {
     func getStatus() async throws -> PSEStatus
