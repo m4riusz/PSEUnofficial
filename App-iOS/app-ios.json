@@ -3,42 +3,37 @@
         "App-iOS": {
             "platform": "iOS",
             "type": "application",
-            "sources": [
-                {
-                    "path": "Sources"
-                },
-                {
-                    "path": "Info.plist"
-                }
-            ],
+			"templates": [
+				"BaseTarget"
+			],
             "dependencies": [
                 {
                     "target": "Core"
                 }
             ],
-	    "preBuildScripts": [
-		{
-			"name": "Swiftlint",
-			"path": "../Scripts/Swiftlint.sh"
-		}
-	    ]
+	        "preBuildScripts": [
+		        {
+			        "name": "Swiftlint",
+			        "path": "../Scripts/Swiftlint.sh"
+		        }
+	        ]
         },
         "App-iOSTests": {
             "platform": "iOS",
-            "type": "bundle.unit-test",
-            "settings": {
-                "TEST_HOST": "$(BUILT_PRODUCTS_DIR)/App-iOS.app/App-iOS"
-            },
-            "sources": [
-                {
-                    "path": "Tests"
-                }
-            ],
+            "templates": [
+				"BaseUnitTest"
+			],
+			"templateAttributes": {
+				"tests_parent": "App-iOS"
+			},
             "dependencies": [
                 {
                     "target": "App-iOS"
                 }
-            ]
+            ],
+            "settings": {
+                "TEST_HOST": "$(BUILT_PRODUCTS_DIR)/App-iOS.app/App-iOS"
+            }
         },
         "App-iOSUITests": {
             "platform": "iOS",

@@ -6,6 +6,8 @@
 		"generateEmptyDirectories": true
 	},
 	"include": [
+		"templates.json",
+		"packages.json",
 		"Core/core.json",
 		"App-iOS/app-ios.json"
 	],
