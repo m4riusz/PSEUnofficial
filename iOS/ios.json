@@ -1,6 +1,6 @@
 {
     "targets": {
-        "App-iOS": {
+        "iOS": {
             "platform": "iOS",
             "type": "application",
 			"templates": [
@@ -18,28 +18,28 @@
 		        }
 	        ]
         },
-        "App-iOSTests": {
+        "iOSTests": {
             "platform": "iOS",
             "templates": [
 				"BaseUnitTest"
 			],
 			"templateAttributes": {
-				"tests_parent": "App-iOS"
+				"tests_parent": "iOS"
 			},
             "dependencies": [
                 {
-                    "target": "App-iOS"
+                    "target": "iOS"
                 }
             ],
             "settings": {
-                "TEST_HOST": "$(BUILT_PRODUCTS_DIR)/App-iOS.app/App-iOS"
+                "TEST_HOST": "$(BUILT_PRODUCTS_DIR)/iOS.app/iOS"
             }
         },
-        "App-iOSUITests": {
+        "iOSUITests": {
             "platform": "iOS",
             "type": "bundle.ui-testing",
             "settings": {
-                "TEST_TARGET_NAME": "App-iOS"
+                "TEST_TARGET_NAME": "iOS"
             },
             "sources": [
                 {
@@ -48,7 +48,7 @@
             ],
             "dependencies": [
                 {
-                    "target": "App-iOS"
+                    "target": "iOS"
                 }
             ]
         }

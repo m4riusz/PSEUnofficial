@@ -9,13 +9,13 @@
 		"templates.json",
 		"packages.json",
 		"Core/core.json",
-		"App-iOS/app-ios.json"
+		"iOS/ios.json"
 	],
 	"schemes": {
-		"App-iOS": {
+		"iOS": {
 			"build": {
 				"targets": {
-					"App-iOS": "all"
+					"iOS": "all"
 				}
 			},
 			"test": {
@@ -24,18 +24,18 @@
 				"region": "PL",
 				"coverageTargets": [
 					"Core",
-					"App-iOS"
+					"iOS"
 				],
 				"targets": [
 					"CoreTests",
-					"App-iOSTests"
+					"iOSTests"
 				]
 			}
 		},
-		"App-iOSUITests": {
+		"iOSUITests": {
 			"build": {
 				"targets": {
-					"App-iOSUITests": [
+					"iOSUITests": [
 						"run",
 						"test"
 					]
@@ -43,7 +43,7 @@
 			},
 			"test": {
 				"targets": [
-					"App-iOSUITests"
+					"iOSUITests"
 				]
 			}
 		}

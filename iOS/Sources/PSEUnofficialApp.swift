@@ -6,9 +6,16 @@
 //
 
 import SwiftUI
+import Swinject
 
 @main
 struct PSEUnofficialApp: App {
+
+    private lazy var assembler: iOSAssembler = {
+        let assembler = iOSAssembler(container: Container())
+        assembler.assembly()
+        return assembler
+    }()
 
     var body: some Scene {
         WindowGroup {
