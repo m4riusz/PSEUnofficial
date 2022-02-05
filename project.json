@@ -8,8 +8,8 @@
 	"include": [
 		"templates.json",
 		"packages.json",
-		"Core/core.json",
-		"iOS/ios.json"
+		"Core/Core.json",
+		"iOS/iOS.json"
 	],
 	"schemes": {
 		"iOS": {
