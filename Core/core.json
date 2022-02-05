@@ -2,29 +2,18 @@
     "targets": {
         "Core": {
             "platform": "iOS",
-            "type": "framework",
-            "info": {
-                "path": "Info.plist"
-            },
-            "sources": [
-                {
-                    "path": "Sources"
-                }
-            ]
+            "templates": [
+				"BaseFramework"
+			]
         },
         "CoreTests": {
             "platform": "iOS",
-            "type": "bundle.unit-test",
-            "sources": [
-                {
-                    "path": "Tests"
-                }
-            ],
-            "dependencies": [
-                {
-                    "target": "Core"
-                }
-            ]
+            "templates": [
+				"BaseFrameworkUnitTest"
+			],
+			"templateAttributes": {
+				"tests_parent": "Core"
+			}
         }
     }
 }

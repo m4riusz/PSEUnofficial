@@ -1,0 +1,49 @@
+{
+    "targetTemplates": {
+		"BaseTarget": {
+			"sources": [
+				{
+					"path": "${target_name}/Sources"
+				},
+				{
+					"path": "${target_name}/Resources"
+				},
+                {
+					"path": "${target_name}/Info.plist"
+				}
+			],
+			"dependencies": [
+				{
+					"package": "Swinject"
+				}
+			]
+		},
+        "BaseUnitTest": {
+            "type": "bundle.unit-test",
+			"sources": [
+				{
+					"path": "${tests_parent}/Tests"
+				},
+				{
+					"path": "${tests_parent}/Info.plist"
+				}
+			]
+        },
+		"BaseFramework": {
+			"type": "framework",
+			"templates": [
+				"BaseTarget"
+			]
+		},
+		"BaseFrameworkUnitTest": {
+            "templates": [
+				"BaseUnitTest"
+			],
+			"dependencies": [
+                {
+					"framework": "${tests_parent}"
+				}
+			]
+		}
+	}
+}

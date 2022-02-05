@@ -1,0 +1,8 @@
+{
+    "packages": {
+		"Swinject": {
+			"url": "https://github.com/Swinject/Swinject.git",
+			"from": "2.8.0"
+		}
+	}
+}

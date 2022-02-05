@@ -11,7 +11,7 @@ on:
 jobs:
   unit-tests:
     runs-on: macos-11
-    name: Runs unit tests
+    name: Runs iOS unit tests
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -26,11 +26,11 @@ jobs:
           xcodegen version
       - name: Generate .xcodeproj file
         run: ./Scripts/Generate.sh
-      - name: Run unit tests
-        run: ./Scripts/RunUnitTests.sh
+      - name: Run iOS unit tests
+        run: ./Scripts/RuniOSUnitTests.sh
   ui-tests:
     runs-on: macos-11
-    name: Runs UI tests
+    name: Runs iOS UI tests
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -45,5 +45,5 @@ jobs:
           xcodegen version
       - name: Generate .xcodeproj file
         run: ./Scripts/Generate.sh
-      - name: Run UI tests
-        run: ./Scripts/RunUiTests.sh
+      - name: Run iOS UI tests
+        run: ./Scripts/RuniOSUiTests.sh
