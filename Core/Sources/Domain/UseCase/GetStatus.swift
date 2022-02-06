@@ -12,11 +12,11 @@ public enum UseCaseError: Error {
     case networkError
 }
 
-public protocol GetStatus {
+public protocol GetStatusUseCaseProtocol {
     func execute() async -> Result<PSEStatus, UseCaseError>
 }
 
-final class GetStatusUseCase: GetStatus {
+final class GetStatusUseCase: GetStatusUseCaseProtocol {
     private let repository: PSERepositoryProtocol
 
     init(repository: PSERepositoryProtocol) {

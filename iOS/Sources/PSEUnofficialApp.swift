@@ -7,19 +7,16 @@
 
 import SwiftUI
 import Swinject
+import Core
 
 @main
 struct PSEUnofficialApp: App {
 
-    private lazy var assembler: iOSAssembler = {
-        let assembler = iOSAssembler(container: Container())
-        assembler.assembly()
-        return assembler
-    }()
+    private let container = iOSAssembler(container: Container()).assembly()
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            PSEPowerStatusView(viewModel: container.resolve(PSEPowerStatusViewModel.self)!)
         }
     }
 }
