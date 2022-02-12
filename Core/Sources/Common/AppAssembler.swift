@@ -12,5 +12,5 @@ public protocol AppAssembler {
     var container: Container { get }
     var assemblies: [ModuleAssembly] { get }
 
-    func assembly()
+    func assembly() -> Container
 }

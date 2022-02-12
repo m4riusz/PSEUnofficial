@@ -9,6 +9,7 @@ import Swinject
 import Core
 
 final class iOSAssembler: AppAssembler {
+
     let container: Container
 
     init(container: Container) {
@@ -20,7 +21,8 @@ final class iOSAssembler: AppAssembler {
         iOSAssembly()
     ]
 
-    func assembly() {
+    func assembly() -> Container {
         assemblies.forEach { $0.assemble(container: container) }
+        return container
     }
 }
