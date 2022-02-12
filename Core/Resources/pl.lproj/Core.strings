@@ -1,0 +1,13 @@
+"Common/current" = "Aktualne";
+"Common/export" = "EXPORT";
+"Common/import" = "IMPORT";
+"Common/planned" = "Planowane";
+"Summary/frequency" = "CZĘSTOTLIWOŚĆ [Hz]";
+"Summary/generation" = "GENERACJA [MW]";
+"Summary/load" = "ZAPOTRZEBOWANIE [MW]";;
+"Summary/other" = "el. inne odnawialne";
+"Summary/solar" = "el. fotowoltaiczne";
+"Summary/thermal" = "el. cieplne";
+"Summary/total" = "SALDO WYMIANY CAŁKOWITEJ [MW]";
+"Summary/water" = "el. wodne";
+"Summary/wind" = "el. wiatrowe";
