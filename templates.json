@@ -16,7 +16,15 @@
 				{
 					"package": "Swinject"
 				}
-			]
+			],
+			"preBuildScripts": [
+		        {
+			        "name": "Generate string assets",
+					"script": "if [ $ACTION == \"indexbuild\" ]; then\n  echo \"indexbuild action - skipping\"\n  exit 0\nfi\n./Scripts/generate_strings.rb ${target_name} ${target_name}/Resources/en.lproj/${target_name}.strings ${target_name}/Resources/Generated/${target_name}Strings.swift",
+					"inputFiles": ["${target_name}/Resources/en.lproj/${target_name}.strings"],
+					"outputFiles": ["${target_name}/Resources/Generated/${target_name}Strings.swift"]
+		        }
+	        ]
 		},
         "BaseUnitTest": {
             "type": "bundle.unit-test",

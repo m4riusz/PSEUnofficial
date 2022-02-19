@@ -7,6 +7,7 @@ class SwiftStringExtensionGenerator
     file = File.open(output_file, "w")
     file << "/*\nAuto generated\nDo not modify manually!\n*/\n"
     file << "import UIKit\n\n"
+    file << "import Core\n\n"
     file << "public extension Assets.Strings {\n"
     file << "\tprivate class BundleClass { /*Nop*/ }\n"
     file << "\tprivate static let bundle = Bundle(for: BundleClass.self)\n"

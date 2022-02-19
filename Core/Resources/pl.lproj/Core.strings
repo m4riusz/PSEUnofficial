@@ -1,6 +1,6 @@
 "Common/current" = "Aktualne";
-"Common/export" = "EXPORT";
-"Common/import" = "IMPORT";
+"Common/exported" = "EXPORT";
+"Common/imported" = "IMPORT";
 "Common/planned" = "Planowane";
 "Summary/frequency" = "CZĘSTOTLIWOŚĆ [Hz]";
 "Summary/generation" = "GENERACJA [MW]";

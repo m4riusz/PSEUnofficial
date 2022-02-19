@@ -25,7 +25,7 @@ jobs:
           swiftlint version
           xcodegen version
       - name: Generate .xcodeproj file
-        run: ./Scripts/Generate.sh
+        run: rake project:generate
       - name: Run iOS unit tests
         run: ./Scripts/RuniOSUnitTests.sh
   ui-tests:
@@ -44,6 +44,6 @@ jobs:
           swiftlint version
           xcodegen version
       - name: Generate .xcodeproj file
-        run: ./Scripts/Generate.sh
+        run: rake project:generate
       - name: Run iOS UI tests
         run: ./Scripts/RuniOSUiTests.sh

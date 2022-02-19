@@ -29,13 +29,14 @@ struct PSEFlowView: View {
 
 extension PSEDirection {
     var country: String {
+        typealias Country = Assets.Strings.iOS.Country
         switch self {
-        case .sweden: return "SE"
-        case .germany: return "DE"
-        case .czech: return "CS"
-        case .slovakia: return "SK"
-        case .ukraine: return "UA"
-        case .lithuania: return "LT"
+        case .sweden: return Country.sweden
+        case .germany: return Country.germany
+        case .czech: return Country.czech
+        case .slovakia: return Country.slovakia
+        case .ukraine: return Country.ukraine
+        case .lithuania: return Country.lithuania
         }
     }
 }
