@@ -3,7 +3,14 @@
 	"options": {
 		"bundleIdPrefix": "pl.msut",
 		"createIntermediateGroups": true,
-		"generateEmptyDirectories": true
+		"generateEmptyDirectories": true,
+		"groupSortPosition": "top",
+		"groupOrdering": [
+			{
+				"order": ["Sources", "Resources", "Tests", "UITests"],
+				"pattern": ".*"
+			}
+		]
 	},
 	"include": [
 		"templates.json",
