@@ -14,7 +14,9 @@ struct PSEFlowView: View {
 
     var body: some View {
         HStack {
-            Text(flow.direction.country)
+            flow.direction.country
+                .resizable()
+                .frame(width: 40, height: 40)
             VStack {
                 Text("Current: \(flow.value)")
                 Text("Planned: \(flow.planned)")
@@ -28,8 +30,8 @@ struct PSEFlowView: View {
 }
 
 extension PSEDirection {
-    var country: String {
-        typealias Country = Assets.Strings.iOS.Country
+    var country: Image {
+        typealias Country = Assets.Images.iOS
         switch self {
         case .sweden: return Country.sweden
         case .germany: return Country.germany
