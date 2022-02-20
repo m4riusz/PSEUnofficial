@@ -18,7 +18,7 @@ struct PSEFlowView: View {
                 .resizable()
                 .frame(width: 40, height: 40)
             VStack {
-                Text("Current: \(flow.value)")
+                Text("Current: \(flow.value)").foregroundColor(Assets.Colors.Core.Buttons.primary)
                 Text("Planned: \(flow.planned)")
             }
             VStack {
