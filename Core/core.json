@@ -13,7 +13,15 @@
 			],
 			"templateAttributes": {
 				"tests_parent": "Core"
-			}
+			},
+            "dependencies": [
+                {
+                    "target": "iOS"
+                }
+            ],
+            "settings": {
+                "TEST_HOST": "$(BUILT_PRODUCTS_DIR)/iOS.app/iOS"
+            }
         }
     }
 }
