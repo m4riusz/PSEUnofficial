@@ -12,8 +12,8 @@ final class iOSAssembly: ModuleAssembly {
 
     func assemble(container: Container) {
         /*Nop*/
-        container.register(PSEPowerStatusViewModel.self) { r in
-            PSEPowerStatusViewModel(useCase: r.resolve(GetStatusUseCaseProtocol.self)!)
+        container.register(PowerStatusViewModel.self) { r in
+            PowerStatusViewModel(useCase: r.resolve(PSEGetStatusUseCaseProtocol.self)!)
         }
     }
 }

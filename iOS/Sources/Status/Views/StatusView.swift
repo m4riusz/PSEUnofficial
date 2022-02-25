@@ -1,5 +1,5 @@
 //
-//  PSEStatusView.swift
+//  StatusView.swift
 //  iOS
 //
 //  Created by Mariusz Sut on 05/02/2022.
@@ -8,7 +8,7 @@
 import SwiftUI
 import Core
 
-struct PSEStatusView: View {
+struct StatusView: View {
 
     let status: PSEStatus
 
@@ -17,11 +17,11 @@ struct PSEStatusView: View {
             List {
                 Section("Flows") {
                     ForEach(status.data.flows, id: \.direction) { flow in
-                        PSEFlowView(flow: flow)
+                        FlowView(flow: flow)
                     }
                 }
                 Section("Summary") {
-                    PSESummaryView(summary: status.data.summary)
+                    SummaryView(summary: status.data.summary)
                 }
                 Text("\(status.date.ISO8601Format())")
                     .frame(maxWidth: .infinity, alignment: .trailing)

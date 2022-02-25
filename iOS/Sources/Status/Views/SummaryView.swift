@@ -1,5 +1,5 @@
 //
-//  PSESummaryView.swift
+//  SummaryView.swift
 //  iOS
 //
 //  Created by Mariusz Sut on 05/02/2022.
@@ -8,7 +8,7 @@
 import SwiftUI
 import Core
 
-struct PSESummaryView: View {
+struct SummaryView: View {
     let summary: PSESummary
 
     var body: some View {

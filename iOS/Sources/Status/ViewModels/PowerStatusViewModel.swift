@@ -8,19 +8,19 @@
 import Foundation
 import Core
 
-enum PSEPowerStatusState {
+enum PowerStatusState {
     case fetching
     case data(data: PSEStatus)
     case error(message: String)
 }
 
 @MainActor
-final class PSEPowerStatusViewModel: ObservableObject {
-    @Published var state = PSEPowerStatusState.fetching
+final class PowerStatusViewModel: ObservableObject {
+    @Published var state = PowerStatusState.fetching
 
-    let useCase: GetStatusUseCaseProtocol
+    let useCase: PSEGetStatusUseCaseProtocol
 
-    nonisolated init(useCase: GetStatusUseCaseProtocol) {
+    nonisolated init(useCase: PSEGetStatusUseCaseProtocol) {
         self.useCase = useCase
     }
 
