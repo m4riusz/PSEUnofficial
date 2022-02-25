@@ -1,5 +1,5 @@
 //
-//  PSEPowerStatusView.swift
+//  PowerStatusView.swift
 //  iOS
 //
 //  Created by Mariusz Sut on 05/02/2022.
@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-struct PSEPowerStatusView: View {
+struct PowerStatusView: View {
 
-    @StateObject var viewModel: PSEPowerStatusViewModel
+    @StateObject var viewModel: PowerStatusViewModel
 
     var body: some View {
         VStack {
@@ -17,7 +17,7 @@ struct PSEPowerStatusView: View {
             case .fetching:
                 Text("Fetching data")
             case .data(data: let data):
-                PSEStatusView(status: data)
+                StatusView(status: data)
             case .error(message: let message):
                 Text(message)
             }

@@ -1,5 +1,5 @@
 //
-//  PSEFlowView.swift
+//  FlowView.swift
 //  iOS
 //
 //  Created by Mariusz Sut on 05/02/2022.
@@ -8,7 +8,7 @@
 import SwiftUI
 import Core
 
-struct PSEFlowView: View {
+struct FlowView: View {
 
     let flow: PSEFlow
 

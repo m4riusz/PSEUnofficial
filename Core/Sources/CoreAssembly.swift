@@ -35,8 +35,8 @@ public class CoreAssembly: ModuleAssembly {
             PSERepository(remote: r.resolve(PSEDataSourceProtocol.self)!)
         }
 
-        container.register(GetStatusUseCaseProtocol.self) { r in
-            GetStatusUseCase(repository: r.resolve(PSERepositoryProtocol.self)!)
+        container.register(PSEGetStatusUseCaseProtocol.self) { r in
+            PSEGetStatusUseCase(repository: r.resolve(PSERepositoryProtocol.self)!)
         }
     }
 }

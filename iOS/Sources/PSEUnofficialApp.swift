@@ -16,7 +16,7 @@ struct PSEUnofficialApp: App {
 
     var body: some Scene {
         WindowGroup {
-            PSEPowerStatusView(viewModel: container.resolve(PSEPowerStatusViewModel.self)!)
+            MainView(container: container)
         }
     }
 }
