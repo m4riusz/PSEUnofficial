@@ -13,21 +13,19 @@ struct StatusView: View {
     let status: PSEStatus
 
     var body: some View {
-        NavigationView {
-            List {
-                Section("Flows") {
-                    ForEach(status.data.flows, id: \.direction) { flow in
-                        FlowView(flow: flow)
-                    }
+        Text("\(status.date.ISO8601Format())")
+            .frame(maxWidth: .infinity, alignment: .trailing)
+            .font(.caption)
+        List {
+            Section("Flows") {
+                ForEach(status.data.flows, id: \.direction) { flow in
+                    FlowView(flow: flow)
                 }
-                Section("Summary") {
-                    SummaryView(summary: status.data.summary)
-                }
-                Text("\(status.date.ISO8601Format())")
-                    .frame(maxWidth: .infinity, alignment: .trailing)
-                    .font(.caption)
-
+            }
+            Section("Summary") {
+                SummaryView(summary: status.data.summary)
             }
         }
+        .listStyle(.plain)
     }
 }
