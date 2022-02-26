@@ -29,6 +29,9 @@
             "dependencies": [
                 {
                     "target": "iOS"
+                },
+                {
+                    "package": "SnapshotTesting"
                 }
             ],
             "settings": {
