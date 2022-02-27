@@ -42,7 +42,8 @@
             "type": "bundle.unit-test",
 			"sources": [
 				{
-					"path": "${tests_parent}/Tests"
+					"path": "${tests_parent}/Tests",
+					"excludes": ["**/__Snapshots__"]
 				},
 				{
 					"path": "${tests_parent}/Info.plist"

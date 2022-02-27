@@ -5,5 +5,7 @@
 "Country/sweden" = "Sweden";
 "Country/ukraine" = "Ukraine";
 "List/title" = "Data";
+"List/Section/flow" = "Flows";
+"List/Section/summary" = "Summary";
 "Main/PowerStatus/tab" = "Status";
 "Main/About/tab" = "Info";

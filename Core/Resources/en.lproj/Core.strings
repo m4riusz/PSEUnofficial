@@ -1,7 +1,7 @@
-"Common/current" = "Current";
+"Common/current" = "Current:";
 "Common/exported" = "EXPORT";
 "Common/imported" = "IMPORT";
-"Common/planned" = "Planned";
+"Common/planned" = "Planned:";
 "Summary/frequency" = "FREQUENCY [Hz]";
 "Summary/generation" = "GENERATION [MW]";
 "Summary/load" = "LOAD [MW]";;

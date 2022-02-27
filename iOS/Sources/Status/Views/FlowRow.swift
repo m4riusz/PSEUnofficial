@@ -1,5 +1,5 @@
 //
-//  FlowView.swift
+//  FlowRow.swift
 //  iOS
 //
 //  Created by Mariusz Sut on 05/02/2022.
@@ -8,29 +8,27 @@
 import SwiftUI
 import Core
 
-struct FlowView: View {
-
-    let flow: PSEFlow
+struct FlowRow: View {
+    private struct Constants {
+        static let imageSize = CGSize(width: 40, height: 40)
+    }
+    let viewModel: FlowRowViewModel
 
     var body: some View {
         HStack {
-            flow.direction.country
+            viewModel.country.image
                 .resizable()
-                .frame(width: 40, height: 40)
-            VStack {
-                Text("Current: \(flow.value)").foregroundColor(Assets.Colors.Core.Buttons.primary)
-                Text("Planned: \(flow.planned)")
-            }
-            VStack {
-                Text("Status")
-                Text("\(flow.value)")
+                .frame(width: Constants.imageSize.width, height: Constants.imageSize.height)
+            VStack(alignment: .leading) {
+                Flow(viewModel: viewModel.currentViewModel)
+                Flow(viewModel: viewModel.plannedViewModel)
             }
         }
     }
 }
 
 extension PSEDirection {
-    var country: Image {
+    var image: Image {
         typealias Country = Assets.Images.iOS
         switch self {
         case .sweden: return Country.sweden

@@ -10,7 +10,7 @@ import Core
 
 enum PowerStatusState {
     case fetching
-    case data(data: PSEStatus)
+    case data(data: PowerStatusDataViewModel)
     case error(message: String)
 }
 
@@ -28,11 +28,21 @@ final class PowerStatusViewModel: ObservableObject {
         state = .fetching
         let result = await useCase.execute()
         switch result {
-        case .success(let data):
-            state = .data(data: data)
+        case .success(let status):
+            let formattedDate = status.date.formatted()
+            let flows = status.data.flows.map { FlowRowViewModel(country: $0.direction,
+                                                                 currentValue: $0.value,
+                                                                 plannedValue: $0.planned) }
+            state = .data(data: .init(formattedDate: formattedDate, flowViewModels: flows))
         case .failure(let error):
             state = .error(message: error.localizedDescription)
         }
     }
+}
 
+struct PowerStatusDataViewModel {
+    private typealias Literals = Assets.Strings.iOS.List
+    let formattedDate: String
+    let flowTitle = Literals.Section.flow
+    let flowViewModels: [FlowRowViewModel]
 }

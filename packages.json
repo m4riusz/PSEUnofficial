@@ -3,6 +3,10 @@
 		"Swinject": {
 			"url": "https://github.com/Swinject/Swinject.git",
 			"from": "2.8.0"
+		},
+		"SnapshotTesting": {
+			"url": "https://github.com/pointfreeco/swift-snapshot-testing.git",
+			"from": "1.9.0"
 		}
 	}
 }
