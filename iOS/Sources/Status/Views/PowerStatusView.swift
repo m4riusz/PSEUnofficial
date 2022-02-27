@@ -17,7 +17,7 @@ struct PowerStatusView: View {
             case .fetching:
                 Text("Fetching data")
             case .data(data: let data):
-                StatusView(status: data)
+                FlowStatusView(viewModel: data)
             case .error(message: let message):
                 Text(message)
             }

@@ -19,7 +19,7 @@ struct FlowViewModel {
         switch state {
         case .export: return Colors.exportTintColor
         case .import: return Colors.importTintColor
-        case .none: return .primary
+        case .none: return Colors.noneTintColor
         }
     }
 
@@ -29,5 +29,11 @@ struct FlowViewModel {
         case .import: return Literals.imported
         case .none: return ""
         }
+    }
+
+    init(name: String, value: Double) {
+        self.name = name
+        self.value = DoubleFormatter().string(value: abs(value))
+        state = FlowState(value: value)
     }
 }
