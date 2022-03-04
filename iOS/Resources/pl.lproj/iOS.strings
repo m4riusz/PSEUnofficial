@@ -9,3 +9,11 @@
 "List/Section/summary" = "Podsumowanie";
 "Main/PowerStatus/tab" = "Status";
 "Main/About/tab" = "O aplikacji";
+"Summary/frequency" = "CZĘSTOTLIWOŚĆ [Hz]";
+"Summary/generation" = "GENERACJA [MW]";
+"Summary/load" = "ZAPOTRZEBOWANIE [MW]";
+"Summary/other" = "el. inne odnawialne";
+"Summary/solar" = "el. fotowoltaiczne";
+"Summary/thermal" = "el. cieplne";
+"Summary/water" = "el. wodne";
+"Summary/wind" = "el. wiatrowe";

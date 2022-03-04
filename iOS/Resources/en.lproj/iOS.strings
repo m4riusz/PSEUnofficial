@@ -9,3 +9,11 @@
 "List/Section/summary" = "Summary";
 "Main/PowerStatus/tab" = "Status";
 "Main/About/tab" = "Info";
+"Summary/frequency" = "FREQUENCY [Hz]";
+"Summary/generation" = "GENERATION [MW]";
+"Summary/load" = "LOAD [MW]";
+"Summary/other" = "other renewables";
+"Summary/solar" = "solar power plants";
+"Summary/thermal" = "thermal power plants";
+"Summary/water" = "water power plants";
+"Summary/wind" = "wind power plants";
