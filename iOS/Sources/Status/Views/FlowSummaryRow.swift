@@ -9,6 +9,7 @@ import SwiftUI
 import Core
 
 struct FlowSummaryRow: View {
+    private typealias Colors = Assets.Colors.iOS
     private struct Constants {
         static let imageSize = CGSize(width: 25, height: 25)
     }
@@ -24,6 +25,7 @@ struct FlowSummaryRow: View {
             Text(viewModel.title)
                 .font(.callout)
                 .frame(maxWidth: .infinity, alignment: .leading)
+                .foregroundColor(Colors.textPrimary)
             VStack(spacing: 0) {
                 Text(viewModel.value)
                     .font(.title2)
