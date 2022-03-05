@@ -5,7 +5,8 @@
 //  Created by Mariusz Sut on 27/02/2022.
 //
 
-import Foundation
+import Core
+import SwiftUI
 
 enum FlowState {
     case export
@@ -19,6 +20,17 @@ enum FlowState {
             self = .export
         } else {
             self = .none
+        }
+    }
+}
+
+extension FlowState {
+    var tintColor: Color {
+        typealias Colors = Assets.Colors.iOS
+        switch self {
+        case .export: return Colors.exportTintColor
+        case .import: return Colors.importTintColor
+        case .none: return Colors.noneTintColor
         }
     }
 }
