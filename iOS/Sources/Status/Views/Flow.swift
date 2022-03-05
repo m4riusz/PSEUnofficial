@@ -9,19 +9,21 @@ import SwiftUI
 import Core
 
 struct Flow: View {
+    private typealias Colors = Assets.Colors.iOS
     let viewModel: FlowViewModel
 
     var body: some View {
         HStack {
-            HStack {
-                Text(viewModel.name)
-                    .font(.callout)
-                Text(viewModel.value)
-                    .font(.headline)
-                    .foregroundColor(viewModel.tintColor)
-            }
-            Text(viewModel.literal)
+            Text(viewModel.name)
+                .font(.callout)
+                .foregroundColor(Colors.textPrimary)
+            formattedText
                 .foregroundColor(viewModel.tintColor)
+                .frame(maxWidth: .infinity, alignment: .trailing)
         }
+    }
+
+    private var formattedText: Text {
+        Text(viewModel.value).font(.title2).fontWeight(.medium) + Text(" ") + Text(viewModel.literal).font(.caption)
     }
 }

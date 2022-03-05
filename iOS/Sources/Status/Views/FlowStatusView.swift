@@ -21,6 +21,11 @@ struct FlowStatusView: View {
                     FlowRow(viewModel: rowViewModel)
                 }
             }
+            Section(viewModel.summaryTitle) {
+                ForEach(viewModel.summaryViewModels, id: \.title) { rowViewModel in
+                    FlowSummaryRow(viewModel: rowViewModel)
+                }
+            }
         }
         .listStyle(.plain)
     }
