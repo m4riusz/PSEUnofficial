@@ -9,8 +9,6 @@ import Core
 import SwiftUI
 
 struct FlowViewModel {
-    private typealias Literals = Assets.Strings.Core.Common
-
     let name: String
     let value: String
     let state: FlowState
@@ -20,11 +18,7 @@ struct FlowViewModel {
     }
 
     var literal: String {
-        switch state {
-        case .export: return Literals.exported
-        case .import: return Literals.imported
-        case .none: return ""
-        }
+        state.literal
     }
 
     init(name: String, value: Double) {

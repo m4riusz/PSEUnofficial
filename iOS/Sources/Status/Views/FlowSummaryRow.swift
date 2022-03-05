@@ -24,9 +24,16 @@ struct FlowSummaryRow: View {
             Text(viewModel.title)
                 .font(.callout)
                 .frame(maxWidth: .infinity, alignment: .leading)
-            Text(viewModel.value)
-                .font(.headline)
-                .foregroundColor(viewModel.valueColor)
+            VStack(spacing: 0) {
+                Text(viewModel.value)
+                    .font(.title2)
+                    .fontWeight(.medium)
+                if let valueDetail = viewModel.valueDetail {
+                    Text(valueDetail)
+                        .font(.caption)
+                }
+            }
+            .foregroundColor(viewModel.valueColor)
         }
     }
 }

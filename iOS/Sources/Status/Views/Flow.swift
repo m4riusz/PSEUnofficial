@@ -21,7 +21,7 @@ struct Flow: View {
         }
     }
 
-    var formattedText: Text {
+    private var formattedText: Text {
         Text(viewModel.value).font(.title2).fontWeight(.medium) + Text(" ") + Text(viewModel.literal).font(.caption)
     }
 }

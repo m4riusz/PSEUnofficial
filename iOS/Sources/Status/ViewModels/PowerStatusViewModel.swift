@@ -52,6 +52,7 @@ final class PowerStatusViewModel: ObservableObject {
     private func createSummaryViewModels(status: PSEStatus) -> [FlowSummaryRowViewModel] {
         let summary = status.data.summary
         let total = status.data.flows.reduce(0.0, { $0 + $1.value })
+        let totalState = FlowState(value: total)
         return [
             .init(title: Literals.load, value: summary.load),
             .init(title: Literals.generation, value: summary.generation),
@@ -60,7 +61,7 @@ final class PowerStatusViewModel: ObservableObject {
             .init(image: Images.wind, title: Literals.wind, value: summary.wind, valueColor: Colors.textSecondary),
             .init(image: Images.solar, title: Literals.solar, value: summary.solar, valueColor: Colors.textSecondary),
             .init(image: Images.other, title: Literals.other, value: summary.other, valueColor: Colors.textSecondary),
-            .init(title: Literals.total, value: total, valueColor: FlowState(value: total).tintColor),
+            .init(title: Literals.total, value: total, valueDetail: totalState.literal, valueColor: totalState.tintColor),
             .init(title: Literals.frequency, value: summary.frequency, valueFractionDigits: Constants.frequencyFractionDigits)
         ]
     }

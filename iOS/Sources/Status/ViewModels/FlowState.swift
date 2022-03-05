@@ -33,4 +33,13 @@ extension FlowState {
         case .none: return Colors.noneTintColor
         }
     }
+
+    var literal: String {
+        typealias Literals = Assets.Strings.Core.Common
+        switch self {
+        case .export: return Literals.exported
+        case .import: return Literals.imported
+        case .none: return ""
+        }
+    }
 }
