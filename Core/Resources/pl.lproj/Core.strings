@@ -1,5 +1,5 @@
 "Common/current" = "Aktualne:";
-"Common/exported" = "EXPORT";
-"Common/imported" = "IMPORT";
+"Common/exported" = "export";
+"Common/imported" = "import";
 "Common/planned" = "Planowane:";
 "Summary/total" = "SALDO WYMIANY CAŁKOWITEJ [MW]";

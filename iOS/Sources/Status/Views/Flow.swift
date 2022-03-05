@@ -13,15 +13,15 @@ struct Flow: View {
 
     var body: some View {
         HStack {
-            HStack {
-                Text(viewModel.name)
-                    .font(.callout)
-                Text(viewModel.value)
-                    .font(.headline)
-                    .foregroundColor(viewModel.tintColor)
-            }
-            Text(viewModel.literal)
+            Text(viewModel.name)
+                .font(.callout)
+            formattedText
                 .foregroundColor(viewModel.tintColor)
+                .frame(maxWidth: .infinity, alignment: .trailing)
         }
+    }
+
+    var formattedText: Text {
+        Text(viewModel.value).font(.title2).fontWeight(.medium) + Text(" ") + Text(viewModel.literal).font(.caption)
     }
 }
