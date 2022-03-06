@@ -18,3 +18,5 @@
 "Summary/total" = "Actual total cross-border exchange [MW]";
 "Summary/water" = "water power plants";
 "Summary/wind" = "wind power plants";
+"CrossBorder/parallelExchange" = "Cross-border exchange with synchronous zone";
+"CrossBorder/nonParallelExchange" = "Cross-border exchange with non synchronous zone";

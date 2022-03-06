@@ -18,3 +18,5 @@
 "Summary/total" = "Saldo wymiany całkowitej [MW]";
 "Summary/water" = "el. wodne";
 "Summary/wind" = "el. wiatrowe";
+"CrossBorder/parallelExchange" = "Wymiana równoległa";
+"CrossBorder/nonParallelExchange" = "Wymiana nierównoległa";
