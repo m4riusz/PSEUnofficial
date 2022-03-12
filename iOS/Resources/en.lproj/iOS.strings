@@ -4,6 +4,7 @@
 "Country/slovakia" = "Slovakia";
 "Country/sweden" = "Sweden";
 "Country/ukraine" = "Ukraine";
+"List/Section/crossBorder" = "Sync / async exchange [MW]";
 "List/Section/flow" = "Flows [MW]";
 "List/Section/summary" = "Summary";
 "List/title" = "Data";

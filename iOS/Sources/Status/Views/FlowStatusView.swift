@@ -21,6 +21,11 @@ struct FlowStatusView: View {
                     FlowCountryRow(viewModel: rowViewModel)
                 }
             }
+            Section(viewModel.crossBorderTitle) {
+                ForEach(viewModel.crossBorderModels, id: \.title) { rowViewModel in
+                    FlowCrossBorderExchangeRow(viewModel: rowViewModel)
+                }
+            }
             Section(viewModel.summaryTitle) {
                 ForEach(viewModel.summaryViewModels, id: \.title) { rowViewModel in
                     FlowSummaryRow(viewModel: rowViewModel)

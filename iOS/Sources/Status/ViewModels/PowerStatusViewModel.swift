@@ -16,7 +16,8 @@ enum PowerStatusState {
 
 @MainActor
 final class PowerStatusViewModel: ObservableObject {
-    private typealias Literals = Assets.Strings.iOS.Summary
+    private typealias Summary = Assets.Strings.iOS.Summary
+    private typealias CrossBorder = Assets.Strings.iOS.CrossBorder
     private typealias Images = Assets.Images.iOS.Energy
     private typealias Colors = Assets.Colors.iOS
     private struct Constants {
@@ -45,6 +46,7 @@ final class PowerStatusViewModel: ObservableObject {
             let formattedDate = status.date.formatted()
             state = .data(data: .init(formattedDate: formattedDate,
                                       flowViewModels: createFlowViewModels(flows: status.data.flows),
+                                      crossBorderModels: createFlowCrossBorderModels(flows: status.data.flows),
                                       summaryViewModels: createSummaryViewModels(status: status)))
         case .failure(let error):
             state = .error(message: error.localizedDescription)
@@ -58,32 +60,51 @@ final class PowerStatusViewModel: ObservableObject {
                           doubleFormatter: noFractionDigitsFormatter) }
     }
 
+    private func createFlowCrossBorderModels(flows: [PSEFlow]) -> [FlowCrossBorderExchangeViewModel] {
+        let parallel = flows.filter { $0.parallel }
+        let nonParallel = flows.filter { !$0.parallel }
+        let parallelCurrent = parallel.reduce(0.0, { $0 + $1.value })
+        let parallelPlanned = parallel.reduce(0.0, { $0 + $1.planned })
+        let nonParallelCurrent = nonParallel.reduce(0.0, { $0 + $1.value })
+        let nonParallelPlanned = nonParallel.reduce(0.0, { $0 + $1.planned })
+
+        return [.init(title: CrossBorder.parallelExchange,
+                      current: parallelCurrent,
+                      planned: parallelPlanned,
+                      formatter: noFractionDigitsFormatter),
+                .init(title: CrossBorder.nonParallelExchange,
+                      current: nonParallelCurrent,
+                      planned: nonParallelPlanned,
+                      formatter: noFractionDigitsFormatter)
+        ]
+    }
+
     private func createSummaryViewModels(status: PSEStatus) -> [FlowSummaryRowViewModel] {
         let summary = status.data.summary
         let total = status.data.flows.reduce(0.0, { $0 + $1.value })
         return [
-            .init(title: Literals.load,
+            .init(title: Summary.load,
                   rowType: .primary(value: summary.load, formatter: noFractionDigitsFormatter)),
-            .init(title: Literals.generation,
+            .init(title: Summary.generation,
                   rowType: .primary(value: summary.generation, formatter: noFractionDigitsFormatter)),
             .init(image: Images.thermal,
-                  title: Literals.thermal,
+                  title: Summary.thermal,
                   rowType: .secondary(value: summary.thermal, formatter: noFractionDigitsFormatter)),
             .init(image: Images.water,
-                  title: Literals.water,
+                  title: Summary.water,
                   rowType: .secondary(value: summary.water, formatter: noFractionDigitsFormatter)),
             .init(image: Images.wind,
-                  title: Literals.wind,
+                  title: Summary.wind,
                   rowType: .secondary(value: summary.wind, formatter: noFractionDigitsFormatter)),
             .init(image: Images.solar,
-                  title: Literals.solar,
+                  title: Summary.solar,
                   rowType: .secondary(value: summary.solar, formatter: noFractionDigitsFormatter)),
             .init(image: Images.other,
-                  title: Literals.other,
+                  title: Summary.other,
                   rowType: .secondary(value: summary.other, formatter: noFractionDigitsFormatter)),
-            .init(title: Literals.total,
+            .init(title: Summary.total,
                   rowType: .flow(value: .init(value: total, orientation: .vertical, formatter: noFractionDigitsFormatter))),
-            .init(title: Literals.frequency,
+            .init(title: Summary.frequency,
                   rowType: .primary(value: summary.frequency, formatter: frequencyDoubleFormatter))
         ]
     }
@@ -94,6 +115,8 @@ struct PowerStatusDataViewModel {
     let formattedDate: String
     let flowTitle = Literals.Section.flow
     let flowViewModels: [FlowCountryRowViewModel]
+    let crossBorderTitle = Literals.Section.crossBorder
+    let crossBorderModels: [FlowCrossBorderExchangeViewModel]
     let summaryTitle = Literals.Section.summary
     let summaryViewModels: [FlowSummaryRowViewModel]
 }
