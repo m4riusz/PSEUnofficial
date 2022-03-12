@@ -7,16 +7,25 @@
 
 import Foundation
 
-public struct DoubleFormatter {
+public protocol DoubleValueFormatter {
+    func format(value: Double) -> String
+}
+
+public struct DoubleFormatter: DoubleValueFormatter {
     private struct Constants {
         static let comma = ","
         static let space = " "
         static let groupingSize = 3
     }
+    private let minimumFractionDigits: Int
+    private let maximumFractionDigits: Int
 
-    public init() { /*NOP*/ }
+    public init(minimumFractionDigits: Int, maximumFractionDigits: Int) {
+        self.minimumFractionDigits = minimumFractionDigits
+        self.maximumFractionDigits = maximumFractionDigits
+    }
 
-    public func string(value: Double, minimumFractionDigits: Int = 0, maximumFractionDigits: Int = 0) -> String {
+    public func format(value: Double) -> String {
         let numberFormatter = NumberFormatter()
         numberFormatter.numberStyle = .decimal
         numberFormatter.minimumFractionDigits = minimumFractionDigits

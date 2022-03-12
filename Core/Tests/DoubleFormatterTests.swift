@@ -13,9 +13,8 @@ final class FormatterTests: XCTestCase {
     private var number = 1.123456789
     private var minimumFractionDigits = 0
     private var maximumFractionDigits = 0
-    private lazy var formattedValue = DoubleFormatter().string(value: number,
-                                                               minimumFractionDigits: minimumFractionDigits,
-                                                               maximumFractionDigits: maximumFractionDigits)
+    private lazy var formattedValue = DoubleFormatter(minimumFractionDigits: minimumFractionDigits,
+                                                      maximumFractionDigits: maximumFractionDigits).format(value: number)
 
     func testShortNumberNoFractionDigits() {
         XCTAssertEqual(formattedValue, "1")

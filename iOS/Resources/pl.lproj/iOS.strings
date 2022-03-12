@@ -4,6 +4,7 @@
 "Country/slovakia" = "Słowacja";
 "Country/sweden" = "Szwecja";
 "Country/ukraine" = "Ukraina";
+"List/Section/crossBorder" = "Wym. równoległa / nierównoległa [MW]";
 "List/Section/flow" = "Przepływy [MW]";
 "List/Section/summary" = "Podsumowanie";
 "List/title" = "Dane";
@@ -18,3 +19,5 @@
 "Summary/total" = "Saldo wymiany całkowitej [MW]";
 "Summary/water" = "el. wodne";
 "Summary/wind" = "el. wiatrowe";
+"CrossBorder/parallelExchange" = "Wymiana równoległa";
+"CrossBorder/nonParallelExchange" = "Wymiana nierównoległa";

@@ -16,7 +16,8 @@ enum PowerStatusState {
 
 @MainActor
 final class PowerStatusViewModel: ObservableObject {
-    private typealias Literals = Assets.Strings.iOS.Summary
+    private typealias Summary = Assets.Strings.iOS.Summary
+    private typealias CrossBorder = Assets.Strings.iOS.CrossBorder
     private typealias Images = Assets.Images.iOS.Energy
     private typealias Colors = Assets.Colors.iOS
     private struct Constants {
@@ -25,10 +26,16 @@ final class PowerStatusViewModel: ObservableObject {
 
     @Published var state = PowerStatusState.fetching
 
+    private let noFractionDigitsFormatter: DoubleValueFormatter
+    private let frequencyDoubleFormatter: DoubleValueFormatter
     let useCase: PSEGetStatusUseCaseProtocol
 
-    nonisolated init(useCase: PSEGetStatusUseCaseProtocol) {
+    nonisolated init(useCase: PSEGetStatusUseCaseProtocol,
+                     noFractionDigitsFormatter: DoubleValueFormatter,
+                     frequencyDoubleFormatter: DoubleValueFormatter) {
         self.useCase = useCase
+        self.noFractionDigitsFormatter = noFractionDigitsFormatter
+        self.frequencyDoubleFormatter = frequencyDoubleFormatter
     }
 
     func getStatus() async {
@@ -39,30 +46,66 @@ final class PowerStatusViewModel: ObservableObject {
             let formattedDate = status.date.formatted()
             state = .data(data: .init(formattedDate: formattedDate,
                                       flowViewModels: createFlowViewModels(flows: status.data.flows),
+                                      crossBorderModels: createFlowCrossBorderModels(flows: status.data.flows),
                                       summaryViewModels: createSummaryViewModels(status: status)))
         case .failure(let error):
             state = .error(message: error.localizedDescription)
         }
     }
 
-    private func createFlowViewModels(flows: [PSEFlow]) -> [FlowRowViewModel] {
-        flows.map { .init(country: $0.direction, currentValue: $0.value, plannedValue: $0.planned) }
+    private func createFlowViewModels(flows: [PSEFlow]) -> [FlowCountryRowViewModel] {
+        flows.map { .init(country: $0.direction,
+                          currentValue: $0.value,
+                          plannedValue: $0.planned,
+                          doubleFormatter: noFractionDigitsFormatter) }
+    }
+
+    private func createFlowCrossBorderModels(flows: [PSEFlow]) -> [FlowCrossBorderExchangeViewModel] {
+        let parallel = flows.filter { $0.parallel }
+        let nonParallel = flows.filter { !$0.parallel }
+        let parallelCurrent = parallel.reduce(0.0, { $0 + $1.value })
+        let parallelPlanned = parallel.reduce(0.0, { $0 + $1.planned })
+        let nonParallelCurrent = nonParallel.reduce(0.0, { $0 + $1.value })
+        let nonParallelPlanned = nonParallel.reduce(0.0, { $0 + $1.planned })
+
+        return [.init(title: CrossBorder.parallelExchange,
+                      current: parallelCurrent,
+                      planned: parallelPlanned,
+                      formatter: noFractionDigitsFormatter),
+                .init(title: CrossBorder.nonParallelExchange,
+                      current: nonParallelCurrent,
+                      planned: nonParallelPlanned,
+                      formatter: noFractionDigitsFormatter)
+        ]
     }
 
     private func createSummaryViewModels(status: PSEStatus) -> [FlowSummaryRowViewModel] {
         let summary = status.data.summary
         let total = status.data.flows.reduce(0.0, { $0 + $1.value })
-        let totalState = FlowState(value: total)
         return [
-            .init(title: Literals.load, value: summary.load),
-            .init(title: Literals.generation, value: summary.generation),
-            .init(image: Images.thermal, title: Literals.thermal, value: summary.thermal, valueColor: Colors.textSecondary),
-            .init(image: Images.water, title: Literals.water, value: summary.water, valueColor: Colors.textSecondary),
-            .init(image: Images.wind, title: Literals.wind, value: summary.wind, valueColor: Colors.textSecondary),
-            .init(image: Images.solar, title: Literals.solar, value: summary.solar, valueColor: Colors.textSecondary),
-            .init(image: Images.other, title: Literals.other, value: summary.other, valueColor: Colors.textSecondary),
-            .init(title: Literals.total, value: total, valueDetail: totalState.literal, valueColor: totalState.tintColor),
-            .init(title: Literals.frequency, value: summary.frequency, valueFractionDigits: Constants.frequencyFractionDigits)
+            .init(title: Summary.load,
+                  rowType: .primary(value: summary.load, formatter: noFractionDigitsFormatter)),
+            .init(title: Summary.generation,
+                  rowType: .primary(value: summary.generation, formatter: noFractionDigitsFormatter)),
+            .init(image: Images.thermal,
+                  title: Summary.thermal,
+                  rowType: .secondary(value: summary.thermal, formatter: noFractionDigitsFormatter)),
+            .init(image: Images.water,
+                  title: Summary.water,
+                  rowType: .secondary(value: summary.water, formatter: noFractionDigitsFormatter)),
+            .init(image: Images.wind,
+                  title: Summary.wind,
+                  rowType: .secondary(value: summary.wind, formatter: noFractionDigitsFormatter)),
+            .init(image: Images.solar,
+                  title: Summary.solar,
+                  rowType: .secondary(value: summary.solar, formatter: noFractionDigitsFormatter)),
+            .init(image: Images.other,
+                  title: Summary.other,
+                  rowType: .secondary(value: summary.other, formatter: noFractionDigitsFormatter)),
+            .init(title: Summary.total,
+                  rowType: .flow(value: .init(value: total, orientation: .vertical, formatter: noFractionDigitsFormatter))),
+            .init(title: Summary.frequency,
+                  rowType: .primary(value: summary.frequency, formatter: frequencyDoubleFormatter))
         ]
     }
 }
@@ -71,7 +114,9 @@ struct PowerStatusDataViewModel {
     private typealias Literals = Assets.Strings.iOS.List
     let formattedDate: String
     let flowTitle = Literals.Section.flow
-    let flowViewModels: [FlowRowViewModel]
+    let flowViewModels: [FlowCountryRowViewModel]
+    let crossBorderTitle = Literals.Section.crossBorder
+    let crossBorderModels: [FlowCrossBorderExchangeViewModel]
     let summaryTitle = Literals.Section.summary
     let summaryViewModels: [FlowSummaryRowViewModel]
 }
