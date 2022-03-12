@@ -1,5 +1,5 @@
 //
-//  FlowRowViewModel.swift
+//  FlowCountryRowViewModel.swift
 //  iOS
 //
 //  Created by Mariusz Sut on 27/02/2022.
@@ -7,7 +7,7 @@
 
 import Core
 
-struct FlowRowViewModel {
+struct FlowCountryRowViewModel {
     private typealias Literals = Assets.Strings.Core.Common
     private let currentValue: Double
     private let plannedValue: Double
