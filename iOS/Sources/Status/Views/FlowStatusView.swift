@@ -18,7 +18,7 @@ struct FlowStatusView: View {
         List {
             Section(viewModel.flowTitle) {
                 ForEach(viewModel.flowViewModels, id: \.country) { rowViewModel in
-                    FlowRow(viewModel: rowViewModel)
+                    FlowCountryRow(viewModel: rowViewModel)
                 }
             }
             Section(viewModel.summaryTitle) {

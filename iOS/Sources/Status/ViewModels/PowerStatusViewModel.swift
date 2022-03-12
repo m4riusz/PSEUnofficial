@@ -51,7 +51,7 @@ final class PowerStatusViewModel: ObservableObject {
         }
     }
 
-    private func createFlowViewModels(flows: [PSEFlow]) -> [FlowRowViewModel] {
+    private func createFlowViewModels(flows: [PSEFlow]) -> [FlowCountryRowViewModel] {
         flows.map { .init(country: $0.direction,
                           currentValue: $0.value,
                           plannedValue: $0.planned,
@@ -93,7 +93,7 @@ struct PowerStatusDataViewModel {
     private typealias Literals = Assets.Strings.iOS.List
     let formattedDate: String
     let flowTitle = Literals.Section.flow
-    let flowViewModels: [FlowRowViewModel]
+    let flowViewModels: [FlowCountryRowViewModel]
     let summaryTitle = Literals.Section.summary
     let summaryViewModels: [FlowSummaryRowViewModel]
 }

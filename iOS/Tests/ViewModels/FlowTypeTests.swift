@@ -1,5 +1,5 @@
 //
-//  FlowStatesTests.swift
+//  FlowTypeTests.swift
 //  iOS
 //
 //  Created by Mariusz Sut on 27/02/2022.
@@ -9,11 +9,11 @@ import XCTest
 import Core
 @testable import iOS
 
-final class FlowStatesTests: XCTestCase {
+final class FlowTypeTests: XCTestCase {
     typealias Colors = Assets.Colors.iOS
     typealias Literals = Assets.Strings.Core.Common
     private var value = 123.0
-    private lazy var sut = FlowState(value: value)
+    private lazy var sut = FlowType(value: value)
 
     func testInitImport() {
         XCTAssertEqual(sut, .import)
@@ -30,26 +30,26 @@ final class FlowStatesTests: XCTestCase {
     }
 
     func testExportTintColor() {
-        XCTAssertEqual(FlowState.export.tintColor, Colors.exportTintColor)
+        XCTAssertEqual(FlowType.export.tintColor, Colors.exportTintColor)
     }
 
     func testImportTintColor() {
-        XCTAssertEqual(FlowState.import.tintColor, Colors.importTintColor)
+        XCTAssertEqual(FlowType.import.tintColor, Colors.importTintColor)
     }
 
     func testNoneTintColor() {
-        XCTAssertEqual(FlowState.none.tintColor, Colors.noneTintColor)
+        XCTAssertEqual(FlowType.none.tintColor, Colors.noneTintColor)
     }
 
     func testExportLiteral() {
-        XCTAssertEqual(FlowState.export.literal, Literals.exported)
+        XCTAssertEqual(FlowType.export.literal, Literals.exported)
     }
 
     func testImportLiteral() {
-        XCTAssertEqual(FlowState.import.literal, Literals.imported)
+        XCTAssertEqual(FlowType.import.literal, Literals.imported)
     }
 
     func testNoneLiteral() {
-        XCTAssertTrue(FlowState.none.literal.isEmpty)
+        XCTAssertTrue(FlowType.none.literal.isEmpty)
     }
 }

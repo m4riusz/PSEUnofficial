@@ -24,7 +24,10 @@ struct FlowCountryRowViewModel {
         .init(value: plannedValue, orientation: .horizontal, formatter: doubleFormatter)
     }
 
-    init(country: PSEDirection, currentValue: Double, plannedValue: Double, doubleFormatter: DoubleValueFormatter) {
+    init(country: PSEDirection,
+         currentValue: Double,
+         plannedValue: Double,
+         doubleFormatter: DoubleValueFormatter) {
         self.country = country
         self.currentValue = currentValue
         self.plannedValue = plannedValue

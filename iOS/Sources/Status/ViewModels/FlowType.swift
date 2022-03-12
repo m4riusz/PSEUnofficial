@@ -6,6 +6,7 @@
 //
 
 import Core
+import SwiftUI
 
 enum FlowType {
     case export
@@ -19,6 +20,15 @@ enum FlowType {
             self = .export
         } else {
             self = .none
+        }
+    }
+
+    var tintColor: Color {
+        typealias Colors = Assets.Colors.iOS
+        switch self {
+        case .export: return Colors.exportTintColor
+        case .import: return Colors.importTintColor
+        case .none: return Colors.noneTintColor
         }
     }
 

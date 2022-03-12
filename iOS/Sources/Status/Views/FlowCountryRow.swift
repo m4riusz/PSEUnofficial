@@ -1,5 +1,5 @@
 //
-//  FlowRow.swift
+//  FlowCountryRow.swift
 //  iOS
 //
 //  Created by Mariusz Sut on 05/02/2022.
@@ -8,12 +8,12 @@
 import SwiftUI
 import Core
 
-struct FlowRow: View {
+struct FlowCountryRow: View {
     private struct Constants {
         static let imageSize = CGSize(width: 40, height: 40)
     }
     private typealias Colors = Assets.Colors.iOS
-    let viewModel: FlowRowViewModel
+    let viewModel: FlowCountryRowViewModel
 
     var body: some View {
         HStack {
@@ -33,7 +33,7 @@ struct FlowRow: View {
                         .font(.callout)
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .foregroundColor(Colors.textPrimary)
-                    FlowView(viewModel: viewModel.currentViewModel)
+                    FlowView(viewModel: viewModel.plannedViewModel)
                 }
             }
         }

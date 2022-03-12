@@ -1,5 +1,5 @@
 //
-//  FlowRowTests.swift
+//  FlowCountryRowTests.swift
 //  iOS
 //
 //  Created by Mariusz Sut on 27/02/2022.
@@ -11,13 +11,16 @@ import SwiftUI
 import SnapshotTesting
 @testable import iOS
 
-final class FlowRowTests: XCTestCase {
+final class FlowCountryRowTests: XCTestCase {
     private var country = PSEDirection.sweden
     private var currentValue = 100.0
     private var plannedValue = 200.0
-    private lazy var sut = FlowRow(viewModel: .init(country: country,
-                                                    currentValue: currentValue,
-                                                    plannedValue: plannedValue))
+    private var formatter = DoubleFormatter(minimumFractionDigits: 0,
+                                             maximumFractionDigits: 0)
+    private lazy var sut = FlowCountryRow(viewModel: .init(country: country,
+                                                           currentValue: currentValue,
+                                                           plannedValue: plannedValue,
+                                                           doubleFormatter: formatter))
 
     func testCurrentImportPlannedImportLightMode() {
         assertSnapshot(matching: sut, as: .standardImage())
@@ -56,6 +59,16 @@ final class FlowRowTests: XCTestCase {
     func testCurrentExportPlannedExportDarkMode() {
         currentValue = -100
         plannedValue = -200
+        assertSnapshot(matching: sut, as: .standardImage(mode: .dark))
+    }
+
+    func testDifferentFormatterLightMode() {
+        formatter = DoubleFormatter(minimumFractionDigits: 3, maximumFractionDigits: 3)
+        assertSnapshot(matching: sut, as: .standardImage())
+    }
+
+    func testDifferentFormatterDarkMode() {
+        formatter = DoubleFormatter(minimumFractionDigits: 3, maximumFractionDigits: 3)
         assertSnapshot(matching: sut, as: .standardImage(mode: .dark))
     }
 }

@@ -16,20 +16,22 @@ struct FlowView: View {
         switch viewModel.orientation {
         case .vertical:
             verticalView
-                .foregroundColor(viewModel.tintColor)
+                .foregroundColor(viewModel.flowType.tintColor)
         case .horizontal:
             horizontalView
-                .foregroundColor(viewModel.tintColor)
+                .foregroundColor(viewModel.flowType.tintColor)
         }
     }
 
     private var verticalView: some View {
-        VStack(spacing: 0) {
+        VStack(alignment: .trailing, spacing: 0) {
             Text(viewModel.formatedValue)
                 .font(.title2)
                 .fontWeight(.medium)
-            Text(viewModel.literal)
-                .font(.caption)
+            if !viewModel.literal.isEmpty {
+                Text(viewModel.literal)
+                    .font(.caption)
+            }
         }
     }
 
@@ -39,17 +41,6 @@ struct FlowView: View {
             return Text(viewModel.formatedValue).font(.title2).fontWeight(.medium) + Text(" ") + Text(viewModel.literal).font(.caption)
         case .none:
             return Text(viewModel.formatedValue).font(.title2).fontWeight(.medium)
-        }
-    }
-}
-
-extension FlowViewModel {
-    var tintColor: Color {
-        typealias Colors = Assets.Colors.iOS
-        switch flowType {
-        case .export: return Colors.exportTintColor
-        case .import: return Colors.importTintColor
-        case .none: return Colors.noneTintColor
         }
     }
 }

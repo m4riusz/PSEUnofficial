@@ -11,7 +11,7 @@ public protocol DoubleValueFormatter {
     func format(value: Double) -> String
 }
 
-struct DoubleFormatter: DoubleValueFormatter {
+public struct DoubleFormatter: DoubleValueFormatter {
     private struct Constants {
         static let comma = ","
         static let space = " "
@@ -20,12 +20,12 @@ struct DoubleFormatter: DoubleValueFormatter {
     private let minimumFractionDigits: Int
     private let maximumFractionDigits: Int
 
-    init(minimumFractionDigits: Int, maximumFractionDigits: Int) {
+    public init(minimumFractionDigits: Int, maximumFractionDigits: Int) {
         self.minimumFractionDigits = minimumFractionDigits
         self.maximumFractionDigits = maximumFractionDigits
     }
 
-    func format(value: Double) -> String {
+    public func format(value: Double) -> String {
         let numberFormatter = NumberFormatter()
         numberFormatter.numberStyle = .decimal
         numberFormatter.minimumFractionDigits = minimumFractionDigits
