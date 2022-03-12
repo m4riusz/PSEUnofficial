@@ -21,14 +21,14 @@ struct FlowCrossBorderExchangeRow: View {
                 .font(.callout)
                 .foregroundColor(Colors.textPrimary)
                 .multilineTextAlignment(.center)
-            HStack {
-                VStack {
+            HStack(spacing: Constants.spacing) {
+                VStack(alignment: .trailing) {
                     Text(viewModel.currentLiteral)
                         .font(.callout)
                         .foregroundColor(viewModel.current.flowType.tintColor)
                     FlowView(viewModel: viewModel.current)
                 }
-                VStack {
+                VStack(alignment: .trailing) {
                     Text(viewModel.plannedLiteral)
                         .font(.callout)
                         .foregroundColor(viewModel.planned.flowType.tintColor)
