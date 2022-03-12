@@ -6,24 +6,23 @@
 //
 
 import Core
-import SwiftUI
 
 struct FlowViewModel {
-    let name: String
-    let value: String
-    let state: FlowState
-
-    var tintColor: Color {
-        state.tintColor
+    enum Orientation {
+        case horizontal
+        case vertical
     }
+    let flowType: FlowType
+    let rawValue: Double
+    let formatedValue: String
+    let literal: String
+    let orientation: Orientation
 
-    var literal: String {
-        state.literal
-    }
-
-    init(name: String, value: Double) {
-        self.name = name
-        self.value = DoubleFormatter().string(value: abs(value))
-        state = FlowState(value: value)
+    init(value: Double, orientation: Orientation, formatter: DoubleValueFormatter) {
+        flowType = FlowType(value: value)
+        rawValue = value
+        formatedValue = formatter.format(value: value)
+        literal = flowType.literal
+        self.orientation = orientation
     }
 }

@@ -25,10 +25,16 @@ final class PowerStatusViewModel: ObservableObject {
 
     @Published var state = PowerStatusState.fetching
 
+    private let noFractionDigitsFormatter: DoubleValueFormatter
+    private let frequencyDoubleFormatter: DoubleValueFormatter
     let useCase: PSEGetStatusUseCaseProtocol
 
-    nonisolated init(useCase: PSEGetStatusUseCaseProtocol) {
+    nonisolated init(useCase: PSEGetStatusUseCaseProtocol,
+                     noFractionDigitsFormatter: DoubleValueFormatter,
+                     frequencyDoubleFormatter: DoubleValueFormatter) {
         self.useCase = useCase
+        self.noFractionDigitsFormatter = noFractionDigitsFormatter
+        self.frequencyDoubleFormatter = frequencyDoubleFormatter
     }
 
     func getStatus() async {
@@ -46,23 +52,49 @@ final class PowerStatusViewModel: ObservableObject {
     }
 
     private func createFlowViewModels(flows: [PSEFlow]) -> [FlowRowViewModel] {
-        flows.map { .init(country: $0.direction, currentValue: $0.value, plannedValue: $0.planned) }
+        flows.map { .init(country: $0.direction,
+                          currentValue: $0.value,
+                          plannedValue: $0.planned,
+                          doubleFormatter: noFractionDigitsFormatter) }
     }
 
     private func createSummaryViewModels(status: PSEStatus) -> [FlowSummaryRowViewModel] {
         let summary = status.data.summary
-        let total = status.data.flows.reduce(0.0, { $0 + $1.value })
-        let totalState = FlowState(value: total)
         return [
-            .init(title: Literals.load, value: summary.load),
-            .init(title: Literals.generation, value: summary.generation),
-            .init(image: Images.thermal, title: Literals.thermal, value: summary.thermal, valueColor: Colors.textSecondary),
-            .init(image: Images.water, title: Literals.water, value: summary.water, valueColor: Colors.textSecondary),
-            .init(image: Images.wind, title: Literals.wind, value: summary.wind, valueColor: Colors.textSecondary),
-            .init(image: Images.solar, title: Literals.solar, value: summary.solar, valueColor: Colors.textSecondary),
-            .init(image: Images.other, title: Literals.other, value: summary.other, valueColor: Colors.textSecondary),
-            .init(title: Literals.total, value: total, valueDetail: totalState.literal, valueColor: totalState.tintColor),
-            .init(title: Literals.frequency, value: summary.frequency, valueFractionDigits: Constants.frequencyFractionDigits)
+            .init(title: Literals.load,
+                  value: summary.load,
+                  formatter: noFractionDigitsFormatter),
+            .init(title: Literals.generation,
+                  value: summary.generation,
+                  formatter: noFractionDigitsFormatter),
+            .init(image: Images.thermal,
+                  title: Literals.thermal,
+                  value: summary.thermal,
+                  valueColor: Colors.textSecondary,
+                  formatter: noFractionDigitsFormatter),
+            .init(image: Images.water,
+                  title: Literals.water,
+                  value: summary.water,
+                  valueColor: Colors.textSecondary,
+                  formatter: noFractionDigitsFormatter),
+            .init(image: Images.wind,
+                  title: Literals.wind,
+                  value: summary.wind,
+                  valueColor: Colors.textSecondary,
+                  formatter: noFractionDigitsFormatter),
+            .init(image: Images.solar,
+                  title: Literals.solar,
+                  value: summary.solar,
+                  valueColor: Colors.textSecondary,
+                  formatter: noFractionDigitsFormatter),
+            .init(image: Images.other,
+                  title: Literals.other,
+                  value: summary.other,
+                  valueColor: Colors.textSecondary,
+                  formatter: noFractionDigitsFormatter),
+            .init(title: Literals.frequency,
+                  value: summary.frequency,
+                  formatter: frequencyDoubleFormatter)
         ]
     }
 }

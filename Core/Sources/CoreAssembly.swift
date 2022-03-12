@@ -38,5 +38,13 @@ public class CoreAssembly: ModuleAssembly {
         container.register(PSEGetStatusUseCaseProtocol.self) { r in
             PSEGetStatusUseCase(repository: r.resolve(PSERepositoryProtocol.self)!)
         }
+
+        container.register(DoubleValueFormatter.self, name: "NoFractionDigitsValueFormatter") { _ in
+            DoubleFormatter(minimumFractionDigits: 0, maximumFractionDigits: 0)
+        }
+
+        container.register(DoubleValueFormatter.self, name: "FrequencyDigitsValueFormatter") { _ in
+            DoubleFormatter(minimumFractionDigits: 3, maximumFractionDigits: 3)
+        }
     }
 }

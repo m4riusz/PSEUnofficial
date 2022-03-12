@@ -11,19 +11,23 @@ struct FlowRowViewModel {
     private typealias Literals = Assets.Strings.Core.Common
     private let currentValue: Double
     private let plannedValue: Double
+    private let doubleFormatter: DoubleValueFormatter
+    let current = Literals.current
+    let planned = Literals.planned
     let country: PSEDirection
 
     var currentViewModel: FlowViewModel {
-        .init(name: Literals.current, value: currentValue)
+        .init(value: currentValue, orientation: .horizontal, formatter: doubleFormatter)
     }
 
     var plannedViewModel: FlowViewModel {
-        .init(name: Literals.planned, value: plannedValue)
+        .init(value: plannedValue, orientation: .horizontal, formatter: doubleFormatter)
     }
 
-    init(country: PSEDirection, currentValue: Double, plannedValue: Double) {
+    init(country: PSEDirection, currentValue: Double, plannedValue: Double, doubleFormatter: DoubleValueFormatter) {
         self.country = country
         self.currentValue = currentValue
         self.plannedValue = plannedValue
+        self.doubleFormatter = doubleFormatter
     }
 }

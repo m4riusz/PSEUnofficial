@@ -26,16 +26,10 @@ struct FlowSummaryRow: View {
                 .font(.callout)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .foregroundColor(Colors.textPrimary)
-            VStack(spacing: 0) {
-                Text(viewModel.value)
-                    .font(.title2)
-                    .fontWeight(.medium)
-                if let valueDetail = viewModel.valueDetail {
-                    Text(valueDetail)
-                        .font(.caption)
-                }
-            }
-            .foregroundColor(viewModel.valueColor)
+            Text(viewModel.value)
+                .font(.title2)
+                .fontWeight(.medium)
+                .foregroundColor(viewModel.valueColor)
         }
     }
 }

@@ -12,6 +12,7 @@ struct FlowRow: View {
     private struct Constants {
         static let imageSize = CGSize(width: 40, height: 40)
     }
+    private typealias Colors = Assets.Colors.iOS
     let viewModel: FlowRowViewModel
 
     var body: some View {
@@ -20,8 +21,18 @@ struct FlowRow: View {
                 .resizable()
                 .frame(width: Constants.imageSize.width, height: Constants.imageSize.height)
             VStack(alignment: .leading) {
-                Flow(viewModel: viewModel.currentViewModel)
-                Flow(viewModel: viewModel.plannedViewModel)
+                HStack {
+                    Text(viewModel.current)
+                        .font(.callout)
+                        .foregroundColor(Colors.textPrimary)
+                    FlowView(viewModel: viewModel.currentViewModel)
+                }
+                HStack {
+                    Text(viewModel.planned)
+                        .font(.callout)
+                        .foregroundColor(Colors.textPrimary)
+                    FlowView(viewModel: viewModel.currentViewModel)
+                }
             }
         }
     }

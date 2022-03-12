@@ -13,7 +13,11 @@ final class iOSAssembly: ModuleAssembly {
     func assemble(container: Container) {
         /*Nop*/
         container.register(PowerStatusViewModel.self) { r in
-            PowerStatusViewModel(useCase: r.resolve(PSEGetStatusUseCaseProtocol.self)!)
+            PowerStatusViewModel(useCase: r.resolve(PSEGetStatusUseCaseProtocol.self)!,
+                                 noFractionDigitsFormatter: r.resolve(DoubleValueFormatter.self,
+                                                                      name: "NoFractionDigitsValueFormatter")!,
+                                 frequencyDoubleFormatter: r.resolve(DoubleValueFormatter.self,
+                                                                     name: "FrequencyDigitsValueFormatter")!)
         }
     }
 }

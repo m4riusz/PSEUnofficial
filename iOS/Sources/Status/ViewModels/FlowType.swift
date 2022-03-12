@@ -1,14 +1,13 @@
 //
-//  FlowState.swift
+//  FlowType.swift
 //  iOS
 //
-//  Created by Mariusz Sut on 27/02/2022.
+//  Created by Mariusz Sut on 12/03/2022.
 //
 
 import Core
-import SwiftUI
 
-enum FlowState {
+enum FlowType {
     case export
     case `import`
     case none
@@ -20,17 +19,6 @@ enum FlowState {
             self = .export
         } else {
             self = .none
-        }
-    }
-}
-
-extension FlowState {
-    var tintColor: Color {
-        typealias Colors = Assets.Colors.iOS
-        switch self {
-        case .export: return Colors.exportTintColor
-        case .import: return Colors.importTintColor
-        case .none: return Colors.noneTintColor
         }
     }
 

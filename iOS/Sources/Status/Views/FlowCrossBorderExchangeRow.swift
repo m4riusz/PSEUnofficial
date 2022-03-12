@@ -10,7 +10,7 @@ import SwiftUI
 
 struct FlowCrossBorderExchangeRow: View {
     let viewModel: FlowCrossBorderExchangeViewModel
-    
+
     var body: some View {
         Text("abcd")
     }
