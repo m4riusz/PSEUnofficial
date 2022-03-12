@@ -9,9 +9,17 @@ import Foundation
 import Core
 
 enum PowerStatusState {
-    case fetching
+    case fetching(lastData: PowerStatusDataViewModel?)
     case data(data: PowerStatusDataViewModel)
-    case error(message: String)
+    case error(lastData: PowerStatusDataViewModel?, message: String)
+
+    var data: PowerStatusDataViewModel? {
+        switch self {
+        case .fetching(let data): return data
+        case .data(let data): return data
+        case .error(let data, _): return data
+        }
+    }
 }
 
 @MainActor
@@ -24,7 +32,7 @@ final class PowerStatusViewModel: ObservableObject {
         static let frequencyFractionDigits = 3
     }
 
-    @Published var state = PowerStatusState.fetching
+    @Published var state = PowerStatusState.fetching(lastData: nil)
 
     private let noFractionDigitsFormatter: DoubleValueFormatter
     private let frequencyDoubleFormatter: DoubleValueFormatter
@@ -39,7 +47,7 @@ final class PowerStatusViewModel: ObservableObject {
     }
 
     func getStatus() async {
-        state = .fetching
+        state = .fetching(lastData: state.data)
         let result = await useCase.execute()
         switch result {
         case .success(let status):
@@ -49,7 +57,7 @@ final class PowerStatusViewModel: ObservableObject {
                                       crossBorderModels: createFlowCrossBorderModels(flows: status.data.flows),
                                       summaryViewModels: createSummaryViewModels(status: status)))
         case .failure(let error):
-            state = .error(message: error.localizedDescription)
+            state = .error(lastData: state.data, message: error.localizedDescription)
         }
     }
 

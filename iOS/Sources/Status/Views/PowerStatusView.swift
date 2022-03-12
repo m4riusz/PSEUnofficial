@@ -14,16 +14,22 @@ struct PowerStatusView: View {
     var body: some View {
         VStack {
             switch viewModel.state {
-            case .fetching:
+            case .fetching(let data):
                 Text("Fetching data")
-            case .data(data: let data):
+                if let data = data {
+                    FlowStatusView(viewModel: data)
+                }
+            case .data(let data):
                 FlowStatusView(viewModel: data)
-            case .error(message: let message):
+            case .error(let data, let message):
                 Text(message)
+                    .foregroundColor(.red)
+                if let data = data {
+                    FlowStatusView(viewModel: data)
+                }
             }
         }
-        .task {
-            await viewModel.getStatus()
-        }
+        .refreshable { Task { await viewModel.getStatus() } }
+        .onAppear { Task { await viewModel.getStatus() } }
     }
 }
