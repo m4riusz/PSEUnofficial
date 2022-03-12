@@ -24,12 +24,14 @@ struct FlowRow: View {
                 HStack {
                     Text(viewModel.current)
                         .font(.callout)
+                        .frame(maxWidth: .infinity, alignment: .leading)
                         .foregroundColor(Colors.textPrimary)
                     FlowView(viewModel: viewModel.currentViewModel)
                 }
                 HStack {
                     Text(viewModel.planned)
                         .font(.callout)
+                        .frame(maxWidth: .infinity, alignment: .leading)
                         .foregroundColor(Colors.textPrimary)
                     FlowView(viewModel: viewModel.currentViewModel)
                 }

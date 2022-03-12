@@ -21,7 +21,7 @@ struct FlowViewModel {
     init(value: Double, orientation: Orientation, formatter: DoubleValueFormatter) {
         flowType = FlowType(value: value)
         rawValue = value
-        formatedValue = formatter.format(value: value)
+        formatedValue = formatter.format(value: abs(value))
         literal = flowType.literal
         self.orientation = orientation
     }

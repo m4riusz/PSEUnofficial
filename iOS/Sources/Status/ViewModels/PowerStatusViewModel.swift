@@ -60,41 +60,31 @@ final class PowerStatusViewModel: ObservableObject {
 
     private func createSummaryViewModels(status: PSEStatus) -> [FlowSummaryRowViewModel] {
         let summary = status.data.summary
+        let total = status.data.flows.reduce(0.0, { $0 + $1.value })
         return [
             .init(title: Literals.load,
-                  value: summary.load,
-                  formatter: noFractionDigitsFormatter),
+                  rowType: .primary(value: summary.load, formatter: noFractionDigitsFormatter)),
             .init(title: Literals.generation,
-                  value: summary.generation,
-                  formatter: noFractionDigitsFormatter),
+                  rowType: .primary(value: summary.generation, formatter: noFractionDigitsFormatter)),
             .init(image: Images.thermal,
                   title: Literals.thermal,
-                  value: summary.thermal,
-                  valueColor: Colors.textSecondary,
-                  formatter: noFractionDigitsFormatter),
+                  rowType: .secondary(value: summary.thermal, formatter: noFractionDigitsFormatter)),
             .init(image: Images.water,
                   title: Literals.water,
-                  value: summary.water,
-                  valueColor: Colors.textSecondary,
-                  formatter: noFractionDigitsFormatter),
+                  rowType: .secondary(value: summary.water, formatter: noFractionDigitsFormatter)),
             .init(image: Images.wind,
                   title: Literals.wind,
-                  value: summary.wind,
-                  valueColor: Colors.textSecondary,
-                  formatter: noFractionDigitsFormatter),
+                  rowType: .secondary(value: summary.wind, formatter: noFractionDigitsFormatter)),
             .init(image: Images.solar,
                   title: Literals.solar,
-                  value: summary.solar,
-                  valueColor: Colors.textSecondary,
-                  formatter: noFractionDigitsFormatter),
+                  rowType: .secondary(value: summary.solar, formatter: noFractionDigitsFormatter)),
             .init(image: Images.other,
                   title: Literals.other,
-                  value: summary.other,
-                  valueColor: Colors.textSecondary,
-                  formatter: noFractionDigitsFormatter),
+                  rowType: .secondary(value: summary.other, formatter: noFractionDigitsFormatter)),
+            .init(title: Literals.total,
+                  rowType: .flow(value: .init(value: total, orientation: .vertical, formatter: noFractionDigitsFormatter))),
             .init(title: Literals.frequency,
-                  value: summary.frequency,
-                  formatter: frequencyDoubleFormatter)
+                  rowType: .primary(value: summary.frequency, formatter: frequencyDoubleFormatter))
         ]
     }
 }

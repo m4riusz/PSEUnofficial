@@ -26,10 +26,20 @@ struct FlowSummaryRow: View {
                 .font(.callout)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .foregroundColor(Colors.textPrimary)
-            Text(viewModel.value)
-                .font(.title2)
-                .fontWeight(.medium)
-                .foregroundColor(viewModel.valueColor)
+            switch viewModel.rowType {
+            case .primary(let value, let formatter):
+                Text(formatter.format(value: value))
+                    .font(.title2)
+                    .fontWeight(.medium)
+                    .foregroundColor(Colors.textPrimary)
+            case .secondary(let value, let formatter):
+                Text(formatter.format(value: value))
+                    .font(.title2)
+                    .fontWeight(.medium)
+                    .foregroundColor(Colors.textSecondary)
+            case .flow(let value):
+                FlowView(viewModel: value)
+            }
         }
     }
 }

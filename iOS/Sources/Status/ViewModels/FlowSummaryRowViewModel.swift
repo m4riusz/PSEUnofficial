@@ -9,19 +9,20 @@ import Core
 import SwiftUI
 
 struct FlowSummaryRowViewModel {
+    enum FlowSummaryRowType {
+        case primary(value: Double, formatter: DoubleValueFormatter)
+        case secondary(value: Double, formatter: DoubleValueFormatter)
+        case flow(value: FlowViewModel)
+    }
     let image: Image?
     let title: String
-    let value: String
-    let valueColor: Color
+    let rowType: FlowSummaryRowType
 
     init(image: Image? = nil,
          title: String,
-         value: Double,
-         valueColor: Color = Assets.Colors.iOS.textPrimary,
-         formatter: DoubleValueFormatter) {
+         rowType: FlowSummaryRowType) {
         self.image = image
         self.title = title
-        self.value = formatter.format(value: value)
-        self.valueColor = valueColor
+        self.rowType = rowType
     }
 }

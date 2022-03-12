@@ -17,11 +17,9 @@ struct FlowView: View {
         case .vertical:
             verticalView
                 .foregroundColor(viewModel.tintColor)
-                .frame(maxWidth: .infinity, alignment: .trailing)
         case .horizontal:
             horizontalView
                 .foregroundColor(viewModel.tintColor)
-                .frame(maxWidth: .infinity, alignment: .trailing)
         }
     }
 
