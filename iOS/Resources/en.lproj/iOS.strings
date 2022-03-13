@@ -21,3 +21,4 @@
 "Summary/wind" = "wind power plants";
 "CrossBorder/parallelExchange" = "Cross-border exchange with synchronous zone";
 "CrossBorder/nonParallelExchange" = "Cross-border exchange with non synchronous zone";
+"Loading/title" = "Fetching data";

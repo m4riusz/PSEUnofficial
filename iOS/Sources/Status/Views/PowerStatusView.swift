@@ -15,10 +15,7 @@ struct PowerStatusView: View {
         VStack {
             switch viewModel.state {
             case .fetching(let data):
-                Text("Fetching data")
-                if let data = data {
-                    FlowStatusView(viewModel: data)
-                }
+                LoadingView(viewModel: data)
             case .data(let data):
                 FlowStatusView(viewModel: data)
             case .error(let data, let message):

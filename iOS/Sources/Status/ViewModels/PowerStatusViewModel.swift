@@ -8,14 +8,14 @@
 import Foundation
 import Core
 
-enum PowerStatusState {
-    case fetching(lastData: PowerStatusDataViewModel?)
+enum PowerStatusViewState {
+    case fetching(data: LoadingViewModel)
     case data(data: PowerStatusDataViewModel)
     case error(lastData: PowerStatusDataViewModel?, message: String)
 
     var data: PowerStatusDataViewModel? {
         switch self {
-        case .fetching(let data): return data
+        case .fetching: return nil
         case .data(let data): return data
         case .error(let data, _): return data
         }
@@ -32,7 +32,7 @@ final class PowerStatusViewModel: ObservableObject {
         static let frequencyFractionDigits = 3
     }
 
-    @Published var state = PowerStatusState.fetching(lastData: nil)
+    @Published var state = PowerStatusViewState.fetching(data: .init())
 
     private let noFractionDigitsFormatter: DoubleValueFormatter
     private let frequencyDoubleFormatter: DoubleValueFormatter
@@ -47,7 +47,6 @@ final class PowerStatusViewModel: ObservableObject {
     }
 
     func getStatus() async {
-        state = .fetching(lastData: state.data)
         let result = await useCase.execute()
         switch result {
         case .success(let status):
