@@ -8,22 +8,23 @@
 import Foundation
 import Core
 
-enum PowerStatusState {
-    case fetching(lastData: PowerStatusDataViewModel?)
+enum PowerStatusViewState {
+    case fetching(data: LoadingViewModel)
     case data(data: PowerStatusDataViewModel)
-    case error(lastData: PowerStatusDataViewModel?, message: String)
+    case error(data: ErrorViewModel)
 
     var data: PowerStatusDataViewModel? {
         switch self {
-        case .fetching(let data): return data
+        case .fetching: return nil
         case .data(let data): return data
-        case .error(let data, _): return data
+        case .error: return nil
         }
     }
 }
 
 @MainActor
 final class PowerStatusViewModel: ObservableObject {
+    private typealias Error = Assets.Strings.iOS.Error
     private typealias Summary = Assets.Strings.iOS.Summary
     private typealias CrossBorder = Assets.Strings.iOS.CrossBorder
     private typealias Images = Assets.Images.iOS.Energy
@@ -32,10 +33,11 @@ final class PowerStatusViewModel: ObservableObject {
         static let frequencyFractionDigits = 3
     }
 
-    @Published var state = PowerStatusState.fetching(lastData: nil)
+    @Published var state = PowerStatusViewState.fetching(data: .init())
 
     private let noFractionDigitsFormatter: DoubleValueFormatter
     private let frequencyDoubleFormatter: DoubleValueFormatter
+
     let useCase: PSEGetStatusUseCaseProtocol
 
     nonisolated init(useCase: PSEGetStatusUseCaseProtocol,
@@ -47,17 +49,31 @@ final class PowerStatusViewModel: ObservableObject {
     }
 
     func getStatus() async {
-        state = .fetching(lastData: state.data)
         let result = await useCase.execute()
         switch result {
         case .success(let status):
-            let formattedDate = status.date.formatted()
-            state = .data(data: .init(formattedDate: formattedDate,
+            let formattedDate = status.date.formatted(date: .numeric, time: .standard)
+            state = .data(data: .init(dateViewModel: .init(formattedDate: formattedDate, freshData: true),
                                       flowViewModels: createFlowViewModels(flows: status.data.flows),
                                       crossBorderModels: createFlowCrossBorderModels(flows: status.data.flows),
                                       summaryViewModels: createSummaryViewModels(status: status)))
         case .failure(let error):
-            state = .error(lastData: state.data, message: error.localizedDescription)
+            guard let lastData = state.data else {
+                let errorViewModel = ErrorViewModel(title: Error.title,
+                                                    message: error.errorMessage,
+                                                    action: Error.action) { [weak self] in
+                    guard let strongSelf = self else { return }
+                    strongSelf.state = .fetching(data: .init())
+                    Task { await strongSelf.getStatus() }
+                }
+                state = .error(data: errorViewModel)
+                return
+            }
+            state = .data(data: .init(dateViewModel: .init(formattedDate: lastData.dateViewModel.formattedDate,
+                                                           freshData: false),
+                                      flowViewModels: lastData.flowViewModels,
+                                      crossBorderModels: lastData.crossBorderModels,
+                                      summaryViewModels: lastData.summaryViewModels))
         }
     }
 
@@ -118,9 +134,20 @@ final class PowerStatusViewModel: ObservableObject {
     }
 }
 
+extension PSEGetStatusUseCaseError {
+    var errorMessage: String {
+        switch self {
+        case .internal:
+            return Assets.Strings.iOS.Error.generic
+        case .networkError:
+            return Assets.Strings.iOS.Error.noInternetConnection
+        }
+    }
+}
+
 struct PowerStatusDataViewModel {
     private typealias Literals = Assets.Strings.iOS.List
-    let formattedDate: String
+    let dateViewModel: FlowDateRowViewModel
     let flowTitle = Literals.Section.flow
     let flowViewModels: [FlowCountryRowViewModel]
     let crossBorderTitle = Literals.Section.crossBorder

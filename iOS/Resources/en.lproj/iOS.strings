@@ -21,3 +21,8 @@
 "Summary/wind" = "wind power plants";
 "CrossBorder/parallelExchange" = "Cross-border exchange with synchronous zone";
 "CrossBorder/nonParallelExchange" = "Cross-border exchange with non synchronous zone";
+"Loading/title" = "Fetching data";
+"Error/title" = "Oops...";
+"Error/generic" = "Failed to fetch data";
+"Error/noInternetConnection" = "No internet connection";
+"Error/action" = "TRY AGAIN";

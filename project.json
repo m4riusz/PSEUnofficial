@@ -27,8 +27,8 @@
 			},
 			"test": {
 				"gatherCoverageData": true,
-				"language": "en",
-				"region": "EN_US",
+				"language": "pl",
+				"region": "PL",
 				"coverageTargets": [
 					"Core",
 					"iOS"
