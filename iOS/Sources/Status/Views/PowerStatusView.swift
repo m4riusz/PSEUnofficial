@@ -18,15 +18,11 @@ struct PowerStatusView: View {
                 LoadingView(viewModel: data)
             case .data(let data):
                 FlowStatusView(viewModel: data)
-            case .error(let data, let message):
-                Text(message)
-                    .foregroundColor(.red)
-                if let data = data {
-                    FlowStatusView(viewModel: data)
-                }
+            case .error(let data):
+                ErrorView(viewModel: data)
             }
         }
-        .refreshable { Task { await viewModel.getStatus() } }
+        .refreshable { await viewModel.getStatus() }
         .onAppear { Task { await viewModel.getStatus() } }
     }
 }

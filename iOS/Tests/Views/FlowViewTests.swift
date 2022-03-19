@@ -110,6 +110,6 @@ final class FlowViewTests: XCTestCase {
 
 extension Snapshotting where Value: SwiftUI.View, Format == UIImage {
     public static func standardImage(mode: UIUserInterfaceStyle = .light) -> Snapshotting {
-        .image(layout: .fixed(width: 375, height: 0), traits: UITraitCollection(userInterfaceStyle: mode))
+        .image(precision: 0.99, layout: .fixed(width: 375, height: 0), traits: UITraitCollection(userInterfaceStyle: mode))
     }
 }

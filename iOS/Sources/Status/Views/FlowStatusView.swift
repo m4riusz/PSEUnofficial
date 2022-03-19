@@ -12,9 +12,8 @@ struct FlowStatusView: View {
     let viewModel: PowerStatusDataViewModel
 
     var body: some View {
-        Text(viewModel.formattedDate)
-            .frame(maxWidth: .infinity, alignment: .trailing)
-            .font(.caption)
+        Text("")
+            .frame(maxWidth: .infinity, minHeight: 1, maxHeight: 1)
         List {
             Section(viewModel.flowTitle) {
                 ForEach(viewModel.flowViewModels, id: \.country) { rowViewModel in
@@ -31,6 +30,8 @@ struct FlowStatusView: View {
                     FlowSummaryRow(viewModel: rowViewModel)
                 }
             }
+            FlowDateRow(viewModel: viewModel.dateViewModel)
+                .listRowSeparator(.hidden)
         }
         .listStyle(.plain)
     }

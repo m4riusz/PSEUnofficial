@@ -11,13 +11,13 @@ import Core
 enum PowerStatusViewState {
     case fetching(data: LoadingViewModel)
     case data(data: PowerStatusDataViewModel)
-    case error(lastData: PowerStatusDataViewModel?, message: String)
+    case error(data: ErrorViewModel)
 
     var data: PowerStatusDataViewModel? {
         switch self {
         case .fetching: return nil
         case .data(let data): return data
-        case .error(let data, _): return data
+        case .error: return nil
         }
     }
 }
@@ -50,13 +50,19 @@ final class PowerStatusViewModel: ObservableObject {
         let result = await useCase.execute()
         switch result {
         case .success(let status):
-            let formattedDate = status.date.formatted()
-            state = .data(data: .init(formattedDate: formattedDate,
+            state = .data(data: .init(dateViewModel: .init(date: status.date, freshData: true),
                                       flowViewModels: createFlowViewModels(flows: status.data.flows),
                                       crossBorderModels: createFlowCrossBorderModels(flows: status.data.flows),
                                       summaryViewModels: createSummaryViewModels(status: status)))
         case .failure(let error):
-            state = .error(lastData: state.data, message: error.localizedDescription)
+            guard let lastData = state.data else {
+                state = .error(data: .init(errorMessage: error.localizedDescription))
+                return
+            }
+            state = .data(data: .init(dateViewModel: .init(date: lastData.dateViewModel.date, freshData: false),
+                                      flowViewModels: lastData.flowViewModels,
+                                      crossBorderModels: lastData.crossBorderModels,
+                                      summaryViewModels: lastData.summaryViewModels))
         }
     }
 
@@ -119,7 +125,7 @@ final class PowerStatusViewModel: ObservableObject {
 
 struct PowerStatusDataViewModel {
     private typealias Literals = Assets.Strings.iOS.List
-    let formattedDate: String
+    let dateViewModel: FlowDateRowViewModel
     let flowTitle = Literals.Section.flow
     let flowViewModels: [FlowCountryRowViewModel]
     let crossBorderTitle = Literals.Section.crossBorder
