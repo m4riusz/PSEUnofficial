@@ -22,3 +22,7 @@
 "CrossBorder/parallelExchange" = "Wymiana równoległa";
 "CrossBorder/nonParallelExchange" = "Wymiana nierównoległa";
 "Loading/title" = "Pobieram dane";
+"Error/title" = "Ups...";
+"Error/generic" = "Nie udało się pobrać danych";
+"Error/noInternetConnection" = "Brak połączenia z internetem";
+"Error/action" = "SPRÓBUJ PONOWNIE";

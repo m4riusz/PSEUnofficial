@@ -8,5 +8,8 @@
 import Foundation
 
 struct ErrorViewModel {
-    let errorMessage: String
+    let title: String
+    let message: String
+    let action: String
+    let onAction: () -> Void
 }

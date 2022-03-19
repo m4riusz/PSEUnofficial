@@ -24,6 +24,7 @@ enum PowerStatusViewState {
 
 @MainActor
 final class PowerStatusViewModel: ObservableObject {
+    private typealias Error = Assets.Strings.iOS.Error
     private typealias Summary = Assets.Strings.iOS.Summary
     private typealias CrossBorder = Assets.Strings.iOS.CrossBorder
     private typealias Images = Assets.Images.iOS.Energy
@@ -56,7 +57,14 @@ final class PowerStatusViewModel: ObservableObject {
                                       summaryViewModels: createSummaryViewModels(status: status)))
         case .failure(let error):
             guard let lastData = state.data else {
-                state = .error(data: .init(errorMessage: error.localizedDescription))
+                let errorViewModel = ErrorViewModel(title: Error.title,
+                                                    message: error.errorMessage,
+                                                    action: Error.action) { [weak self] in
+                    guard let strongSelf = self else { return }
+                    strongSelf.state = .fetching(data: .init())
+                    Task { await strongSelf.getStatus() }
+                }
+                state = .error(data: errorViewModel)
                 return
             }
             state = .data(data: .init(dateViewModel: .init(date: lastData.dateViewModel.date, freshData: false),
@@ -120,6 +128,17 @@ final class PowerStatusViewModel: ObservableObject {
             .init(title: Summary.frequency,
                   rowType: .primary(value: summary.frequency, formatter: frequencyDoubleFormatter))
         ]
+    }
+}
+
+extension PSEGetStatusUseCaseError {
+    var errorMessage: String {
+        switch self {
+        case .internal:
+            return Assets.Strings.iOS.Error.generic
+        case .networkError:
+            return Assets.Strings.iOS.Error.noInternetConnection
+        }
     }
 }
 
