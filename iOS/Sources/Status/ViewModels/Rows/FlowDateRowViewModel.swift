@@ -8,10 +8,6 @@
 import Foundation
 
 struct FlowDateRowViewModel {
-    let date: Date
+    let formattedDate: String
     let freshData: Bool
-
-    var formattedDate: String {
-        date.formatted(date: .numeric, time: .standard)
-    }
 }

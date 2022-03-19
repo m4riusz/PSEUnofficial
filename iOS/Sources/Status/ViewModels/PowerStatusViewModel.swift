@@ -37,6 +37,7 @@ final class PowerStatusViewModel: ObservableObject {
 
     private let noFractionDigitsFormatter: DoubleValueFormatter
     private let frequencyDoubleFormatter: DoubleValueFormatter
+
     let useCase: PSEGetStatusUseCaseProtocol
 
     nonisolated init(useCase: PSEGetStatusUseCaseProtocol,
@@ -51,7 +52,8 @@ final class PowerStatusViewModel: ObservableObject {
         let result = await useCase.execute()
         switch result {
         case .success(let status):
-            state = .data(data: .init(dateViewModel: .init(date: status.date, freshData: true),
+            let formattedDate = status.date.formatted(date: .numeric, time: .standard)
+            state = .data(data: .init(dateViewModel: .init(formattedDate: formattedDate, freshData: true),
                                       flowViewModels: createFlowViewModels(flows: status.data.flows),
                                       crossBorderModels: createFlowCrossBorderModels(flows: status.data.flows),
                                       summaryViewModels: createSummaryViewModels(status: status)))
@@ -67,7 +69,8 @@ final class PowerStatusViewModel: ObservableObject {
                 state = .error(data: errorViewModel)
                 return
             }
-            state = .data(data: .init(dateViewModel: .init(date: lastData.dateViewModel.date, freshData: false),
+            state = .data(data: .init(dateViewModel: .init(formattedDate: lastData.dateViewModel.formattedDate,
+                                                           freshData: false),
                                       flowViewModels: lastData.flowViewModels,
                                       crossBorderModels: lastData.crossBorderModels,
                                       summaryViewModels: lastData.summaryViewModels))

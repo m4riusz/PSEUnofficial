@@ -12,9 +12,9 @@ import SnapshotTesting
 @testable import iOS
 
 final class FlowDateRowTests: XCTestCase {
-    private var date = Date(timeIntervalSince1970: 1647365378)
     private var freshData = true
-    private lazy var sut = FlowDateRow(viewModel: .init(date: date, freshData: freshData))
+    private lazy var sut = FlowDateRow(viewModel: .init(formattedDate: "15.03.2022 o 18:29:38",
+                                                        freshData: freshData))
 
     func testFreshDataLightMode() {
         assertSnapshot(matching: sut, as: .standardImage())
