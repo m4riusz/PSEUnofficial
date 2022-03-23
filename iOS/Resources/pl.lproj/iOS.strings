@@ -26,3 +26,8 @@
 "Error/generic" = "Nie udało się pobrać danych";
 "Error/noInternetConnection" = "Brak połączenia z internetem";
 "Error/action" = "SPRÓBUJ PONOWNIE";
+"About/description" = "Aplikacja ta pokazuje aktualny i planowany przepływ energii elektrycznej oraz aktualne obciążenie i generację energii w Polskim Systemie Elektroenergetycznym.\n\nAplikacja korzysta z API wystawionego przez Polskie Sieci Elektroenergetyczne S.A. (PSE S.A.)";
+"About/Link/Api/title" = "Więcej informacji";
+"About/Link/Api/provider" = "https://www.pse.pl/dane-systemowe";
+"About/Link/Icon/title" = "Dostawca ikon";
+"About/Link/Icon/provider" = "https://www.svgrepo.com";

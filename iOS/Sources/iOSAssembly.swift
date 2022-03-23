@@ -7,11 +7,19 @@
 
 import Core
 import Swinject
+import UIKit
 
 final class iOSAssembly: ModuleAssembly {
 
     func assemble(container: Container) {
-        /*Nop*/
+        container.register(UrlHandlerProtocol.self) { _ in
+            UIApplication.shared
+        }
+        container.register(AboutViewModel.self) { r in
+            AboutViewModel(appInfoProvider: r.resolve(AppInformationProviderProtocol.self)!,
+                           urlHandler: r.resolve(UrlHandlerProtocol.self)!)
+        }
+
         container.register(PowerStatusViewModel.self) { r in
             PowerStatusViewModel(useCase: r.resolve(PSEGetStatusUseCaseProtocol.self)!,
                                  noFractionDigitsFormatter: r.resolve(DoubleValueFormatter.self,
@@ -19,5 +27,6 @@ final class iOSAssembly: ModuleAssembly {
                                  frequencyDoubleFormatter: r.resolve(DoubleValueFormatter.self,
                                                                      name: "FrequencyDigitsValueFormatter")!)
         }
+
     }
 }

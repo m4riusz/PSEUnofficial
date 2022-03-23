@@ -21,11 +21,12 @@ struct MainView: View {
                     Text(Literals.PowerStatus.tab)
                     Images.load
                 }
-            AboutView()
+            AboutView(viewModel: container.resolve(AboutViewModel.self)!)
                 .tabItem {
                     Text(Literals.About.tab)
                     Images.info
                 }
         }
+        .accentColor(Assets.Colors.iOS.tint)
     }
 }

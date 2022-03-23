@@ -1,5 +1,5 @@
 //
-//  PSEUnofficialApp.swift
+//  iOSApp.swift
 //  PSEUnofficial
 //
 //  Created by Mariusz Sut on 08/01/2022.
@@ -10,7 +10,7 @@ import Swinject
 import Core
 
 @main
-struct PSEUnofficialApp: App {
+struct iOSApp: App {
 
     private let container = iOSAssembler(container: Container()).assembly()
 
