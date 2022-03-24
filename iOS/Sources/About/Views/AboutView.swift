@@ -18,27 +18,11 @@ struct AboutView: View {
         VStack {
             Text("")
                 .frame(maxWidth: .infinity, minHeight: 1, maxHeight: 1)
-            
             List {
-                Text(viewModel.appName)
-                    .font(.title)
-                Text(viewModel.aboutDescription)
-                    .font(.body)
-                VStack(alignment: .leading, spacing: Constants.spacing) {
-                    Text(viewModel.apiProviderTitle)
-                        .font(.body)
-                    LinkView(viewModel: viewModel.apiLink)
+                ForEach(viewModel.items) { itemViewModel in
+                    AboutRow(viewModel: itemViewModel)
                 }
-                VStack(alignment: .leading, spacing: Constants.spacing) {
-                    Text(viewModel.iconProviderTitle)
-                        .font(.body)
-                    LinkView(viewModel: viewModel.iconLink)
-                }
-                Text(viewModel.versionWithBuild).font(.caption)
-                    .frame(maxWidth: .infinity, alignment: .trailing)
-                    .listRowSeparator(.hidden)
             }
-            .foregroundColor(Assets.Colors.iOS.textPrimary)
             .listStyle(.plain)
         }
     }

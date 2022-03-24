@@ -18,3 +18,10 @@ struct LinkViewModel {
         self.tap = tap
     }
 }
+
+// MARK: - Equatable
+extension LinkViewModel: Equatable {
+    static func==(lhs: LinkViewModel, rhs: LinkViewModel) -> Bool {
+        lhs.text == rhs.text && lhs.url == rhs.url
+    }
+}
