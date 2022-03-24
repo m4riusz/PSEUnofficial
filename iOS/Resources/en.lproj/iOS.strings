@@ -26,3 +26,8 @@
 "Error/generic" = "Failed to fetch data";
 "Error/noInternetConnection" = "No internet connection";
 "Error/action" = "TRY AGAIN";
+"About/description" = "This application shows the current and planned flow of electricity as well as the current load and generation in the Polish Power System.\n\nThe application uses API issued by Polskie Sieci Elektroenergetyczne S.A. (PSE S.A.)";
+"About/Link/Api/title" = "More information";
+"About/Link/Api/provider" = "https://www.pse.pl/web/pse-eng/data";
+"About/Link/Icon/title" = "Icons provided by";
+"About/Link/Icon/provider" = "https://www.svgrepo.com";

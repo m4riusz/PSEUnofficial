@@ -21,6 +21,13 @@ public class CoreAssembly: ModuleAssembly {
             PSEJsonDecoder()
         }
 
+        container.register(Bundle.self) { _ in
+            Bundle.main
+        }
+
+        container.register(AppInformationProviderProtocol.self) { r in
+            AppInformationProvider(bundle: r.resolve(Bundle.self)!)
+        }
         container.register(PSERequestServiceProtocol.self) { r in
             PSERequestService(baseUrl: "https://www.pse.pl/",
                               jsonDecoder: r.resolve(JSONDecoder.self)!,

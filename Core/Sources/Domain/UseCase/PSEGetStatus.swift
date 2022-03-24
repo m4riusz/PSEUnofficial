@@ -26,12 +26,12 @@ final class PSEGetStatusUseCase: PSEGetStatusUseCaseProtocol {
     func execute() async -> Result<PSEStatus, PSEGetStatusUseCaseError> {
         do {
             return try await .success(repository.getStatus())
-        } catch let(error) {
+        } catch let error {
             switch error {
             case PSEApiError.statusNotOK, PSEApiError.invalidRequest, PSEApiError.invalidDataFormat:
-                return .failure(.networkError)
-            default:
                 return .failure(.internal)
+            default:
+                return .failure(.networkError)
             }
         }
     }
