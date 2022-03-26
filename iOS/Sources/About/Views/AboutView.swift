@@ -21,6 +21,7 @@ struct AboutView: View {
             List {
                 ForEach(viewModel.items) { itemViewModel in
                     AboutRow(viewModel: itemViewModel)
+                        .listRowSeparator(.hidden)
                 }
             }
             .listStyle(.plain)
