@@ -3,6 +3,10 @@
         "iOS": {
             "platform": "iOS",
             "type": "application",
+            "configFiles": {
+                "Debug": "Configs/Debug.xcconfig",
+                "Release": "Configs/Release.xcconfig"
+            },
 			"templates": [
 				"BaseTarget"
 			],
