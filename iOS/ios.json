@@ -7,6 +7,10 @@
                 "Debug": "Configs/Debug.xcconfig",
                 "Release": "Configs/Release.xcconfig"
             },
+            "settings": {
+                "PRODUCT_BUNDLE_IDENTIFIER": "pl.msut.PSEUnofficial",
+                "CODE_SIGN_STYLE": "Manual"
+            },
 			"templates": [
 				"BaseTarget"
 			],
@@ -39,14 +43,16 @@
                 }
             ],
             "settings": {
-                "TEST_HOST": "$(BUILT_PRODUCTS_DIR)/iOS.app/iOS"
+                "TEST_HOST": "$(BUILT_PRODUCTS_DIR)/iOS.app/iOS",
+                "PRODUCT_BUNDLE_IDENTIFIER": "pl.msut.PSEUnofficialTests"
             }
         },
         "iOSUITests": {
             "platform": "iOS",
             "type": "bundle.ui-testing",
             "settings": {
-                "TEST_TARGET_NAME": "iOS"
+                "TEST_TARGET_NAME": "iOS",
+                "PRODUCT_BUNDLE_IDENTIFIER": "pl.msut.PSEUnofficialUITests"
             },
             "sources": [
                 {
