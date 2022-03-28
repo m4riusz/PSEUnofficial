@@ -14,7 +14,8 @@
 			],
 			"dependencies": [
 				{
-					"package": "Swinject"
+					"package": "Swinject",
+					"product": "Swinject-Dynamic"
 				}
 			],
 			"preBuildScripts": [

@@ -17,7 +17,7 @@ final class AppInformationProvider: AppInformationProviderProtocol {
     private struct Constants {
         static let version = "CFBundleShortVersionString"
         static let appBuild = kCFBundleVersionKey as String
-        static let appName = kCFBundleNameKey as String
+        static let appName = "CFBundleDisplayName"
     }
     private let bundle: Bundle
 
