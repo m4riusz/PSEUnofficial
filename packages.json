@@ -2,7 +2,7 @@
     "packages": {
 		"Swinject": {
 			"url": "https://github.com/Swinject/Swinject.git",
-			"from": "2.8.0"
+			"from": "2.8.1"
 		},
 		"SnapshotTesting": {
 			"url": "https://github.com/pointfreeco/swift-snapshot-testing.git",
