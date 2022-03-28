@@ -12,12 +12,6 @@
 					"path": "${target_name}/Info.plist"
 				}
 			],
-			"dependencies": [
-				{
-					"package": "Swinject",
-					"product": "Swinject-Dynamic"
-				}
-			],
 			"preBuildScripts": [
 		        {
 			        "name": "Generate string assets",
@@ -55,6 +49,12 @@
 			"type": "framework",
 			"templates": [
 				"BaseTarget"
+			],
+			"dependencies": [
+				{
+					"package": "Swinject",
+					"product": "Swinject-Dynamic"
+				}
 			]
 		},
 		"BaseFrameworkUnitTest": {

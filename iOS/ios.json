@@ -16,6 +16,11 @@
 			],
             "dependencies": [
                 {
+					"package": "Swinject",
+					"product": "Swinject-Dynamic",
+                    "embed": true
+				},
+                {
                     "target": "Core"
                 }
             ],
