@@ -10,7 +10,10 @@
 				"order": ["Sources", "Resources", "Tests", "UITests"],
 				"pattern": ".*"
 			}
-		]
+		],
+		"deploymentTarget": {
+			"iOS": "15.0"
+		}
 	},
 	"include": [
 		"templates.json",
