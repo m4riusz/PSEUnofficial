@@ -12,3 +12,6 @@ public struct PSEStatus {
     public let date: Date
     public let data: PSEData
 }
+
+// MARK: - Equatable
+extension PSEStatus: Equatable { /* Nop */ }
