@@ -31,3 +31,4 @@
 "About/Link/Api/provider" = "https://www.pse.pl/web/pse-eng/data";
 "About/Link/Icon/title" = "Icons provided by";
 "About/Link/Icon/provider" = "https://www.svgrepo.com";
+"About/Link/Repository/title" = "Source code repository";
