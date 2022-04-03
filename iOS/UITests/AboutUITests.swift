@@ -6,17 +6,34 @@
 //
 
 import Foundation
+import XCTest
 
 final class AboutUITests: BaseUITest {
 
-    func testSwitchingTabs() throws {
-        let page = TabPage()
+    private lazy var page = MainPage(application: application)
+        .openAboutPage()
 
+    func testElements() {
         page
-            .openAboutPage()
-        sleep(1)
+            .inspect { page in
+                let cells = page.cells
+                XCTAssertEqual(cells.count, 6)
+                XCTAssertTrue(cells[0].isHeader)
+                XCTAssertTrue(cells[1].isDescription)
+                XCTAssertTrue(cells[2].isLink)
+                XCTAssertTrue(cells[3].isLink)
+                XCTAssertTrue(cells[4].isLink)
+                XCTAssertTrue(cells[5].isVersion)
+            }
+    }
 
-        page.openStatusPage()
-
+    func testRepositoryLinkClick() {
+        page
+            .tapRepositoryLink()
+            .back(landOn: page, application: application)
+            .tapApiProviderLink()
+            .back(landOn: page, application: application)
+            .tapIconProviderLink()
+            .back(landOn: page, application: application)
     }
 }

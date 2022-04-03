@@ -10,32 +10,38 @@ import XCTest
 protocol ApperanceElement {
     var apperanceElement: XCUIElement { get }
 
+    @discardableResult
     func waitForApperance() -> Self
+    @discardableResult
     func waitForApperance(timeout: TimeInterval) -> Self
+    @discardableResult
+    func waitForApperance(message: String) -> Self
+    @discardableResult
     func waitForApperance(timeout: TimeInterval, message: String) -> Self
 }
 
 extension ApperanceElement {
-
     @discardableResult
     func waitForApperance() -> Self {
-        waitForApperance()
+        waitForApperance(timeout: 5, message: "Element not appeared! \(apperanceElement.description)")
     }
 
     @discardableResult
     func waitForApperance(timeout: TimeInterval) -> Self {
-        waitForApperance(timeout: timeout)
+        waitForApperance(timeout: timeout, message: "Element not appeared! \(apperanceElement.description)")
     }
 
     @discardableResult
-    func waitForApperance(timeout: TimeInterval = 1, message: String = "Element not appeared!") -> Self {
-        print("WAIT 5 Seconds")
-        guard apperanceElement.waitForExistence(timeout: 5) else {
-            print("Not Found")
+    func waitForApperance(message: String) -> Self {
+        waitForApperance(timeout: 5, message: message)
+    }
+
+    @discardableResult
+    func waitForApperance(timeout: TimeInterval, message: String) -> Self {
+        guard apperanceElement.waitForExistence(timeout: timeout) else {
             XCTFail(message)
             return self
         }
-        print("Found")
         return self
     }
 }
