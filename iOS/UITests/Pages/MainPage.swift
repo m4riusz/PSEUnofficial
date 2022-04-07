@@ -5,6 +5,7 @@
 //  Created by Mariusz Sut on 02/04/2022.
 //
 
+import TestKit
 import XCTest
 import Foundation
 

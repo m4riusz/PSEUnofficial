@@ -5,7 +5,7 @@
 //  Created by Mariusz Sut on 03/04/2022.
 //
 
-import Foundation
+import TestKit
 import XCTest
 
 final class SafariPage: Page, ApperanceElement {

@@ -5,7 +5,7 @@
 //  Created by Mariusz Sut on 02/04/2022.
 //
 
-import Foundation
+import TestKit
 import XCTest
 
 final class AboutUITests: BaseUITest {

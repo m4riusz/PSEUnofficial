@@ -6,6 +6,7 @@
 //
 
 import XCTest
+import TestKit
 
 final class AboutRowCellPage: Page {
     private struct Constants {

@@ -17,6 +17,9 @@
             "dependencies": [
                 {
                     "target": "iOS"
+                },
+                {
+                    "target": "TestKit"
                 }
             ],
             "settings": {

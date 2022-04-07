@@ -8,13 +8,13 @@
 import Foundation
 import XCTest
 
-protocol Page {
+public protocol Page {
     var element: XCUIElement { get }
 
     func inspect(_ callback: (_ page: Self) -> Void) -> Self
 }
 
-extension Page {
+public extension Page {
 
     @discardableResult
     func inspect(_ callback: (_ page: Self) -> Void) -> Self {

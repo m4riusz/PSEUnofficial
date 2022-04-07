@@ -7,10 +7,11 @@
 
 import XCTest
 
-class BaseUITest: XCTestCase {
-    var application = XCUIApplication()
+open class BaseUITest: XCTestCase {
+    open var application = XCUIApplication()
 
-    override func setUp() {
+    open override func setUp() {
+        super.setUp()
         application = XCUIApplication()
         application.launch()
     }

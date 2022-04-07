@@ -7,7 +7,7 @@
 
 import XCTest
 
-protocol ApperanceElement {
+public protocol ApperanceElement {
     var apperanceElement: XCUIElement { get }
 
     @discardableResult
@@ -20,7 +20,7 @@ protocol ApperanceElement {
     func waitForApperance(timeout: TimeInterval, message: String) -> Self
 }
 
-extension ApperanceElement {
+public extension ApperanceElement {
     @discardableResult
     func waitForApperance() -> Self {
         waitForApperance(timeout: 5, message: "Element not appeared! \(apperanceElement.description)")
