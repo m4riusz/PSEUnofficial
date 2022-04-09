@@ -9,5 +9,5 @@ import Foundation
 import Swinject
 
 public protocol ModuleAssembly {
-    func assemble(container: Container)
+    func assemble(container: Container, launchEnviroment: LaunchEnvironment)
 }

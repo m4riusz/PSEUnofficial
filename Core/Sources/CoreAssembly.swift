@@ -12,7 +12,7 @@ public class CoreAssembly: ModuleAssembly {
 
     public init() { /*Nop*/ }
 
-    public func assemble(container: Container) {
+    public func assemble(container: Container, launchEnviroment: LaunchEnvironment) {
         container.register(URLSession.self) { _ in
             URLSession.shared
         }.inObjectScope(.container)

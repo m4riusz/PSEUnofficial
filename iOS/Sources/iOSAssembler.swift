@@ -11,9 +11,11 @@ import Core
 final class iOSAssembler: AppAssembler {
 
     let container: Container
+    let launchEnvironment: LaunchEnvironment
 
-    init(container: Container) {
+    init(container: Container, launchEnvironment: LaunchEnvironment) {
         self.container = container
+        self.launchEnvironment = launchEnvironment
     }
 
     var assemblies: [ModuleAssembly] = [
@@ -22,7 +24,7 @@ final class iOSAssembler: AppAssembler {
     ]
 
     func assembly() -> Container {
-        assemblies.forEach { $0.assemble(container: container) }
+        assemblies.forEach { $0.assemble(container: container, launchEnviroment: launchEnvironment) }
         return container
     }
 }

@@ -11,7 +11,7 @@ import UIKit
 
 final class iOSAssembly: ModuleAssembly {
 
-    func assemble(container: Container) {
+    func assemble(container: Container, launchEnviroment: LaunchEnvironment) {
         container.register(UrlHandlerProtocol.self) { _ in
             UIApplication.shared
         }
