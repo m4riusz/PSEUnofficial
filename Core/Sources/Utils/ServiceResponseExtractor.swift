@@ -7,12 +7,17 @@
 
 import Foundation
 
-public struct ServiceResponse {
-    let serviceName: String
-    let fileNames: [String]
+class MockServiceResponse {
+    let path: String
+    var fileNames: [String]
+
+    init(path: String, fileNames: [String]) {
+        self.path = path
+        self.fileNames = fileNames
+    }
 }
 
-struct ServiceResponseExtractor {
+struct MockServiceResponseExtractor {
     private struct Constants {
         static let serviceSeparator: Character = ","
         static let responseSeparator: Character = ":"
@@ -23,7 +28,7 @@ struct ServiceResponseExtractor {
         self.source = source
     }
 
-    var extract: [ServiceResponse] {
+    var extract: [MockServiceResponse] {
         guard let source = source else { return [] }
         var temporaryMap: [String: [String]] = [:]
         let services = source.split(separator: Constants.serviceSeparator).map { String($0) }
@@ -35,6 +40,6 @@ struct ServiceResponseExtractor {
                 temporaryMap[row[0]] = [row[1]]
             }
         }
-        return temporaryMap.map { .init(serviceName: $0.key, fileNames: $0.value) }
+        return temporaryMap.map { .init(path: $0.key, fileNames: $0.value) }
     }
 }

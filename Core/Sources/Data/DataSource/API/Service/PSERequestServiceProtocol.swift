@@ -24,10 +24,12 @@ final class PSERequestService: PSERequestServiceProtocol {
     }
 
     func request<Request>(request: Request) async throws -> Request.Response where Request: PSEAbstractRequest {
-        guard var components = URLComponents(string: "\(baseUrl)/\(request.path)") else {
+        guard var components = URLComponents(string: "\(baseUrl)\(request.path)") else {
             throw PSEApiError.invalidRequest
         }
-        components.queryItems = request.queryItems.map { URLQueryItem(name: $0.key, value: $0.value) }
+        if request.queryItems.count > 0 {
+            components.queryItems = request.queryItems.map { URLQueryItem(name: $0.key, value: $0.value) }
+        }
         guard let url = components.url else {
             throw PSEApiError.invalidRequest
         }
@@ -35,7 +37,7 @@ final class PSERequestService: PSERequestServiceProtocol {
         urlRequest.httpMethod = request.method.rawValue
         urlRequest.allHTTPHeaderFields = request.headers
 
-        guard let (data, response) = try? await urlSession.data(from: url) else {
+        guard let (data, response) = try? await urlSession.data(for: urlRequest) else {
             throw PSEApiError.invalidRequest
         }
 
