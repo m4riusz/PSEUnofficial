@@ -1,0 +1,20 @@
+{
+    "targets": {
+        "TestKit": {
+            "platform": "iOS",
+            "templates": [
+				"BaseFramework"
+			],
+            "dependencies:REPLACE": [
+                {
+                    "sdk": "XCTest.framework"
+                },
+                {
+                    "package": "SnapshotTesting"
+                }
+			],
+            "preBuildScripts:REPLACE": []
+        }
+    }
+}
+

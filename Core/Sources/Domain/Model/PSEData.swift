@@ -11,3 +11,6 @@ public struct PSEData {
     public let flows: [PSEFlow]
     public let summary: PSESummary
 }
+
+// MARK: - Equatable
+extension PSEData: Equatable { /* Nop */ }

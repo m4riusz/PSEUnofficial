@@ -12,9 +12,15 @@ public class CoreAssembly: ModuleAssembly {
 
     public init() { /*Nop*/ }
 
-    public func assemble(container: Container) {
+    public func assemble(container: Container, launchEnviroment: LaunchEnvironment) {
         container.register(URLSession.self) { _ in
-            URLSession.shared
+            let configuration = URLSessionConfiguration.ephemeral
+            if launchEnviroment.isRunningUITest {
+                MockURLProtocol.bundle = Bundle(for: Self.self)
+                MockURLProtocol.mockedServices = launchEnviroment.additionalServiceResponses
+                configuration.protocolClasses = [MockURLProtocol.self]
+            }
+            return URLSession(configuration: configuration)
         }.inObjectScope(.container)
 
         container.register(JSONDecoder.self) { _ in

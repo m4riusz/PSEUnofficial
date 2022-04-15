@@ -13,3 +13,6 @@ public struct PSEFlow {
     public let parallel: Bool
     public let planned: Double
 }
+
+// MARK: - Equatable
+extension PSEFlow: Equatable { /* Nop */ }

@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct PowerStatusView: View {
-
+    private struct Constants {
+        static let viewIdentifier = "PowerStatusViewIdentifier"
+    }
     @StateObject var viewModel: PowerStatusViewModel
 
     var body: some View {
@@ -24,5 +26,6 @@ struct PowerStatusView: View {
         }
         .refreshable { await viewModel.getStatus() }
         .onAppear { Task { await viewModel.getStatus() } }
+        .accessibilityIdentifier(Constants.viewIdentifier)
     }
 }

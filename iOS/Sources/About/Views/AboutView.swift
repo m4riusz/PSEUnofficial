@@ -10,6 +10,7 @@ import Core
 
 struct AboutView: View {
     private struct Constants {
+        static let listIdentifier = "AboutViewListIdentifier"
         static let spacing: CGFloat = 8
     }
     let viewModel: AboutViewModel
@@ -24,6 +25,7 @@ struct AboutView: View {
                         .listRowSeparator(.hidden)
                 }
             }
+            .accessibilityIdentifier(Constants.listIdentifier)
             .listStyle(.plain)
         }
     }
