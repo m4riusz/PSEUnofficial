@@ -11,18 +11,13 @@ import XCTest
 final class PowerStatusUITests: BaseUITest {
 
     override var serviceResponses: [Selector: String] {
-        [#selector(testSuccessScreen): "PSERequestStatus:somevalue,PSERequestStatus:otherValue,NewService:val",
-         #selector(testErrorScreen): "blahblah:asas"]
+        [#selector(testSuccessScreen): "transmissionMapService:transmissionMapService_success"]
     }
 
     private lazy var page = MainPage(application: application)
         .openStatusPage()
 
     func testSuccessScreen() {
-
-    }
-
-    func testErrorScreen() {
-
+        page
     }
 }
