@@ -22,6 +22,9 @@
 				},
                 {
                     "target": "Core"
+                },
+                {
+                    "target": "iOSWidget"
                 }
             ],
 	        "preBuildScripts": [

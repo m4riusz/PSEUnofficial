@@ -20,7 +20,8 @@
 		"packages.json",
 		"TestKit/test_kit.json",
 		"Core/core.json",
-		"iOS/ios.json"
+		"iOS/ios.json",
+		"iOSWidget/ios_widget.json"
 	],
 	"schemes": {
 		"iOS": {
@@ -56,6 +57,17 @@
 				"targets": [
 					"iOSUITests"
 				]
+			}
+		},
+		"iOSWidget": {
+			"build": {
+				"targets": {
+					"iOS": "all",
+					"iOSWidget": "all"
+				}
+			},
+			"run": {
+				"askForAppToLaunch": true
 			}
 		}
 	}
