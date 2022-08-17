@@ -24,7 +24,7 @@ enum FlowType {
     }
 
     var tintColor: Color {
-        typealias Colors = Assets.Colors.iOS
+        typealias Colors = Assets.Colors.Core
         switch self {
         case .export: return Colors.exportTintColor
         case .import: return Colors.importTintColor

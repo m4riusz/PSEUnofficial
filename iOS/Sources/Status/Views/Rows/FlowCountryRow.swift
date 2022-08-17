@@ -12,7 +12,7 @@ struct FlowCountryRow: View {
     private struct Constants {
         static let imageSize = CGSize(width: 40, height: 40)
     }
-    private typealias Colors = Assets.Colors.iOS
+    private typealias Colors = Assets.Colors.Core
     let viewModel: FlowCountryRowViewModel
 
     var body: some View {

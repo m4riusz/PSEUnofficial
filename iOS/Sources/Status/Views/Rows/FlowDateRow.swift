@@ -9,7 +9,7 @@ import SwiftUI
 import Core
 
 struct FlowDateRow: View {
-    private typealias Colors = Assets.Colors.iOS
+    private typealias Colors = Assets.Colors.Core
     let viewModel: FlowDateRowViewModel
 
     var body: some View {

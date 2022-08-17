@@ -25,10 +25,9 @@ enum PowerStatusViewState {
 @MainActor
 final class PowerStatusViewModel: ObservableObject {
     private typealias Error = Assets.Strings.iOS.Error
-    private typealias Summary = Assets.Strings.iOS.Summary
+    private typealias Summary = Assets.Strings.Core.Summary
     private typealias CrossBorder = Assets.Strings.iOS.CrossBorder
-    private typealias Images = Assets.Images.iOS.Energy
-    private typealias Colors = Assets.Colors.iOS
+    private typealias Images = Assets.Images.Core.Energy
     private struct Constants {
         static let frequencyFractionDigits = 3
     }

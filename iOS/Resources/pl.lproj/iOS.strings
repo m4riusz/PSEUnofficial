@@ -10,15 +10,6 @@
 "List/title" = "Dane";
 "Main/About/tab" = "O aplikacji";
 "Main/PowerStatus/tab" = "Status";
-"Summary/frequency" = "Częstotliwość [Hz]";
-"Summary/generation" = "Generacja [MW]";
-"Summary/load" = "Zapotrzebowanie [MW]";
-"Summary/other" = "el. inne odnawialne";
-"Summary/solar" = "el. fotowoltaiczne";
-"Summary/thermal" = "el. cieplne";
-"Summary/total" = "Saldo wymiany całkowitej [MW]";
-"Summary/water" = "el. wodne";
-"Summary/wind" = "el. wiatrowe";
 "CrossBorder/parallelExchange" = "Wymiana równoległa";
 "CrossBorder/nonParallelExchange" = "Wymiana nierównoległa";
 "Loading/title" = "Pobieram dane";

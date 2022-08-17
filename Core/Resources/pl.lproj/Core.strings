@@ -2,3 +2,12 @@
 "Common/exported" = "export";
 "Common/imported" = "import";
 "Common/planned" = "Planowane:";
+"Summary/frequency" = "Częstotliwość [Hz]";
+"Summary/generation" = "Generacja [MW]";
+"Summary/load" = "Zapotrzebowanie [MW]";
+"Summary/other" = "el. inne odnawialne";
+"Summary/solar" = "el. fotowoltaiczne";
+"Summary/thermal" = "el. cieplne";
+"Summary/total" = "Saldo wymiany całkowitej [MW]";
+"Summary/water" = "el. wodne";
+"Summary/wind" = "el. wiatrowe";

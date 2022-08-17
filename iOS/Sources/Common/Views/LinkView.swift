@@ -9,7 +9,7 @@ import SwiftUI
 import Core
 
 struct LinkView: View {
-    private typealias Colors = Assets.Colors.iOS
+    private typealias Colors = Assets.Colors.Core
     let viewModel: LinkViewModel
 
     var body: some View {
