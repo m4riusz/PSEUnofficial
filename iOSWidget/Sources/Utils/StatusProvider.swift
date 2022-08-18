@@ -11,7 +11,7 @@ import Core
 
 struct StatusProvider: IntentTimelineProvider {
     private struct Constants {
-        static let freshDataDuration: TimeInterval = 10 * 60
+        static let freshDataDuration: TimeInterval = 5 * 60
     }
     private let repository: PSERepositoryProtocol
 
@@ -19,20 +19,21 @@ struct StatusProvider: IntentTimelineProvider {
         self.repository = repository
     }
 
-    func placeholder(in context: Context) -> StatusEntry { .init(data: PSEStatus.placeholder) }
+    func placeholder(in context: Context) -> StatusEntry { .init(result: .success(.placeholder)) }
 
     func getSnapshot(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (StatusEntry) -> Void) {
-        completion(.init(data: PSEStatus.placeholder))
+        completion(.init(result: .success(.placeholder)))
     }
 
     func getTimeline(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (Timeline<StatusEntry>) -> Void) {
         Task {
             do {
                 let status = try await repository.getStatus()
-                completion(.init(entries: [StatusEntry(data: status)],
-                                 policy: .after(status.date.advanced(by: Constants.freshDataDuration))))
+                completion(.init(entries: [StatusEntry(result: .success(status))],
+                                 policy: .after(status.date.addingTimeInterval(Constants.freshDataDuration))))
             } catch {
-                completion(.init(entries: [], policy: .atEnd))
+                completion(.init(entries: [StatusEntry(result: .failure(error))],
+                                 policy: .after(.now.addingTimeInterval(Constants.freshDataDuration))))
             }
         }
 

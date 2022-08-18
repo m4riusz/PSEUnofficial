@@ -9,6 +9,12 @@ import Core
 import WidgetKit
 
 struct StatusEntry: TimelineEntry {
-    var date: Date { data.date }
-    let data: PSEStatus
+    let result: Result<PSEStatus, Error>
+
+    var date: Date {
+        switch result {
+        case .success(let status): return status.date
+        case .failure: return .now
+        }
+    }
 }

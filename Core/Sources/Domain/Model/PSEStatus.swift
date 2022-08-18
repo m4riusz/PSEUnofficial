@@ -25,7 +25,7 @@ extension PSEStatus {
                                         parallel: false,
                                         planned: 120),
                                   .init(direction: .germany,
-                                        value: 123,
+                                        value: 1200,
                                         parallel: true,
                                         planned: 321)],
                           summary: .init(water: 100,
@@ -33,7 +33,7 @@ extension PSEStatus {
                                          solar: 300,
                                          thermal: 400,
                                          other: 500,
-                                         frequency: 600,
+                                         frequency: 50,
                                          load: 700,
                                          generation: 800)))
     }

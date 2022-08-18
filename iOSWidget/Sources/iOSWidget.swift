@@ -22,7 +22,7 @@ struct iOSWidget: Widget {
         IntentConfiguration(kind: Constants.kind,
                             intent: ConfigurationIntent.self,
                             provider: container.resolve(StatusProvider.self)!) { entry in
-            SummaryView(viewModel: container.resolve(SummaryViewModel.self, argument: entry.data)!)
+            StatusEntryView(container: container, entryData: entry)
         }.supportedFamilies([.systemLarge])
     }
 }

@@ -20,5 +20,8 @@ final class iOSWidgetAssembly: ModuleAssembly {
                              frequencyDoubleFormatter: r.resolve(DoubleValueFormatter.self, name: "FrequencyDigitsValueFormatter")!,
                              status: status as PSEStatus)
         }
+        container.register(ErrorViewModel.self) { _, error in
+            ErrorViewModel(error: error as Error)
+        }
     }
 }
