@@ -19,6 +19,9 @@
                     "target": "iOS"
                 },
                 {
+                    "package": "SnapshotTesting"
+                },
+                {
                     "target": "TestKit"
                 }
             ],

@@ -6,11 +6,10 @@
 //
 
 import XCTest
-import Core
-@testable import iOS
+@testable import Core
 
 final class FlowTypeTests: XCTestCase {
-    typealias Colors = Assets.Colors.iOS
+    typealias Colors = Assets.Colors.Core
     typealias Literals = Assets.Strings.Core.Common
     private var value = 123.0
     private lazy var sut = FlowType(value: value)

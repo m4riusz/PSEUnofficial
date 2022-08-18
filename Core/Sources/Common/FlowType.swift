@@ -8,12 +8,12 @@
 import Core
 import SwiftUI
 
-enum FlowType {
+public enum FlowType {
     case export
     case `import`
     case none
 
-    init(value: Double) {
+    public init(value: Double) {
         if value > 0 {
             self = .import
         } else if value < 0 {
@@ -23,7 +23,7 @@ enum FlowType {
         }
     }
 
-    var tintColor: Color {
+    public var tintColor: Color {
         typealias Colors = Assets.Colors.Core
         switch self {
         case .export: return Colors.exportTintColor
@@ -32,7 +32,7 @@ enum FlowType {
         }
     }
 
-    var literal: String {
+    public var literal: String {
         typealias Literals = Assets.Strings.Core.Common
         switch self {
         case .export: return Literals.exported

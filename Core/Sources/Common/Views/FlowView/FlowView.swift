@@ -6,13 +6,16 @@
 //
 
 import SwiftUI
-import Core
 
-struct FlowView: View {
-    private typealias Colors = Assets.Colors.iOS
+public struct FlowView: View {
+    private typealias Colors = Assets.Colors.Core
     let viewModel: FlowViewModel
 
-    var body: some View {
+    public init(viewModel: FlowViewModel) {
+        self.viewModel = viewModel
+    }
+
+    public var body: some View {
         switch viewModel.orientation {
         case .vertical:
             verticalView
