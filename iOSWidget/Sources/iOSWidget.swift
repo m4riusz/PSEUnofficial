@@ -6,17 +6,23 @@
 //
 
 import WidgetKit
+import Swinject
+import Core
 import SwiftUI
 
 @main
 struct iOSWidget: Widget {
-    let kind: String = "iOSWidget"
+    private struct Constants {
+        static let kind = "SummaryWidget"
+    }
+    private let container = iOSWidgetAssembler(container: Container(),
+                                               launchEnvironment: LaunchEnvironment(enviroment: ProcessInfo().environment)).assembly()
 
     var body: some WidgetConfiguration {
-        IntentConfiguration(kind: kind, intent: ConfigurationIntent.self, provider: Provider()) { entry in
-            iOSWidgetEntryView(entry: entry)
-        }
-        .configurationDisplayName("My Widget")
-        .description("This is an example widget.")
+        IntentConfiguration(kind: Constants.kind,
+                            intent: ConfigurationIntent.self,
+                            provider: container.resolve(StatusProvider.self)!) { entry in
+            SummaryView(viewModel: container.resolve(SummaryViewModel.self, argument: entry.data)!)
+        }.supportedFamilies([.systemLarge])
     }
 }

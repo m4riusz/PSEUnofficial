@@ -1,11 +1,10 @@
 //
 //  FlowType.swift
-//  iOS
+//  Core
 //
 //  Created by Mariusz Sut on 12/03/2022.
 //
 
-import Core
 import SwiftUI
 
 public enum FlowType {

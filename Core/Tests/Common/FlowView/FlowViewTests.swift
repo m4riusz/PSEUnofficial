@@ -1,6 +1,6 @@
 //
 //  FlowViewTests.swift
-//  iOS
+//  Core
 //
 //  Created by Mariusz Sut on 27/02/2022.
 //
