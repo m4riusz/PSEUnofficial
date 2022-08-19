@@ -12,6 +12,7 @@ import Swinject
 struct MainView: View {
     private typealias Images = Assets.Images.iOS.Tab
     private typealias Literals = Assets.Strings.iOS.Main
+    private typealias Colors = Assets.Colors.Core
     let container: Container
 
     var body: some View {
@@ -27,6 +28,6 @@ struct MainView: View {
                     Images.info
                 }
         }
-        .accentColor(Assets.Colors.iOS.tint)
+        .accentColor(Colors.tint)
     }
 }
