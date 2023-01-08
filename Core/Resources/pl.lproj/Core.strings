@@ -9,5 +9,6 @@
 "Summary/solar" = "el. fotowoltaiczne";
 "Summary/thermal" = "el. cieplne";
 "Summary/total" = "Saldo wymiany całkowitej [MW]";
+"Summary/totalShort" = "Saldo wymiany [MW]";
 "Summary/water" = "el. wodne";
 "Summary/wind" = "el. wiatrowe";

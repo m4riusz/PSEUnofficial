@@ -11,7 +11,7 @@ import Core
 
 struct StatusProvider: IntentTimelineProvider {
     private struct Constants {
-        static let freshDataDuration: TimeInterval = 5 * 60
+        static let freshDataDuration: TimeInterval = 2 * 60
     }
     private let repository: PSERepositoryProtocol
 

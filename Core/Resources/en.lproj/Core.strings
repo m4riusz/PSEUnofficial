@@ -9,5 +9,6 @@
 "Summary/solar" = "solar power plants";
 "Summary/thermal" = "thermal power plants";
 "Summary/total" = "Actual total cross-border exchange [MW]";
+"Summary/totalShort" = "Total exchange [MW]";
 "Summary/water" = "water power plants";
 "Summary/wind" = "wind power plants";
