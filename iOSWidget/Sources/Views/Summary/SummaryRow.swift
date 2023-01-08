@@ -23,7 +23,7 @@ struct SummaryRow: View {
                     .frame(width: Constants.imageSize.width, height: Constants.imageSize.height)
             }
             Text(viewModel.title)
-                .font(.subheadline)
+                .font(viewModel.rowType.fontType)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .foregroundColor(Colors.textPrimary)
             switch viewModel.rowType {
@@ -40,6 +40,15 @@ struct SummaryRow: View {
             case .flow(let value):
                 FlowView(viewModel: value)
             }
+        }
+    }
+}
+
+private extension SummaryRowViewModel.RowType {
+    var fontType: Font {
+        switch self {
+        case .primary, .flow: return .headline
+        default: return .subheadline
         }
     }
 }

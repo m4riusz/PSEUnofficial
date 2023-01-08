@@ -7,9 +7,8 @@
 				"BaseTarget"
 			],
             "settings" : {
-                "base": {
-                    "PRODUCT_BUNDLE_IDENTIFIER": "pl.msut.PSEUnofficial.iOSWidget"
-                }
+                "PRODUCT_BUNDLE_IDENTIFIER": "pl.msut.PSEUnofficial.iOSWidget",
+                "CODE_SIGN_STYLE": "Manual"
             },
             "dependencies": [
                 {

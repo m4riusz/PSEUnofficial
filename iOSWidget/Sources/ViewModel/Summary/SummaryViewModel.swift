@@ -47,7 +47,7 @@ struct SummaryViewModel {
             .init(image: Images.other,
                   title: Summary.other,
                   rowType: .secondary(value: summary.other, formatter: noFractionDigitsFormatter)),
-            .init(title: Summary.total,
+            .init(title: Summary.totalShort,
                   rowType: .flow(value: .init(value: total, orientation: .vertical, formatter: noFractionDigitsFormatter))),
             .init(title: Summary.frequency,
                   rowType: .primary(value: summary.frequency, formatter: frequencyDoubleFormatter))

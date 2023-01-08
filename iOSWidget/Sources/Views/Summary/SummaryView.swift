@@ -9,15 +9,16 @@ import SwiftUI
 
 struct SummaryView: View {
     private struct Constants {
-        static let rowHeight: CGFloat = 25
         static let padding: CGFloat = 5
     }
     let viewModel: SummaryViewModel
 
     var body: some View {
-        ForEach(viewModel.cells, id: \.title) { rowViewModel in
-            SummaryRow(viewModel: rowViewModel)
-                .frame(maxWidth: .infinity, minHeight: Constants.rowHeight, maxHeight: Constants.rowHeight, alignment: .leading)
+        VStack {
+            ForEach(viewModel.cells, id: \.title) { rowViewModel in
+                SummaryRow(viewModel: rowViewModel)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+            }
         }
         .padding(Constants.padding)
     }
