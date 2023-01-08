@@ -14,7 +14,7 @@
                 {
 					"package": "Swinject",
 					"product": "Swinject-Dynamic",
-                    "embed": true
+                    "embed": false
 				},
                 {
                     "target": "Core"
