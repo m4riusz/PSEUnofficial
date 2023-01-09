@@ -12,7 +12,7 @@ struct FlowCrossBorderExchangeRow: View {
     private struct Constants {
         static let spacing: CGFloat = 8
     }
-    private typealias Colors = Assets.Colors.iOS
+    private typealias Colors = Assets.Colors.Core
     let viewModel: FlowCrossBorderExchangeViewModel
 
     var body: some View {

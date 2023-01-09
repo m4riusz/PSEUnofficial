@@ -12,3 +12,29 @@ public struct PSEStatus {
     public let date: Date
     public let data: PSEData
 }
+
+// MARK: - Equatable
+extension PSEStatus: Equatable { /* Nop */ }
+
+extension PSEStatus {
+    public static var placeholder: PSEStatus {
+        .init(status: "",
+              date: .now,
+              data: .init(flows: [.init(direction: .slovakia,
+                                        value: 100,
+                                        parallel: false,
+                                        planned: 120),
+                                  .init(direction: .germany,
+                                        value: 1200,
+                                        parallel: true,
+                                        planned: 321)],
+                          summary: .init(water: 100,
+                                         wind: 200,
+                                         solar: 300,
+                                         thermal: 400,
+                                         other: 500,
+                                         frequency: 50,
+                                         load: 700,
+                                         generation: 800)))
+    }
+}

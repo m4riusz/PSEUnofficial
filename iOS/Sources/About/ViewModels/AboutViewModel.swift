@@ -11,6 +11,9 @@ import Foundation
 @MainActor
 final class AboutViewModel: ObservableObject {
     private typealias Literals = Assets.Strings.iOS.About
+    private struct Constants {
+        static let repoUrl = "https://github.com/m4riusz/PSEUnofficial"
+    }
     private let appInfoProvider: AppInformationProviderProtocol
     private let urlHandler: UrlHandlerProtocol
 
@@ -22,6 +25,7 @@ final class AboutViewModel: ObservableObject {
     var items: [AboutRowViewModel] {
         [appNameViewModel,
          descriptionViewModel,
+         repositoryLinkViewModel,
          apiLinkViewModel,
          iconLinkViewModel,
          versionViewModel].compactMap { $0 }
@@ -51,6 +55,16 @@ final class AboutViewModel: ObservableObject {
             return nil
         }
         return .link(title: Literals.Link.Icon.title, linkViewModel: .init(url: url, tap: { [weak self] in
+            guard let strongSelf = self else { return }
+            strongSelf.urlHandler.openUrl(url: url, completion: nil)
+        }))
+    }
+
+    private var repositoryLinkViewModel: AboutRowViewModel? {
+        guard let url = URL(string: Constants.repoUrl) else {
+            return nil
+        }
+        return .link(title: Literals.Link.Repository.title, linkViewModel: .init(url: url, tap: { [weak self] in
             guard let strongSelf = self else { return }
             strongSelf.urlHandler.openUrl(url: url, completion: nil)
         }))

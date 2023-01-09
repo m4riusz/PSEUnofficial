@@ -7,7 +7,7 @@
 
 import Core
 import XCTest
-import SwiftUI
+import TestKit
 import SnapshotTesting
 @testable import iOS
 

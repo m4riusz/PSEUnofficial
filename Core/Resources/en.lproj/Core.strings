@@ -2,3 +2,13 @@
 "Common/exported" = "export";
 "Common/imported" = "import";
 "Common/planned" = "Planned:";
+"Summary/frequency" = "Frequency [Hz]";
+"Summary/generation" = "Generation [MW]";
+"Summary/load" = "Load [MW]";
+"Summary/other" = "other renewables";
+"Summary/solar" = "solar power plants";
+"Summary/thermal" = "thermal power plants";
+"Summary/total" = "Actual total cross-border exchange [MW]";
+"Summary/totalShort" = "Total exchange [MW]";
+"Summary/water" = "water power plants";
+"Summary/wind" = "wind power plants";

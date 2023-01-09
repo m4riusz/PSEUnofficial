@@ -14,7 +14,7 @@ struct ErrorView: View {
         static let smallSpacing: CGFloat = 4
         static let bigSpasing: CGFloat = 16
     }
-    private typealias Colors = Assets.Colors.iOS
+    private typealias Colors = Assets.Colors.Core
     private typealias Images = Assets.Images.iOS
     let viewModel: ErrorViewModel
 

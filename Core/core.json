@@ -17,6 +17,12 @@
             "dependencies": [
                 {
                     "target": "iOS"
+                },
+                {
+                    "package": "SnapshotTesting"
+                },
+                {
+                    "target": "TestKit"
                 }
             ],
             "settings": {

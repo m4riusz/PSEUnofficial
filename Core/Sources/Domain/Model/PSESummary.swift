@@ -17,3 +17,6 @@ public struct PSESummary {
     public let load: Double
     public let generation: Double
 }
+
+// MARK: - Equatable
+extension PSESummary: Equatable { /* Nop */ }

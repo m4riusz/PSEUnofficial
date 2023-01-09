@@ -9,7 +9,7 @@ import SwiftUI
 import Core
 
 struct FlowSummaryRow: View {
-    private typealias Colors = Assets.Colors.iOS
+    private typealias Colors = Assets.Colors.Core
     private struct Constants {
         static let imageSize = CGSize(width: 25, height: 25)
     }

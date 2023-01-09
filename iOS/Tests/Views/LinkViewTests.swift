@@ -13,7 +13,7 @@ import SnapshotTesting
 
 final class LinkViewTests: XCTestCase {
     private struct Constants {
-        static let size = CGSize(width: 0, height: 0)
+        static let size = CGSize(width: 120, height: 0)
     }
     private var flowValue = 100.0
     private var text: String?

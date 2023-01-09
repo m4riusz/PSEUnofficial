@@ -1,0 +1,34 @@
+{
+    "targets": {
+        "iOSWidget": {
+            "platform": "iOS",
+            "type": "app-extension",
+			"templates": [
+				"BaseTarget"
+			],
+            "settings" : {
+                "PRODUCT_BUNDLE_IDENTIFIER": "pl.msut.PSEUnofficial.iOSWidget",
+                "CODE_SIGN_STYLE": "Manual"
+            },
+            "dependencies": [
+                {
+					"package": "Swinject",
+					"product": "Swinject-Dynamic",
+                    "embed": true
+				},
+                {
+                    "target": "Core"
+                },
+                {
+                    "sdk": "WidgetKit.framework"
+                }
+            ],
+	        "preBuildScripts": [
+		        {
+			        "name": "Swiftlint",
+			        "path": "../Scripts/Swiftlint.sh"
+		        }
+	        ]
+        }
+    }
+}

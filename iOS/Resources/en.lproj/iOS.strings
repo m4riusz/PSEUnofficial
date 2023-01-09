@@ -10,15 +10,6 @@
 "List/title" = "Data";
 "Main/About/tab" = "Info";
 "Main/PowerStatus/tab" = "Status";
-"Summary/frequency" = "Frequency [Hz]";
-"Summary/generation" = "Generation [MW]";
-"Summary/load" = "Load [MW]";
-"Summary/other" = "other renewables";
-"Summary/solar" = "solar power plants";
-"Summary/thermal" = "thermal power plants";
-"Summary/total" = "Actual total cross-border exchange [MW]";
-"Summary/water" = "water power plants";
-"Summary/wind" = "wind power plants";
 "CrossBorder/parallelExchange" = "Cross-border exchange with synchronous zone";
 "CrossBorder/nonParallelExchange" = "Cross-border exchange with non synchronous zone";
 "Loading/title" = "Fetching data";
@@ -31,3 +22,4 @@
 "About/Link/Api/provider" = "https://www.pse.pl/web/pse-eng/data";
 "About/Link/Icon/title" = "Icons provided by";
 "About/Link/Icon/provider" = "https://www.svgrepo.com";
+"About/Link/Repository/title" = "Source code repository";
