@@ -20,90 +20,90 @@ final class FlowViewTests: XCTestCase {
                                                      formatter: formatter))
 
     func testHorizontalImportLightMode() {
-        assertSnapshot(matching: sut, as: .standardImage())
+        assertSnapshot(of: sut, as: .standardImage())
     }
 
     func testHorizontalExportLightMode() {
         flowValue = -100
-        assertSnapshot(matching: sut, as: .standardImage())
+        assertSnapshot(of: sut, as: .standardImage())
     }
 
     func testHorizontalNoneLightMode() {
         flowValue = 0
-        assertSnapshot(matching: sut, as: .standardImage())
+        assertSnapshot(of: sut, as: .standardImage())
     }
 
     func testHorizontalImportDarkMode() {
-        assertSnapshot(matching: sut, as: .standardImage(mode: .dark))
+        assertSnapshot(of: sut, as: .standardImage(mode: .dark))
     }
 
     func testHorizontalExportDarkMode() {
         flowValue = -100
-        assertSnapshot(matching: sut, as: .standardImage(mode: .dark))
+        assertSnapshot(of: sut, as: .standardImage(mode: .dark))
     }
 
     func testHorizontalNoneDarkMode() {
         flowValue = 0
-        assertSnapshot(matching: sut, as: .standardImage(mode: .dark))
+        assertSnapshot(of: sut, as: .standardImage(mode: .dark))
     }
 
     func testVerticalImportLightMode() {
         orientation = .vertical
-        assertSnapshot(matching: sut, as: .standardImage())
+        assertSnapshot(of: sut, as: .standardImage())
     }
 
     func testVerticalExportLightMode() {
         orientation = .vertical
         flowValue = -100
-        assertSnapshot(matching: sut, as: .standardImage())
+        assertSnapshot(of: sut, as: .standardImage())
     }
 
     func testVerticalNoneLightMode() {
         orientation = .vertical
         flowValue = 0
-        assertSnapshot(matching: sut, as: .standardImage())
+        assertSnapshot(of: sut, as: .standardImage())
     }
 
     func testVerticalImportDarkMode() {
         orientation = .vertical
-        assertSnapshot(matching: sut, as: .standardImage(mode: .dark))
+        assertSnapshot(of: sut, as: .standardImage(mode: .dark))
     }
 
     func testVerticalExportDarkMode() {
         orientation = .vertical
         flowValue = -100
-        assertSnapshot(matching: sut, as: .standardImage(mode: .dark))
+        assertSnapshot(of: sut, as: .standardImage(mode: .dark))
     }
 
     func testVerticalNoneDarkMode() {
         orientation = .vertical
         flowValue = 0
-        assertSnapshot(matching: sut, as: .standardImage(mode: .dark))
+        assertSnapshot(of: sut, as: .standardImage(mode: .dark))
     }
 
     func testFormatterHorizontalLightMode() {
         flowValue = -100
         formatter = DoubleFormatter(minimumFractionDigits: 3, maximumFractionDigits: 3)
-        assertSnapshot(matching: sut, as: .standardImage())
+        assertSnapshot(of: sut, as: .standardImage())
     }
 
     func testFormatterHorizontalDarkMode() {
         flowValue = -100
         formatter = DoubleFormatter(minimumFractionDigits: 3, maximumFractionDigits: 3)
-        assertSnapshot(matching: sut, as: .standardImage(mode: .dark))
+        assertSnapshot(of: sut, as: .standardImage(mode: .dark))
     }
 
     func testFormatterVerticalLightMode() {
         orientation = .vertical
         flowValue = -100
         formatter = DoubleFormatter(minimumFractionDigits: 3, maximumFractionDigits: 3)
-        assertSnapshot(matching: sut, as: .standardImage())
+        assertSnapshot(of: sut, as: .standardImage())
     }
 
     func testFormatterVerticalDarkMode() {
         orientation = .vertical
         flowValue = -100
         formatter = DoubleFormatter(minimumFractionDigits: 3, maximumFractionDigits: 3)
-        assertSnapshot(matching: sut, as: .standardImage(mode: .dark))
+        assertSnapshot(of: sut, as: .standardImage(mode: .dark))
     }
 }

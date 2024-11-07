@@ -11,7 +11,7 @@ import TestKit
 import SnapshotTesting
 @testable import iOS
 
-final class FlowCountryRowTests: XCTestCase {
+final class FlowCountryRowTests: BaseUnitTest {
     private var country = PSEDirection.sweden
     private var currentValue = 100.0
     private var plannedValue = 200.0
@@ -23,52 +23,52 @@ final class FlowCountryRowTests: XCTestCase {
                                                            doubleFormatter: formatter))
 
     func testCurrentImportPlannedImportLightMode() {
-        assertSnapshot(matching: sut, as: .standardImage())
+        assertSnapshot(of: sut, as: .standardImage())
     }
 
     func testCurrentImportPlannedExportLightMode() {
         plannedValue = -200
-        assertSnapshot(matching: sut, as: .standardImage())
+        assertSnapshot(of: sut, as: .standardImage())
     }
 
     func testCurrentExportPlannedImportLightMode() {
         currentValue = -200
-        assertSnapshot(matching: sut, as: .standardImage())
+        assertSnapshot(of: sut, as: .standardImage())
     }
 
     func testCurrentExportPlannedExportLightMode() {
         currentValue = -100
         plannedValue = -200
-        assertSnapshot(matching: sut, as: .standardImage())
+        assertSnapshot(of: sut, as: .standardImage())
     }
 
     func testCurrentImportPlannedImportDarkMode() {
-        assertSnapshot(matching: sut, as: .standardImage(mode: .dark))
+        assertSnapshot(of: sut, as: .standardImage(mode: .dark))
     }
 
     func testCurrentImportPlannedExportDarkMode() {
         plannedValue = -200
-        assertSnapshot(matching: sut, as: .standardImage(mode: .dark))
+        assertSnapshot(of: sut, as: .standardImage(mode: .dark))
     }
 
     func testCurrentExportPlannedImportDarkMode() {
         currentValue = -200
-        assertSnapshot(matching: sut, as: .standardImage(mode: .dark))
+        assertSnapshot(of: sut, as: .standardImage(mode: .dark))
     }
 
     func testCurrentExportPlannedExportDarkMode() {
         currentValue = -100
         plannedValue = -200
-        assertSnapshot(matching: sut, as: .standardImage(mode: .dark))
+        assertSnapshot(of: sut, as: .standardImage(mode: .dark))
     }
 
     func testDifferentFormatterLightMode() {
         formatter = DoubleFormatter(minimumFractionDigits: 3, maximumFractionDigits: 3)
-        assertSnapshot(matching: sut, as: .standardImage())
+        assertSnapshot(of: sut, as: .standardImage())
     }
 
     func testDifferentFormatterDarkMode() {
         formatter = DoubleFormatter(minimumFractionDigits: 3, maximumFractionDigits: 3)
-        assertSnapshot(matching: sut, as: .standardImage(mode: .dark))
+        assertSnapshot(of: sut, as: .standardImage(mode: .dark))
     }
 }

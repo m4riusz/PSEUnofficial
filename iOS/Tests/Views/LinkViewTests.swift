@@ -8,10 +8,11 @@
 import Core
 import XCTest
 import SwiftUI
+import TestKit
 import SnapshotTesting
 @testable import iOS
 
-final class LinkViewTests: XCTestCase {
+final class LinkViewTests: BaseUnitTest {
     private struct Constants {
         static let size = CGSize(width: 120, height: 0)
     }
@@ -21,20 +22,20 @@ final class LinkViewTests: XCTestCase {
     private lazy var sut = LinkView(viewModel: .init(text: text, url: url, tap: { }))
 
     func testNoTextLightMode() {
-        assertSnapshot(matching: sut, as: .standardImage(size: Constants.size))
+        assertSnapshot(of: sut, as: .standardImage(size: Constants.size))
     }
 
     func testNoTextDarkMode() {
-        assertSnapshot(matching: sut, as: .standardImage(size: Constants.size, mode: .dark))
+        assertSnapshot(of: sut, as: .standardImage(size: Constants.size, mode: .dark))
     }
 
     func testTextLightMode() {
         text = "Hello"
-        assertSnapshot(matching: sut, as: .standardImage(size: Constants.size))
+        assertSnapshot(of: sut, as: .standardImage(size: Constants.size))
     }
 
     func testTextDarkMode() {
         text = "Hello"
-        assertSnapshot(matching: sut, as: .standardImage(size: Constants.size, mode: .dark))
+        assertSnapshot(of: sut, as: .standardImage(size: Constants.size, mode: .dark))
     }
 }

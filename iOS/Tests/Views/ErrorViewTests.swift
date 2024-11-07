@@ -8,10 +8,10 @@
 import Core
 import XCTest
 import SwiftUI
-import SnapshotTesting
+import TestKit
 @testable import iOS
 
-final class ErrorViewTests: XCTestCase {
+final class ErrorViewTests: BaseUnitTest {
     private struct Constants {
         static let size = CGSize(width: 375, height: 375)
     }
@@ -24,10 +24,10 @@ final class ErrorViewTests: XCTestCase {
                                                       onAction: {}))
 
     func testLightMode() {
-        assertSnapshot(matching: sut, as: .standardImage(size: Constants.size))
+        assertSnapshot(of: sut, as: .standardImage(size: Constants.size))
     }
 
     func testDarkMode() {
-        assertSnapshot(matching: sut, as: .standardImage(size: Constants.size, mode: .dark))
+        assertSnapshot(of: sut, as: .standardImage(size: Constants.size, mode: .dark))
     }
 }

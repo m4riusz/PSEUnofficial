@@ -7,9 +7,10 @@
 
 import XCTest
 import Core
+import TestKit
 @testable import iOS
 
-final class FlowCrossBorderExchangeViewModelTests: XCTestCase {
+final class FlowCrossBorderExchangeViewModelTests: BaseUnitTest {
     private typealias Literals = Assets.Strings.Core.Common
     private var title = "title"
     private var currentValue = 100.0

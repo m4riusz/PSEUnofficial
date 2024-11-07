@@ -7,7 +7,7 @@
 
 import Core
 
-class AppInformationProviderProtocolStub: AppInformationProviderProtocol {
+final class AppInformationProviderProtocolStub: AppInformationProviderProtocol {
     var appName: String?
     var appVersion: String?
     var appBuild: String?

@@ -7,9 +7,10 @@
 
 import XCTest
 import Core
+import TestKit
 @testable import iOS
 
-final class FlowViewModelTests: XCTestCase {
+final class FlowViewModelTests: BaseUnitTest {
     private typealias Literals = Assets.Strings.Core.Common
     private typealias Colors = Assets.Colors.iOS
     private var orientation = FlowViewModel.Orientation.vertical

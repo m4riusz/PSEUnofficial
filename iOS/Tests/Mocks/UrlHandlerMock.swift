@@ -8,7 +8,7 @@
 import Core
 import Foundation
 
-class UrlHandlerMock: UrlHandlerProtocol {
+final class UrlHandlerMock: UrlHandlerProtocol {
     var result = true
     private (set) var lastOpenedUrl: URL?
 
