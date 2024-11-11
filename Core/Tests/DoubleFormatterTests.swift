@@ -6,10 +6,10 @@
 //
 
 import XCTest
-
+import TestKit
 @testable import Core
 
-final class FormatterTests: XCTestCase {
+final class FormatterTests: BaseUnitTest {
     private var number = 1.123456789
     private var minimumFractionDigits = 0
     private var maximumFractionDigits = 0

@@ -5,13 +5,12 @@
 //  Created by Mariusz Sut on 27/02/2022.
 //
 
-import Core
+@testable import Core
 import XCTest
 import TestKit
 import SnapshotTesting
-@testable import iOS
 
-final class FlowViewTests: XCTestCase {
+final class FlowViewTests: BaseUnitTest {
     private var flowValue = 100.0
     private var orientation = FlowViewModel.Orientation.horizontal
     private var formatter = DoubleFormatter(minimumFractionDigits: 0, maximumFractionDigits: 0)

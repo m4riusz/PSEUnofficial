@@ -6,10 +6,10 @@
 //
 
 import XCTest
-
+import TestKit
 @testable import Core
 
-final class PSEGetStatusUseCaseTests: XCTestCase {
+final class PSEGetStatusUseCaseTests: BaseUnitTest {
 
     private let repository = PSERepositoryProtocolMock()
     private lazy var sut = PSEGetStatusUseCase(repository: repository)

@@ -7,8 +7,9 @@
 
 import XCTest
 @testable import Core
+import TestKit
 
-final class PSEJsonDecoderTests: XCTestCase {
+final class PSEJsonDecoderTests: BaseUnitTest {
     private struct Constants {
         static let testFile = "transmission-map-service-sample.json"
     }

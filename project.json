@@ -1,74 +1,149 @@
 {
-	"name": "PSEUnofficial",
-	"options": {
-		"bundleIdPrefix": "pl.msut",
-		"createIntermediateGroups": true,
-		"generateEmptyDirectories": true,
-		"groupSortPosition": "top",
-		"groupOrdering": [
-			{
-				"order": ["Sources", "Resources", "Tests", "UITests"],
-				"pattern": ".*"
-			}
-		],
-		"deploymentTarget": {
-			"iOS": "15.0"
-		}
-	},
-	"include": [
-		"templates.json",
-		"packages.json",
-		"TestKit/test_kit.json",
-		"Core/core.json",
-		"iOS/ios.json",
-		"iOSWidget/ios_widget.json"
-	],
-	"schemes": {
-		"iOS": {
-			"build": {
-				"targets": {
-					"iOS": "all"
+    "name": "PSEUnofficial",
+    "options": {
+        "bundleIdPrefix": "pl.msut",
+        "createIntermediateGroups": true,
+        "generateEmptyDirectories": true,
+        "groupSortPosition": "top",
+        "groupOrdering": [
+            {
+                "order": [
+                    "Sources",
+                    "Resources",
+                    "Tests",
+                    "UITests"
+                ],
+                "pattern": ".*"
+            }
+        ],
+        "deploymentTarget": {
+            "iOS": "15.0"
+        }
+    },
+    "include": [
+        "packages.json"
+    ],
+    "targets": {
+        "Core": {
+            "type": "framework",
+            "platform": "iOS",
+            "sources": [
+                {
+                    "path": "Core/Sources"
+                },
+				{
+                    "path": "Core/Resources"
+                },
+                {
+                    "path": "Core/Info.plist"
+                }
+            ],
+			"dependencies": [
+				{
+					"package": "Swinject"
 				}
-			},
-			"test": {
-				"gatherCoverageData": true,
-				"language": "pl",
-				"region": "PL",
-				"coverageTargets": [
-					"Core",
-					"iOS"
-				],
-				"targets": [
-					"CoreTests",
-					"iOSTests"
-				]
-			}
-		},
-		"iOSUITests": {
-			"build": {
-				"targets": {
-					"iOSUITests": [
-						"run",
-						"test"
-					]
+			]
+        },
+        "CoreTests": {
+            "type": "bundle.unit-test",
+            "platform": "iOS",
+            "sources": [
+                {
+                    "path": "Core/Tests",
+                    "excludes": [
+                        "**/__Snapshots__"
+                    ]
+                },
+                {
+                    "path": "Core/Info.plist"
+                }
+            ],
+			"dependencies": [
+				{
+					"target": "Core"
+				},
+				{
+					"target": "TestKit"
 				}
-			},
-			"test": {
-				"targets": [
-					"iOSUITests"
-				]
-			}
-		},
-		"iOSWidget": {
-			"build": {
-				"targets": {
-					"iOS": "all",
-					"iOSWidget": "all"
+			]
+        },
+        "TestKit": {
+            "type": "framework",
+            "platform": "iOS",
+            "sources": [
+                {
+                    "path": "TestKit/Sources"
+                },
+                {
+                    "path": "TestKit/Info.plist"
+                }
+            ],
+			"dependencies": [
+				{
+                    "sdk": "XCTest.framework"
+                },
+                {
+                    "package": "SnapshotTesting"
+                }
+			]
+        },
+        "iOS": {
+            "type": "application",
+            "platform": "iOS",
+            "configFiles": {
+                "Debug": "iOS/Configs/Debug.xcconfig",
+                "Release": "iOS/Configs/Release.xcconfig"
+            },
+            "settings": {
+                "PRODUCT_BUNDLE_IDENTIFIER": "pl.msut.PSEUnofficial",
+                "CODE_SIGN_STYLE": "Manual"
+            },
+            "sources": [
+                {
+                    "path": "iOS/Sources"
+                },
+                {
+                    "path": "iOS/Resources"
+                },
+                {
+                    "path": "iOS/Info.plist"
+                }
+            ],
+            "dependencies": [
+                {
+					"target": "Core"
+				},
+				{
+					"package": "Swinject"
 				}
-			},
-			"run": {
-				"askForAppToLaunch": true
-			}
-		}
-	}
+			]
+        },
+        "iOSUnitTests": {
+            "type": "bundle.unit-test",
+            "platform": "iOS",
+            "sources": [
+                {
+                    "path": "iOS/Tests",
+                    "excludes": [
+                        "**/__Snapshots__"
+                    ]
+                },
+                {
+                    "path": "iOS/Info.plist"
+                }
+            ]
+        },
+        "iOSUITests": {
+            "type": "bundle.ui-testing",
+            "platform": "iOS",
+            "sources": [
+                {
+                    "path": "iOS/UITests"
+                },
+                {
+                    "path": "iOS/Info.plist"
+                }
+            ]
+        }
+    }
 }

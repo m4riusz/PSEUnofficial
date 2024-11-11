@@ -6,9 +6,10 @@
 //
 
 import XCTest
+import TestKit
 @testable import Core
 
-final class FlowTypeTests: XCTestCase {
+final class FlowTypeTests: BaseUnitTest {
     typealias Colors = Assets.Colors.Core
     typealias Literals = Assets.Strings.Core.Common
     private var value = 123.0
