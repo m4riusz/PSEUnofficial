@@ -1,0 +1,52 @@
+{
+    "targets": {
+        "Core": {
+            "type": "framework",
+            "supportedDestinations": ["iOS"],
+            "platform": "iOS",
+            "sources": [
+                {
+                    "path": "../Core/Sources"
+                },
+				{
+                    "path": "../Core/Resources"
+                },
+                {
+                    "path": "../Core/Info.plist"
+                }
+            ],
+			"dependencies": [
+				{
+					"package": "Swinject"
+				}
+			]
+        },
+        "CoreTests": {
+            "type": "bundle.unit-test",
+            "supportedDestinations": ["iOS"],
+            "platform": "iOS",
+            "sources": [
+                {
+                    "path": "../Core/Tests",
+                    "excludes": [
+                        "**/__Snapshots__"
+                    ]
+                },
+                {
+                    "path": "../Core/Info.plist"
+                }
+            ],
+			"dependencies": [
+				{
+					"target": "Core"
+				},
+				{
+					"target": "TestKit"
+				}
+			],
+            "settings": {
+                "TEST_HOST": "$(BUILT_PRODUCTS_DIR)/iOS.app/iOS"
+            }
+        }
+    }
+}

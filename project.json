@@ -17,133 +17,70 @@
             }
         ],
         "deploymentTarget": {
-            "iOS": "15.0"
+            "iOS": "17.0"
         }
     },
     "include": [
-        "packages.json"
+        "xcodegen/packages.json",
+        "xcodegen/test_kit.json",
+        "xcodegen/core.json",
+        "xcodegen/ios.json"
     ],
-    "targets": {
-        "Core": {
-            "type": "framework",
-            "platform": "iOS",
-            "sources": [
-                {
-                    "path": "Core/Sources"
-                },
-				{
-                    "path": "Core/Resources"
-                },
-                {
-                    "path": "Core/Info.plist"
-                }
-            ],
-			"dependencies": [
-				{
-					"package": "Swinject"
-				}
-			]
-        },
-        "CoreTests": {
-            "type": "bundle.unit-test",
-            "platform": "iOS",
-            "sources": [
-                {
-                    "path": "Core/Tests",
-                    "excludes": [
-                        "**/__Snapshots__"
-                    ]
-                },
-                {
-                    "path": "Core/Info.plist"
-                }
-            ],
-			"dependencies": [
-				{
-					"target": "Core"
-				},
-				{
-					"target": "TestKit"
-				}
-			]
-        },
-        "TestKit": {
-            "type": "framework",
-            "platform": "iOS",
-            "sources": [
-                {
-                    "path": "TestKit/Sources"
-                },
-                {
-                    "path": "TestKit/Info.plist"
-                }
-            ],
-			"dependencies": [
-				{
-                    "sdk": "XCTest.framework"
-                },
-                {
-                    "package": "SnapshotTesting"
-                }
-			]
-        },
+    "schemes": {
         "iOS": {
-            "type": "application",
-            "platform": "iOS",
-            "configFiles": {
-                "Debug": "iOS/Configs/Debug.xcconfig",
-                "Release": "iOS/Configs/Release.xcconfig"
-            },
-            "settings": {
-                "PRODUCT_BUNDLE_IDENTIFIER": "pl.msut.PSEUnofficial",
-                "CODE_SIGN_STYLE": "Manual"
-            },
-            "sources": [
-                {
-                    "path": "iOS/Sources"
-                },
-                {
-                    "path": "iOS/Resources"
-                },
-                {
-                    "path": "iOS/Info.plist"
-                }
-            ],
-            "dependencies": [
-                {
-					"target": "Core"
-				},
-				{
-					"package": "Swinject"
+			"build": {
+				"targets": {
+					"iOS": "all"
 				}
-			]
-        },
-        "iOSUnitTests": {
-            "type": "bundle.unit-test",
-            "platform": "iOS",
-            "sources": [
-                {
-                    "path": "iOS/Tests",
-                    "excludes": [
-                        "**/__Snapshots__"
-                    ]
-                },
-                {
-                    "path": "iOS/Info.plist"
-                }
-            ]
-        },
-        "iOSUITests": {
-            "type": "bundle.ui-testing",
-            "platform": "iOS",
-            "sources": [
-                {
-                    "path": "iOS/UITests"
-                },
-                {
-                    "path": "iOS/Info.plist"
-                }
-            ]
-        }
+			},
+			"run": {
+				"gatherCoverageData": true,
+				"language": "pl",
+				"region": "PL",
+				"coverageTargets": [
+					"Core",
+					"iOS"
+				],
+				"targets": [
+					"CoreTests",
+					"iOSTests"
+				]
+			}
+		},
+		"UnitTests": {
+			"build": {
+				"targets": {
+					"iOS": "all"
+				}
+			},
+			"test": {
+				"gatherCoverageData": true,
+				"language": "pl",
+				"region": "PL",
+				"coverageTargets": [
+					"Core",
+					"iOS"
+				],
+				"targets": [
+					"CoreTests",
+					"iOSUnitTests"
+				]
+			}
+		},
+        "UITests": {
+			"build": {
+				"targets": {
+					"iOSUITests": [
+						"run",
+						"test"
+					]
+				}
+			},
+			"test": {
+				"targets": [
+					"iOSUITests"
+				]
+			}
+		}
     }
 }

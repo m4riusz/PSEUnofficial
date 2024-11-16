@@ -1,0 +1,76 @@
+{
+    "targets": {
+        "iOS": {
+            "type": "application",
+            "supportedDestinations": ["iOS"],
+            "platform": "iOS",
+            "configFiles": {
+                "Debug": "../iOS/Configs/Debug.xcconfig",
+                "Release": "../iOS/Configs/Release.xcconfig"
+            },
+            "settings": {
+                "PRODUCT_BUNDLE_IDENTIFIER": "pl.msut.PSEUnofficial",
+                "CODE_SIGN_STYLE": "Manual"
+            },
+            "sources": [
+                {
+                    "path": "../iOS/Sources"
+                },
+                {
+                    "path": "../iOS/Resources"
+                },
+                {
+                    "path": "../iOS/Info.plist"
+                }
+            ],
+            "dependencies": [
+                {
+					"target": "Core"
+				},
+				{
+					"package": "Swinject"
+				}
+			]
+        },
+        "iOSUnitTests": {
+            "type": "bundle.unit-test",
+            "supportedDestinations": ["iOS"],
+            "platform": "iOS",
+            "sources": [
+                {
+                    "path": "../iOS/Tests",
+                    "excludes": [
+                        "**/__Snapshots__"
+                    ]
+                },
+                {
+                    "path": "../iOS/Info.plist"
+                }
+            ],
+            "dependencies": [
+				{
+					"target": "iOS"
+				},
+				{
+					"target": "TestKit"
+				}
+			],
+            "settings": {
+                "TEST_HOST": "$(BUILT_PRODUCTS_DIR)/iOS.app/iOS"
+            }
+        },
+        "iOSUITests": {
+            "type": "bundle.ui-testing",
+            "supportedDestinations": ["iOS"],
+            "platform": "iOS",
+            "sources": [
+                {
+                    "path": "../iOS/UITests"
+                },
+                {
+                    "path": "../iOS/Info.plist"
+                }
+            ]
+        }
+    }
+}

@@ -9,12 +9,28 @@ import SwiftUI
 import Swinject
 import Core
 
-struct iOSApp: App {
+@main
+struct AppLauncher {
+    static func main() throws {
+        if NSClassFromString("XCTestCase") == nil {
+            iOSApp.main()
+        } else {
+            TestApp.main()
+        }
+    }
+}
 
+struct iOSApp: App {
     var body: some Scene {
         WindowGroup {
             MainView(container: iOSAssembler(container: Container(),
                                              launchEnvironment: LaunchEnvironment(enviroment: ProcessInfo().environment)).assembly())
         }
+    }
+}
+
+struct TestApp: App {
+    var body: some Scene {
+        WindowGroup { Text("Running Unit Tests").foregroundStyle(.red) }
     }
 }

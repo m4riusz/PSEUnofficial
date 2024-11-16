@@ -1,6 +1,6 @@
 xcodebuild \
 	-project PSEUnofficial.xcodeproj \
-	-scheme iOSUITests \
+	-scheme UITests \
 	-sdk iphonesimulator \
-	-destination 'platform=iOS Simulator,name=iPhone 15,OS=17.2' \
+	-destination 'platform=iOS Simulator,name=iPhone SE (3rd generation),OS=17.2' \
 	test

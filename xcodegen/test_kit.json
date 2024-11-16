@@ -1,0 +1,25 @@
+{
+    "targets": {
+        "TestKit": {
+            "type": "framework",
+            "supportedDestinations": ["iOS"],
+            "platform": "iOS",
+            "sources": [
+                {
+                    "path": "../TestKit/Sources"
+                },
+                {
+                    "path": "../TestKit/Info.plist"
+                }
+            ],
+			"dependencies": [
+				{
+                    "sdk": "XCTest.framework"
+                },
+                {
+                    "package": "SnapshotTesting"
+                }
+			]
+        }
+    }
+}
