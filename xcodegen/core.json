@@ -1,0 +1,74 @@
+{
+	"targets":{
+		"Core":{
+			"type":"framework",
+			"platform":"iOS",
+			"settings":{
+				"PRODUCT_BUNDLE_IDENTIFIER":"pl.msut.core",
+                "INFOPLIST_FILE": "Core/Configs/Info.plist", 
+                "CODE_SIGN_STYLE": "Manual"
+			},
+			"sources":[
+				{
+					"path":"../Core/Sources"
+				},
+				{
+					"path":"../Core/Resources"
+				},
+                {
+                    "path": "../Core/Configs/Info.plist"
+                }
+			],
+			"dependencies":[
+				{
+					"package":"Swinject",
+					"product":"Swinject-Dynamic"
+				}
+			],
+			"scheme":{
+				"gatherCovergageData":true,
+				"testTargets":[
+					{
+						"name":"CoreTests",
+						"parallelizable":true,
+						"randomExecutionOrder":true
+					}
+				]
+			}
+		},
+		"CoreTests":{
+			"type":"bundle.unit-test",
+			"platform":"iOS",
+			"settings":{
+                "INFOPLIST_FILE":"Core/Configs/Info-Test.plist",
+				"PRODUCT_BUNDLE_IDENTIFIER":"pl.msut.core.unit.tests",
+				"CODE_SIGN_STYLE":"Manual"
+			},
+			"sources":[
+				{
+					"path":"../Core/Tests",
+					"excludes":[
+						"**/__Snapshots__"
+					]
+				},
+                {
+                    "path": "../Core/Configs/Info-Test.plist"
+                }
+			],
+			"dependencies":[
+				{
+					"target":"Core"
+				},
+				{
+					"target":"TestKit"
+				}
+			],
+			"scheme":{
+                "gatherCoverageData":true,
+				"testTargets":[
+					"CoreTests"
+				]
+			}
+		}
+	}
+}

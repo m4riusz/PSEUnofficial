@@ -6,10 +6,11 @@
 //
 
 import XCTest
+import TestKit
 import Core
 @testable import iOS
 
-final class AboutViewModelTests: XCTestCase {
+final class AboutViewModelTests: BaseUnitTest {
     private typealias Literals = Assets.Strings.iOS.About
     private struct Constatns {
         static let repoUrl = "https://github.com/m4riusz/PSEUnofficial"

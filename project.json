@@ -1,74 +1,32 @@
 {
-	"name": "PSEUnofficial",
-	"options": {
-		"bundleIdPrefix": "pl.msut",
-		"createIntermediateGroups": true,
-		"generateEmptyDirectories": true,
-		"groupSortPosition": "top",
-		"groupOrdering": [
-			{
-				"order": ["Sources", "Resources", "Tests", "UITests"],
-				"pattern": ".*"
-			}
-		],
-		"deploymentTarget": {
-			"iOS": "15.0"
-		}
+    "name": "PSEUnofficial",
+    "options": {
+        "bundleIdPrefix": "pl.msut",
+        "createIntermediateGroups": true,
+        "generateEmptyDirectories": true,
+        "groupSortPosition": "top",
+        "groupOrdering": [
+            {
+                "order": [
+                    "Sources",
+                    "Resources",
+                    "Tests",
+                    "UITests"
+                ],
+                "pattern": ".*"
+            }
+        ],
+        "deploymentTarget": {
+            "iOS": "17.0"
+        }
+    },
+	"settings": {
+		"IPHONEOS_DEPLOYMENT_TARGET": "17.0"
 	},
-	"include": [
-		"templates.json",
-		"packages.json",
-		"TestKit/test_kit.json",
-		"Core/core.json",
-		"iOS/ios.json",
-		"iOSWidget/ios_widget.json"
-	],
-	"schemes": {
-		"iOS": {
-			"build": {
-				"targets": {
-					"iOS": "all"
-				}
-			},
-			"test": {
-				"gatherCoverageData": true,
-				"language": "pl",
-				"region": "PL",
-				"coverageTargets": [
-					"Core",
-					"iOS"
-				],
-				"targets": [
-					"CoreTests",
-					"iOSTests"
-				]
-			}
-		},
-		"iOSUITests": {
-			"build": {
-				"targets": {
-					"iOSUITests": [
-						"run",
-						"test"
-					]
-				}
-			},
-			"test": {
-				"targets": [
-					"iOSUITests"
-				]
-			}
-		},
-		"iOSWidget": {
-			"build": {
-				"targets": {
-					"iOS": "all",
-					"iOSWidget": "all"
-				}
-			},
-			"run": {
-				"askForAppToLaunch": true
-			}
-		}
-	}
+    "include": [
+        "xcodegen/packages.json",
+        "xcodegen/test_kit.json",
+        "xcodegen/core.json",
+        "xcodegen/ios.json"
+    ]
 }

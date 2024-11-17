@@ -12,7 +12,7 @@ import SwiftUI
 import SnapshotTesting
 @testable import iOS
 
-final class FlowSummaryRowTests: XCTestCase {
+final class FlowSummaryRowTests: BaseUnitTest {
     private var image: Image?
     private var title = "title"
     private var flowValue = 0.0
@@ -22,62 +22,62 @@ final class FlowSummaryRowTests: XCTestCase {
 
     func testNoImageLongTextPrimaryTypeDarkMode() {
         title = "Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet"
-        assertSnapshot(matching: sut, as: .standardImage(mode: .dark))
+        assertSnapshot(of: sut, as: .standardImage(mode: .dark))
     }
 
     func testNoImageLongTextPrimaryTypeLightMode() {
         title = "Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet"
-        assertSnapshot(matching: sut, as: .standardImage())
+        assertSnapshot(of: sut, as: .standardImage())
     }
 
     func testNoImageLongTextSecondaryTypeDarkMode() {
         title = "Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet"
         rowType = .secondary(value: flowValue, formatter: formatter)
-        assertSnapshot(matching: sut, as: .standardImage(mode: .dark))
+        assertSnapshot(of: sut, as: .standardImage(mode: .dark))
     }
 
     func testNoImageLongTextSecondaryTypeLightMode() {
         title = "Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet"
         rowType = .secondary(value: flowValue, formatter: formatter)
-        assertSnapshot(matching: sut, as: .standardImage())
+        assertSnapshot(of: sut, as: .standardImage())
     }
 
     func testNoImageLongTextFlowTypeDarkMode() {
         title = "Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet"
         rowType = .flow(value: .init(value: flowValue, orientation: .vertical, formatter: formatter))
-        assertSnapshot(matching: sut, as: .standardImage(mode: .dark))
+        assertSnapshot(of: sut, as: .standardImage(mode: .dark))
     }
 
     func testNoImageLongTextFlowTypeLightMode() {
         title = "Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet"
         rowType = .flow(value: .init(value: flowValue, orientation: .vertical, formatter: formatter))
-        assertSnapshot(matching: sut, as: .standardImage())
+        assertSnapshot(of: sut, as: .standardImage())
     }
 
     func testImageLongTextPrimaryTypeDarkMode() {
         title = "Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet"
         image = Assets.Images.iOS.germany
-        assertSnapshot(matching: sut, as: .standardImage(mode: .dark))
+        assertSnapshot(of: sut, as: .standardImage(mode: .dark))
     }
 
     func testImageLongTextPrimaryTypeLightMode() {
         title = "Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet"
         image = Assets.Images.iOS.germany
-        assertSnapshot(matching: sut, as: .standardImage())
+        assertSnapshot(of: sut, as: .standardImage())
     }
 
     func testImageLongTextSecondaryTypeDarkMode() {
         title = "Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet"
         image = Assets.Images.iOS.germany
         rowType = .secondary(value: flowValue, formatter: formatter)
-        assertSnapshot(matching: sut, as: .standardImage(mode: .dark))
+        assertSnapshot(of: sut, as: .standardImage(mode: .dark))
     }
 
     func testImageLongTextSecondaryTypeLightMode() {
         title = "Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet"
         image = Assets.Images.iOS.germany
         rowType = .secondary(value: flowValue, formatter: formatter)
-        assertSnapshot(matching: sut, as: .standardImage())
+        assertSnapshot(of: sut, as: .standardImage())
     }
 
     func testImageLongTextFlowTypeImportDarkMode() {
@@ -85,7 +85,7 @@ final class FlowSummaryRowTests: XCTestCase {
         image = Assets.Images.iOS.germany
         flowValue = 100
         rowType = .flow(value: .init(value: flowValue, orientation: .vertical, formatter: formatter))
-        assertSnapshot(matching: sut, as: .standardImage(mode: .dark))
+        assertSnapshot(of: sut, as: .standardImage(mode: .dark))
     }
 
     func testImageLongTextFlowTypeImportLightMode() {
@@ -93,7 +93,7 @@ final class FlowSummaryRowTests: XCTestCase {
         image = Assets.Images.iOS.germany
         flowValue = 100
         rowType = .flow(value: .init(value: flowValue, orientation: .vertical, formatter: formatter))
-        assertSnapshot(matching: sut, as: .standardImage())
+        assertSnapshot(of: sut, as: .standardImage())
     }
 
     func testImageLongTextFlowTypeExportDarkMode() {
@@ -101,7 +101,7 @@ final class FlowSummaryRowTests: XCTestCase {
         image = Assets.Images.iOS.germany
         flowValue = -100
         rowType = .flow(value: .init(value: flowValue, orientation: .vertical, formatter: formatter))
-        assertSnapshot(matching: sut, as: .standardImage(mode: .dark))
+        assertSnapshot(of: sut, as: .standardImage(mode: .dark))
     }
 
     func testImageLongTextFlowTypeExportLightMode() {
@@ -109,21 +109,21 @@ final class FlowSummaryRowTests: XCTestCase {
         image = Assets.Images.iOS.germany
         flowValue = -100
         rowType = .flow(value: .init(value: flowValue, orientation: .vertical, formatter: formatter))
-        assertSnapshot(matching: sut, as: .standardImage())
+        assertSnapshot(of: sut, as: .standardImage())
     }
 
     func testImageLongTextFlowTypeNoneDarkMode() {
         title = "Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet"
         image = Assets.Images.iOS.germany
         rowType = .flow(value: .init(value: flowValue, orientation: .vertical, formatter: formatter))
-        assertSnapshot(matching: sut, as: .standardImage(mode: .dark))
+        assertSnapshot(of: sut, as: .standardImage(mode: .dark))
     }
 
     func testImageLongTextFlowTypeNoneLightMode() {
         title = "Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet"
         image = Assets.Images.iOS.germany
         rowType = .flow(value: .init(value: flowValue, orientation: .vertical, formatter: formatter))
-        assertSnapshot(matching: sut, as: .standardImage())
+        assertSnapshot(of: sut, as: .standardImage())
     }
 
     func testFormatterFlowTypeImportDarkMode() {
@@ -132,7 +132,7 @@ final class FlowSummaryRowTests: XCTestCase {
         flowValue = 100
         formatter = DoubleFormatter(minimumFractionDigits: 5, maximumFractionDigits: 5)
         rowType = .flow(value: .init(value: flowValue, orientation: .vertical, formatter: formatter))
-        assertSnapshot(matching: sut, as: .standardImage(mode: .dark))
+        assertSnapshot(of: sut, as: .standardImage(mode: .dark))
     }
 
     func testFormatterFlowTypeImportLightMode() {
@@ -141,7 +141,7 @@ final class FlowSummaryRowTests: XCTestCase {
         flowValue = 100
         formatter = DoubleFormatter(minimumFractionDigits: 5, maximumFractionDigits: 5)
         rowType = .flow(value: .init(value: flowValue, orientation: .vertical, formatter: formatter))
-        assertSnapshot(matching: sut, as: .standardImage())
+        assertSnapshot(of: sut, as: .standardImage())
     }
 
     func testFormatterFlowTypeExportDarkMode() {
@@ -150,7 +150,7 @@ final class FlowSummaryRowTests: XCTestCase {
         flowValue = -100
         formatter = DoubleFormatter(minimumFractionDigits: 5, maximumFractionDigits: 5)
         rowType = .flow(value: .init(value: flowValue, orientation: .vertical, formatter: formatter))
-        assertSnapshot(matching: sut, as: .standardImage(mode: .dark))
+        assertSnapshot(of: sut, as: .standardImage(mode: .dark))
     }
 
     func testFormatterFlowTypeExportLightMode() {
@@ -159,7 +159,7 @@ final class FlowSummaryRowTests: XCTestCase {
         flowValue = -100
         formatter = DoubleFormatter(minimumFractionDigits: 5, maximumFractionDigits: 5)
         rowType = .flow(value: .init(value: flowValue, orientation: .vertical, formatter: formatter))
-        assertSnapshot(matching: sut, as: .standardImage())
+        assertSnapshot(of: sut, as: .standardImage())
     }
 
     func testFormatterFlowTypeNoneDarkMode() {
@@ -168,7 +168,7 @@ final class FlowSummaryRowTests: XCTestCase {
         flowValue = 0
         formatter = DoubleFormatter(minimumFractionDigits: 5, maximumFractionDigits: 5)
         rowType = .flow(value: .init(value: flowValue, orientation: .vertical, formatter: formatter))
-        assertSnapshot(matching: sut, as: .standardImage(mode: .dark))
+        assertSnapshot(of: sut, as: .standardImage(mode: .dark))
     }
 
     func testFormatterFlowTypeNoneLightMode() {
@@ -177,6 +177,6 @@ final class FlowSummaryRowTests: XCTestCase {
         flowValue = 0
         formatter = DoubleFormatter(minimumFractionDigits: 5, maximumFractionDigits: 5)
         rowType = .flow(value: .init(value: flowValue, orientation: .vertical, formatter: formatter))
-        assertSnapshot(matching: sut, as: .standardImage())
+        assertSnapshot(of: sut, as: .standardImage())
     }
 }

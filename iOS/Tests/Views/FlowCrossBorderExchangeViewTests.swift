@@ -11,7 +11,7 @@ import TestKit
 import SnapshotTesting
 @testable import iOS
 
-final class FlowCrossBorderExchangeViewTests: XCTestCase {
+final class FlowCrossBorderExchangeViewTests: BaseUnitTest {
     private var title = "title"
     private var currentValue = 100.0
     private var plannedValue = 200.0
@@ -21,43 +21,43 @@ final class FlowCrossBorderExchangeViewTests: XCTestCase {
                                                                        planned: plannedValue,
                                                                        formatter: formatter))
     func testImportAndImportLightMode() {
-        assertSnapshot(matching: sut, as: .standardImage())
+        assertSnapshot(of: sut, as: .standardImage())
     }
 
     func testImportAndImportDarkMode() {
-        assertSnapshot(matching: sut, as: .standardImage(mode: .dark))
+        assertSnapshot(of: sut, as: .standardImage(mode: .dark))
     }
 
     func testImportAndExportLightMode() {
         plannedValue = -200
-        assertSnapshot(matching: sut, as: .standardImage())
+        assertSnapshot(of: sut, as: .standardImage())
     }
 
     func testImportAndExportDarkMode() {
         plannedValue = -200
-        assertSnapshot(matching: sut, as: .standardImage(mode: .dark))
+        assertSnapshot(of: sut, as: .standardImage(mode: .dark))
     }
 
     func testExportAndImportLightMode() {
         currentValue = -100
-        assertSnapshot(matching: sut, as: .standardImage())
+        assertSnapshot(of: sut, as: .standardImage())
     }
 
     func testExportAndImportDarkMode() {
         currentValue = -100
-        assertSnapshot(matching: sut, as: .standardImage(mode: .dark))
+        assertSnapshot(of: sut, as: .standardImage(mode: .dark))
     }
 
     func testExportAndExportLightMode() {
         currentValue = -100
         plannedValue = -200
-        assertSnapshot(matching: sut, as: .standardImage())
+        assertSnapshot(of: sut, as: .standardImage())
     }
 
     func testExportAndExportDarkMode() {
         currentValue = -100
         plannedValue = -200
-        assertSnapshot(matching: sut, as: .standardImage(mode: .dark))
+        assertSnapshot(of: sut, as: .standardImage(mode: .dark))
     }
 
     func testFormatterAndLongTitle() {
@@ -65,6 +65,6 @@ final class FlowCrossBorderExchangeViewTests: XCTestCase {
         plannedValue = -200
         title = "Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet"
         formatter = DoubleFormatter(minimumFractionDigits: 5, maximumFractionDigits: 5)
-        assertSnapshot(matching: sut, as: .standardImage(mode: .dark))
+        assertSnapshot(of: sut, as: .standardImage(mode: .dark))
     }
 }

@@ -10,7 +10,8 @@ namespace :project do
   task :assets do
     create_dummy_files("Core")
     create_dummy_files("iOS")
-    create_dummy_files("iOSWidget")
+    generate_assets("Core")
+    generate_assets("iOS")
   end
 
   def create_dummy_files(module_name)
@@ -19,5 +20,14 @@ namespace :project do
     sh "touch #{module_name}/Resources/Generated/#{module_name}Strings.swift"
     sh "touch #{module_name}/Resources/Generated/#{module_name}Images.swift"
     sh "touch #{module_name}/Resources/Generated/#{module_name}Colors.swift"
+  end
+
+  def generate_assets(module_name)
+    puts "Generate strings asset file"
+    sh "./Scripts/generate_strings.rb #{module_name} #{module_name}/Resources/en.lproj/#{module_name}.strings #{module_name}/Resources/Generated/#{module_name}Strings.swift"
+    puts "Generate images asset file"
+    sh "./Scripts/generate_images.rb #{module_name} #{module_name}/Resources/#{module_name}Images.xcassets #{module_name}/Resources/Generated/#{module_name}Images.swift"
+    puts "Generate color asset file"
+    sh "./Scripts/generate_colors.rb #{module_name} #{module_name}/Resources/#{module_name}Colors.xcassets #{module_name}/Resources/Generated/#{module_name}Colors.swift"
   end
 end

@@ -10,14 +10,27 @@ import Swinject
 import Core
 
 @main
+struct AppLauncher {
+    static func main() throws {
+        if NSClassFromString("XCTestCase") == nil {
+            iOSApp.main()
+        } else {
+            TestApp.main()
+        }
+    }
+}
+
 struct iOSApp: App {
-
-    private let container = iOSAssembler(container: Container(),
-                                         launchEnvironment: LaunchEnvironment(enviroment: ProcessInfo().environment)).assembly()
-
     var body: some Scene {
         WindowGroup {
-            MainView(container: container)
+            MainView(container: iOSAssembler(container: Container(),
+                                             launchEnvironment: LaunchEnvironment(enviroment: ProcessInfo().environment)).assembly())
         }
+    }
+}
+
+struct TestApp: App {
+    var body: some Scene {
+        WindowGroup { Text("Running Unit Tests").foregroundStyle(.red) }
     }
 }
