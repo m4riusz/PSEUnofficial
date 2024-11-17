@@ -10,10 +10,8 @@ namespace :project do
   task :assets do
     create_dummy_files("Core")
     create_dummy_files("iOS")
-    create_dummy_files("iOSWidget")
     generate_assets("Core")
     generate_assets("iOS")
-    generate_assets("iOSWidget")
   end
 
   def create_dummy_files(module_name)
