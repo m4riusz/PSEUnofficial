@@ -2,14 +2,18 @@
     "targets": {
         "TestKit": {
             "type": "framework",
-            "supportedDestinations": ["iOS"],
             "platform": "iOS",
+            "settings": {
+                "PRODUCT_BUNDLE_IDENTIFIER": "pl.msut.testkit",
+                "INFOPLIST_FILE": "TestKit/Configs/Info.plist", 
+                "CODE_SIGN_STYLE": "Manual"
+            },
             "sources": [
                 {
                     "path": "../TestKit/Sources"
                 },
                 {
-                    "path": "../TestKit/Info.plist"
+                    "path": "../TestKit/Configs/Info.plist"
                 }
             ],
 			"dependencies": [

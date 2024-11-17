@@ -2,15 +2,23 @@
     "targets": {
         "iOS": {
             "type": "application",
-            "supportedDestinations": ["iOS"],
             "platform": "iOS",
             "configFiles": {
                 "Debug": "../iOS/Configs/Debug.xcconfig",
                 "Release": "../iOS/Configs/Release.xcconfig"
             },
             "settings": {
-                "PRODUCT_BUNDLE_IDENTIFIER": "pl.msut.PSEUnofficial",
-                "CODE_SIGN_STYLE": "Manual"
+                "INFOPLIST_FILE":"iOS/Configs/Info.plist",
+                "PRODUCT_BUNDLE_IDENTIFIER": "$(MYAPP_BUNDLE_IDENTIFIER)",
+                "MARKETING_VERSION": "$(MYAPP_APP_VERSION)",
+                "CURRENT_PROJECT_VERSION": "$(MYAPP_BUILD_VERSION)",
+                "CODE_SIGN_STYLE": "$(MYAPP_CODE_SIGN_STYLE)",
+                "DEVELOPMENT_TEAM": "$(MYAPP_TEAM_ID)",
+                "CODE_SIGN_IDENTITY": "$(MYAPP_CODE_SIGN_IDENTITY)",
+                "PROVISIONING_PROFILE_SPECIFIER": "$(MYAPP_PROVISIONING_PROFILE_SPECIFIER)",
+                "OTHER_SWIFT_FLAGS": [
+                    "$(inherited)"
+                ]
             },
             "sources": [
                 {
@@ -20,7 +28,7 @@
                     "path": "../iOS/Resources"
                 },
                 {
-                    "path": "../iOS/Info.plist"
+                    "path": "../iOS/Configs/Info.plist"
                 }
             ],
             "dependencies": [
@@ -28,14 +36,29 @@
 					"target": "Core"
 				},
 				{
-					"package": "Swinject"
+					"package": "Swinject",
+                    "product": "Swinject-Dynamic"
 				}
-			]
+			],
+            "scheme":{
+				"gatherCovergageData":true,
+				"testTargets":[
+					{
+						"name":"iOSUnitTests",
+						"parallelizable":true,
+						"randomExecutionOrder":true
+					}
+				]
+			}
         },
         "iOSUnitTests": {
             "type": "bundle.unit-test",
-            "supportedDestinations": ["iOS"],
             "platform": "iOS",
+            "settings":{
+				"PRODUCT_BUNDLE_IDENTIFIER":"pl.msut.ios.tests.unit",
+				"INFOPLIST_FILE":"iOS/Configs/Info-Test.plist",
+                "CODE_SIGN_STYLE":"Manual"
+			},
             "sources": [
                 {
                     "path": "../iOS/Tests",
@@ -44,7 +67,7 @@
                     ]
                 },
                 {
-                    "path": "../iOS/Info.plist"
+                    "path": "../iOS/Configs/Info-Test.plist"
                 }
             ],
             "dependencies": [
@@ -55,22 +78,12 @@
 					"target": "TestKit"
 				}
 			],
-            "settings": {
-                "TEST_HOST": "$(BUILT_PRODUCTS_DIR)/iOS.app/iOS"
-            }
-        },
-        "iOSUITests": {
-            "type": "bundle.ui-testing",
-            "supportedDestinations": ["iOS"],
-            "platform": "iOS",
-            "sources": [
-                {
-                    "path": "../iOS/UITests"
-                },
-                {
-                    "path": "../iOS/Info.plist"
-                }
-            ]
+            "scheme":{
+                "gatherCoverageData":true,
+				"testTargets":[
+					"iOSUnitTests"
+				]
+			}
         }
     }
 }

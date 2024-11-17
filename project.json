@@ -20,67 +20,13 @@
             "iOS": "17.0"
         }
     },
+	"settings": {
+		"IPHONEOS_DEPLOYMENT_TARGET": "17.0"
+	},
     "include": [
         "xcodegen/packages.json",
         "xcodegen/test_kit.json",
         "xcodegen/core.json",
         "xcodegen/ios.json"
-    ],
-    "schemes": {
-        "iOS": {
-			"build": {
-				"targets": {
-					"iOS": "all"
-				}
-			},
-			"run": {
-				"gatherCoverageData": true,
-				"language": "pl",
-				"region": "PL",
-				"coverageTargets": [
-					"Core",
-					"iOS"
-				],
-				"targets": [
-					"CoreTests",
-					"iOSTests"
-				]
-			}
-		},
-		"UnitTests": {
-			"build": {
-				"targets": {
-					"iOS": "all"
-				}
-			},
-			"test": {
-				"gatherCoverageData": true,
-				"language": "pl",
-				"region": "PL",
-				"coverageTargets": [
-					"Core",
-					"iOS"
-				],
-				"targets": [
-					"CoreTests",
-					"iOSUnitTests"
-				]
-			}
-		},
-        "UITests": {
-			"build": {
-				"targets": {
-					"iOSUITests": [
-						"run",
-						"test"
-					]
-				}
-			},
-			"test": {
-				"targets": [
-					"iOSUITests"
-				]
-			}
-		}
-    }
+    ]
 }
